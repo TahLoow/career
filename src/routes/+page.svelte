@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
+	import { Button } from "$lib/components/ui/button";
 </script>
 
 <svelte:head>
@@ -9,24 +7,33 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
-			</picture>
-		</span>
+<div>
+	<div class="pb-2 pt-4">
+		<h1>Welcome!</h1>
+		<p>I'm Paul MacLean, and I love to learn and teach!</p>
+	</div>
 
-		to your new<br />SvelteKit app
-	</h1>
+	<hr />
 
-	<h2>
-		try Editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	<div class="h-100 py-4">
+		<article>
+			<h2>How I Built This Site</h2>
+			<p>
+				I built this site's interface from the <a href="https://svelte.dev/docs/kit/introduction"
+					>SvelteKit</a
+				>
+				demo. I use components from <a href="https://ui.shadcn.com">shadcn-ui</a>, which under the
+				hood is battle-tested radix-ui components. I chose shadcn-ui because the components are
+				styled out the gate
+				<strong>and</strong> exposes the tailwind classes that let me customize further. Most
+				importantly, it handles accessibility fundamentals with minimal intervention.  
+			</p>
+			<!-- <Button href="/dashboard" variant="secondary" class="h-7">Read More</Button> -->
+		</article>
 
-	<Counter />
-</section>
+
+	</div>
+</div>
 
 <style>
 	section {
@@ -35,25 +42,5 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>

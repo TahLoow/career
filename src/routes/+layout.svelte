@@ -1,21 +1,23 @@
-<script lang="ts">
+<script>
 	import Header from './Header.svelte';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 	import '../app.css';
-	
+
 	let { children } = $props();
 </script>
 
 <div class="app">
-	<Header />
+	<Header></Header>
 
 	<main>
 		{@render children()}
 	</main>
 
 	<footer>
-		<p>
-			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-		</p>
+		<Tooltip.Root>
+			<Tooltip.Trigger><h2>🦶</h2></Tooltip.Trigger>
+			<Tooltip.Content><p>Footer 🥁🥁🐍</p></Tooltip.Content>
+		</Tooltip.Root>
 	</footer>
 </div>
 
@@ -43,10 +45,6 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
 	}
 
 	@media (min-width: 480px) {
