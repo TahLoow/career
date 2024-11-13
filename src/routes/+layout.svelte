@@ -7,18 +7,32 @@
 </script>
 
 <div class="app">
-	<Header></Header>
+	
 
-	<main>
-		{@render children()}
-	</main>
+	<div class="flex flex-1 flex-col">
+		<Header></Header>
+		<div class="flex flex-1 grid w-full grid-cols-12 grid-rows-1 bg-red-900">
+			<div class="flex flex-1 justify-center col-span-2">
+				<span class="w-[min(calc((100vw-68rem)/2),80px)] bg-green-400">hello</span>
+			</div>
+			<div class="flex flex-1 col-span-8 main-content">
+				<main>
+					{@render children()}
+				</main>
+			</div>
+			<div class="flex flex-1 justify-center col-span-2">
+				<span class="w-[min(calc((100vw-68rem)/2),80px)] bg-green-400">hello</span>
+			</div>
+		</div>
+		<footer>
+			<Tooltip.Root>
+				<Tooltip.Trigger><h2>🦶</h2></Tooltip.Trigger>
+				<Tooltip.Content><p>Footer 🥁🥁🐍</p></Tooltip.Content>
+			</Tooltip.Root>
+		</footer>
+	</div>
 
-	<footer>
-		<Tooltip.Root>
-			<Tooltip.Trigger><h2>🦶</h2></Tooltip.Trigger>
-			<Tooltip.Content><p>Footer 🥁🥁🐍</p></Tooltip.Content>
-		</Tooltip.Root>
-	</footer>
+
 </div>
 
 <style>
@@ -28,10 +42,7 @@
 		min-height: 100vh;
 	}
 
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
+	.main-content {
 		padding: 1rem;
 		width: 100%;
 		max-width: 64rem;
