@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
 </script>
 
 <svelte:head>
@@ -9,7 +8,7 @@
 
 <div>
 	<div class="pb-2 pt-4">
-		<h1>Welcome!</h1>
+		<h1><span>Paul</span><span>MacLean</span></h1>
 		<p>
 			I'm Paul MacLean. I have a decade of software engineering experience, and I love to learn and
 			teach!
