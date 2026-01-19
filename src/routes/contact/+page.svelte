@@ -4,8 +4,11 @@
 </svelte:head>
 
 <div class="text-column">
-	<h1>About this app</h1>
+	<div class="pt-4 pb-2">
+		<h1 class="font-accent text-5xl font-bold italic">Contact</h1>
+	</div>
 
+	<h2>Hey</h2>
 	<p>
 		This is a <a href="https://svelte.dev/docs/kit">SvelteKit</a> app. You can make your own by typing
 		the following into your command line and following the prompts:

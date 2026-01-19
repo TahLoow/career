@@ -67,9 +67,7 @@
 	</li>
 {/snippet}
 
-<div class="bg-muted-foreground mb-4 h-[1px] w-2/5 self-center"></div>
-
-<footer class="mb-4">
+<footer class="mx-4 my-4">
 	<div class="flex justify-center gap-8">
 		<ul>
 			<p class="mb-4 w-full text-lg font-semibold">Current Reads</p>
