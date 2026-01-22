@@ -1,4 +1,5 @@
 <script lang="ts">
+	import MapIndicator from '$lib/icons/map-indicator.svelte';
 	import crokinoleImage from '$lib/images/wood-projects/crokinole.png';
 	import cuttingboardImage from '$lib/images/wood-projects/cuttingboard.jpg';
 	import kiwiImage from '$lib/images/wood-projects/kiwi.png';
@@ -12,7 +13,7 @@
 
 {#snippet softwareProjectCard(title: string, subtitle: string)}
 	<li class="w-full lg:w-[30%]">
-		<article class="bg-background rounded-md p-4">
+		<article class="card bg-surface-300 dark:bg-surface-700 p-4">
 			<h3 class="mb-2 text-xl">{title}</h3>
 			<p>{subtitle}</p>
 		</article>
@@ -21,7 +22,9 @@
 
 {#snippet woodProjectCard(title: string, subtitle: string, image?: string)}
 	<li class="w-full lg:w-[30%]">
-		<article class="bg-background inline-flex flex-col flex-nowrap rounded-md p-4">
+		<article
+			class="bg-surface-300 dark:bg-surface-700 card inline-flex flex-col flex-nowrap rounded-md p-4"
+		>
 			<h3 class="mb-2 text-xl">{title}</h3>
 			<img src={image} alt="Full image of {title}" class="mb-2 w-[175px] self-center" />
 			<p>{subtitle}</p>
@@ -31,14 +34,22 @@
 
 <div>
 	<div class="pt-4 pb-2">
-		<h1 class="font-accent text-5xl italic">
+		<h1 class="font-accent pb-2 text-5xl italic">
 			<span class="font-bold">Paul</span>
 			<span class="font-light">MacLean</span>
 		</h1>
-		<p class="font-accent">Software Engineer</p>
+		<p
+			class="font-accent inline-flex w-full flex-col items-center justify-between gap-2 md:flex-row"
+		>
+			Software Engineer
+			<span class="inline-flex">
+				<MapIndicator class="mt-1 mr-1"></MapIndicator>
+				<span class="text-nowrap">Pittsburgh, PA</span>
+			</span>
+		</p>
 	</div>
 
-	<hr class="text-muted-foreground" />
+	<hr class="" />
 
 	<div class="py-4">
 		<section>
@@ -77,13 +88,13 @@
 				)}
 				{@render woodProjectCard(
 					'Maple End Tables',
-					`A set of maple tables, for my mom’s birthday`,
+					`A set of maple tables, for my mom's birthday`,
 					tablesImage
 				)}
 				{@render woodProjectCard(`Kiwi Table`, `A small conversation piece for my wife`, kiwiImage)}
 				{@render woodProjectCard(
 					`Cutting Boards`,
-					`This one was for my grandma. I’ve made many as gifts!`,
+					`This one was for my grandma. I've made many as gifts!`,
 					cuttingboardImage
 				)}
 			</ul>

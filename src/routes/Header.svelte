@@ -1,20 +1,16 @@
 <script lang="ts">
 	import github from '$lib/images/github.svg';
 	import githubDark from '$lib/images/github-dark.svg';
-	import MapIndicator from '$lib/icons/map-indicator.svelte';
 	import { page } from '$app/state';
 	import Linkedin from '$lib/icons/linkedin.svelte';
+	import Lightswitch from '$lib/features/light-switch/LightSwitch.svelte';
 </script>
 
-<header>
-	<nav class="flex w-full px-16 pt-2">
-		<p class="invisible inline-flex items-center justify-center gap-2 md:visible">
-			<span>
-				<MapIndicator class="mt-0.5"></MapIndicator>
-			</span>
-			<span class="text-nowrap">Pittsburgh, PA</span>
-		</p>
-		<ul class="flex w-full items-end justify-end gap-2">
+<header
+	class="bg-surface-200 dark:bg-surface-900 fixed top-0 flex h-[--header-height] w-full justify-between py-2"
+>
+	<nav class="flex w-full px-16">
+		<ul class="flex w-full items-end justify-start gap-2">
 			{#snippet pagePill(label: string, route: string)}
 				<li>
 					<a
@@ -53,6 +49,9 @@
 				>
 					<Linkedin class="h-3 w-3"></Linkedin>
 				</a>
+			</li>
+			<li>
+				<Lightswitch />
 			</li>
 		</ul>
 	</nav>
