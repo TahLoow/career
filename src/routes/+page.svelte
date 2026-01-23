@@ -13,91 +13,89 @@
 
 {#snippet softwareProjectCard(title: string, subtitle: string)}
 	<li class="w-full lg:w-[30%]">
-		<article class="card bg-surface-300 dark:bg-surface-700 p-4">
-			<h3 class="mb-2 text-xl">{title}</h3>
-			<p>{subtitle}</p>
-		</article>
+		<a href={'#'} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
+			<article>
+				<h3 class="mb-2 text-xl">{title}</h3>
+				<p>{subtitle}</p>
+			</article>
+		</a>
 	</li>
 {/snippet}
 
 {#snippet woodProjectCard(title: string, subtitle: string, image?: string)}
 	<li class="w-full lg:w-[30%]">
-		<article
-			class="bg-surface-300 dark:bg-surface-700 card inline-flex flex-col flex-nowrap rounded-md p-4"
-		>
-			<h3 class="mb-2 text-xl">{title}</h3>
-			<img src={image} alt="Full image of {title}" class="mb-2 w-[175px] self-center" />
-			<p>{subtitle}</p>
-		</article>
+		<a href={'#'} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
+			<article>
+				<h3 class="mb-2 text-xl">{title}</h3>
+				<img src={image} alt="Full image of {title}" class="mb-2 w-full self-center rounded-sm" />
+				<p>{subtitle}</p>
+			</article>
+		</a>
 	</li>
 {/snippet}
 
-<div>
-	<div class="pt-4 pb-2">
-		<h1 class="font-accent pb-2 text-5xl italic">
-			<span class="font-bold">Paul</span>
-			<span class="font-light">MacLean</span>
-		</h1>
-		<p
-			class="font-accent inline-flex w-full flex-col items-center justify-between gap-2 md:flex-row"
-		>
-			Software Engineer
-			<span class="inline-flex">
-				<MapIndicator class="mt-1 mr-1"></MapIndicator>
-				<span class="text-nowrap">Pittsburgh, PA</span>
-			</span>
+<div class="pt-4">
+	<h1 class="font-accent pb-2 text-5xl italic">
+		<span class="font-bold">Paul</span>
+		<span class="font-light">MacLean</span>
+	</h1>
+	<p class="font-accent inline-flex w-full flex-col items-center justify-between gap-2 md:flex-row">
+		Software Engineer
+		<span class="inline-flex">
+			<MapIndicator class="mt-1 mr-1"></MapIndicator>
+			<span class="text-nowrap">Pittsburgh, PA</span>
+		</span>
+	</p>
+</div>
+
+<hr class="hr border-surface-400 mt-3 border-t-6" />
+
+<div class="px-[10%] pt-10 pb-4">
+	<section class="mb-4">
+		<h2 class="text-2xl">Software Projects</h2>
+		<p>Here are some of the things I've been working on!</p>
+
+		<ul class="mt-4 flex w-full flex-wrap justify-between gap-4">
+			{@render softwareProjectCard(
+				'NAS Backup Scheme',
+				'A multi-household backup scheme among family members, using network access storage (NAS) servers'
+			)}
+			{@render softwareProjectCard(
+				'Pi-Hole',
+				'An anti-ad and anti-tracking network middleware on my personal network'
+			)}
+			{@render softwareProjectCard('This Site!', 'How I built this site')}
+		</ul>
+	</section>
+	<br class="h-4" />
+	<section>
+		<h2 class="text-2xl">Wood Projects</h2>
+		<p>
+			I do woodworking in my spare time. I enjoy making bespoke trinkets, but have recently been
+			tackling bigger projects. My goal for 2026 is to have a table at a craft show!
 		</p>
-	</div>
-
-	<hr class="" />
-
-	<div class="py-4">
-		<section>
-			<h2>Software Projects</h2>
-			<p>Here are some of the things I've been working on!</p>
-
-			<ul class="mt-4 flex w-full flex-wrap justify-between gap-4">
-				{@render softwareProjectCard(
-					'NAS Backup Scheme',
-					'A multi-household backup scheme among family members, using network access storage (NAS) servers'
-				)}
-				{@render softwareProjectCard(
-					'Pi-Hole',
-					'An anti-ad and anti-tracking network middleware on my personal network'
-				)}
-				{@render softwareProjectCard('This Site!', 'How I built this site')}
-			</ul>
-		</section>
-		<br class="h-4" />
-		<section>
-			<h2>Wood Projects</h2>
-			<p>
-				I do woodworking in my spare time. I enjoy making bespoke trinkets, but have recently been
-				tackling bigger projects. My goal for 2026 is to have a table at a craft show!
-			</p>
-			<ul class="mt-4 flex flex-wrap justify-between gap-4">
-				{@render woodProjectCard(
-					'Crokinole Game Boards',
-					`Me and my dad's current project: six crokinole boards. A lot like a miniature version of curling, but easy to learn and very engaging!`,
-					crokinoleImage
-				)}
-				{@render woodProjectCard(
-					`Faux Violin`,
-					`One of my first projects: a miniature (non-functional) walnut violin for my violin instructor`,
-					violinImage
-				)}
-				{@render woodProjectCard(
-					'Maple End Tables',
-					`A set of maple tables, for my mom's birthday`,
-					tablesImage
-				)}
-				{@render woodProjectCard(`Kiwi Table`, `A small conversation piece for my wife`, kiwiImage)}
-				{@render woodProjectCard(
-					`Cutting Boards`,
-					`This one was for my grandma. I've made many as gifts!`,
-					cuttingboardImage
-				)}
-			</ul>
-		</section>
-	</div>
+		<ul class="mt-4 flex flex-wrap justify-between gap-4">
+			{@render woodProjectCard(
+				'Crokinole Game Boards',
+				`Me and my dad's current project: six crokinole boards. A lot like a miniature version of curling, but easy to learn and very engaging!`,
+				crokinoleImage
+			)}
+			{@render woodProjectCard(
+				`Faux Violin`,
+				`One of my first projects: a miniature (non-functional) walnut violin for my violin instructor`,
+				violinImage
+			)}
+			{@render woodProjectCard(
+				'Maple End Tables',
+				`A set of maple tables, for my mom's birthday`,
+				tablesImage
+			)}
+			{@render woodProjectCard(`Kiwi Table`, `A small conversation piece for my wife`, kiwiImage)}
+			{@render woodProjectCard(
+				`Cutting Boards`,
+				`This one was for my grandma. I've made many as gifts!`,
+				cuttingboardImage
+			)}
+		</ul>
+	</section>
 </div>

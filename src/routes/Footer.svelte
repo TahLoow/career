@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Portal, Tooltip } from '@skeletonlabs/skeleton-svelte';
+	import { ExternalLink } from '@lucide/svelte';
 	import anchoIcon from '$lib/icons/cats/ancho.png';
 	import cheddarIcon from '$lib/icons/cats/cheddar.png';
 	import cornIcon from '$lib/icons/cats/corn.png';
@@ -16,10 +17,14 @@
 </script>
 
 {#snippet bookItem(title: string, author: string, href: string)}
-	<li class="mt-1">
+	<li class="mt-2">
 		<a {href}>
 			<p class="hover:bg-secondary rounded-sm px-1">
-				<span class="font-semibold">{title}</span> <span class="italic"> by {author}</span>
+				<span class="font-semibold">{title}</span>
+				<ExternalLink size={16} strokeWidth={2} class="mb-0.5 inline" />
+			</p>
+			<p class="ml-2 text-xs leading-5 tracking-wider italic">
+				{author}
 			</p>
 		</a>
 	</li>
@@ -67,10 +72,10 @@
 	</li>
 {/snippet}
 
-<footer class="mx-4 my-4">
-	<div class="flex justify-center gap-8">
+<footer class="bg-surface-400 dark:bg-surface-700 px-4 py-4">
+	<div class="flex justify-center gap-16">
 		<ul>
-			<p class="mb-4 w-full text-lg font-semibold">Current Reads</p>
+			<p class="mb-4 w-full text-lg font-semibold">My 2026 Reads</p>
 			{@render bookItem('Darkness of Creation', 'Nicholas Carrol', 'https://a.co/d/9xh3Th2')}
 			{@render bookItem(
 				'Catalyst: A Rogue One Novel',

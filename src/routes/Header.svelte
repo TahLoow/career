@@ -6,30 +6,31 @@
 	import Lightswitch from '$lib/features/light-switch/LightSwitch.svelte';
 </script>
 
-<header
-	class="bg-surface-200 dark:bg-surface-900 fixed top-0 flex h-[--header-height] w-full justify-between py-2"
->
-	<nav class="flex w-full px-16">
-		<ul class="flex w-full items-end justify-start gap-2">
-			{#snippet pagePill(label: string, route: string)}
-				<li>
-					<a
-						href={route}
-						class="{page.route.id === route
-							? 'bg-secondary rounded-sm'
-							: ''} font-muted px-4 py-0.5 font-sans font-semibold"
-					>
-						{label}
-					</a>
-				</li>
-			{/snippet}
+{#snippet pagePill(label: string, route: string)}
+	<li>
+		<a
+			href={route}
+			class="{page.route.id === route
+				? 'bg-secondary rounded-sm'
+				: ''} font-muted px-4 py-0.5 font-sans font-semibold"
+		>
+			{label}
+		</a>
+	</li>
+{/snippet}
 
+<header
+	class="bg-surface-400 dark:bg-surface-800 fixed top-0 flex h-[var(--header-height)] w-full justify-between py-2"
+>
+	<nav class="inline-flex w-full justify-between px-16">
+		<ul class="flex items-end justify-start gap-2">
 			<!-- Navigational buttons -->
 			{@render pagePill('Welcome!', '/')}
 			{@render pagePill('Projects', '/projects')}
 			{@render pagePill('Background', '/background')}
 			{@render pagePill('Contact', '/contact')}
-
+		</ul>
+		<ul class="flex items-end justify-start gap-2">
 			<li class="ml-5">
 				<a href="https://github.com/TahLoow" class="h-[2em] w-[2em]">
 					<img src={githubDark} alt="GitHub" class="hidden dark:block" />
@@ -58,11 +59,6 @@
 </header>
 
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
 	li {
 		height: 100%;
 		display: flex;
