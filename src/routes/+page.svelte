@@ -1,52 +1,102 @@
 <script lang="ts">
+	import MapIndicator from '$lib/icons/map-indicator.svelte';
+	import crokinoleImage from '$lib/images/wood-projects/crokinole.png';
+	import cuttingboardImage from '$lib/images/wood-projects/cuttingboard.jpg';
+	import kiwiImage from '$lib/images/wood-projects/kiwi.png';
+	import bannerImage from '$lib/images/posts/end-tables/banner.png';
+	import violinImage from '$lib/images/wood-projects/violin.png';
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Paul MacLean - Home</title>
 </svelte:head>
 
-<div>
-	<div class="pb-2 pt-4">
-		<h1><span>Paul</span><span>MacLean</span></h1>
-		<p>
-			I'm Paul MacLean. I have a decade of software engineering experience, and I love to learn and
-			teach!
-		</p>
-	</div>
+{#snippet softwareProjectCard(title: string, subtitle: string)}
+	<li class="w-full lg:w-[30%]">
+		<a href={'#'} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
+			<article>
+				<h4 class="h4 mb-2">{title}</h4>
+				<p>{subtitle}</p>
+			</article>
+		</a>
+	</li>
+{/snippet}
 
-	<hr />
+{#snippet woodProjectCard(title: string, subtitle: string, image?: string, route?: string)}
+	<li class="w-full lg:w-[30%]">
+		<a href={route} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
+			<article>
+				<h3 class="mb-2 text-xl">{title}</h3>
+				<img src={image} alt="Full image of {title}" class="mb-2 w-full self-center rounded-sm" />
+				<p>{subtitle}</p>
+			</article>
+		</a>
+	</li>
+{/snippet}
 
-	<div class="h-100 py-4">
-		<article>
-			<h2>Why</h2>
-			<p>
-				I wanted a location to store my authentic self, like a small morsel of me that folks around
-				me don't get to see.
-			</p>
-		</article>
-		<article>
-			<h2>How</h2>
-			<p>
-				I built this site's interface from the <a href="https://svelte.dev/docs/kit/introduction"
-					>SvelteKit</a
-				>
-				demo. I use components from <a href="https://ui.shadcn.com">shadcn-ui</a>, which under the
-				hood is battle-tested radix-ui components. I chose shadcn-ui because the components are
-				styled out the gate
-				<strong>and</strong> exposes the TailwindCSS classes that let me customize further. Most importantly,
-				it handles accessibility fundamentals with minimal intervention.
-			</p>
-		</article>
-	</div>
+<div class="pt-4">
+	<h1 class="font-accent pb-2 text-5xl italic">
+		<span class="font-bold">Paul</span>
+		<span class="font-light">MacLean</span>
+	</h1>
+	<p class="font-accent inline-flex w-full flex-col items-center justify-between gap-2 md:flex-row">
+		Software Engineer
+		<span class="inline-flex">
+			<MapIndicator class="mt-1 mr-1"></MapIndicator>
+			<span class="text-nowrap">Pittsburgh, PA</span>
+		</span>
+	</p>
 </div>
 
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-</style>
+<hr class="hr border-surface-400 mt-3 border-t-6" />
+
+<div class="px-[10%] pt-10 pb-4">
+	<section class="mb-4">
+		<h2 class="h2">Software Projects</h2>
+		<p>Here are some of the things I've been working on!</p>
+
+		<ul class="mt-4 flex w-full flex-wrap justify-between gap-4">
+			{@render softwareProjectCard(
+				'NAS Backup Scheme',
+				'A multi-household backup scheme among family members, using network access storage (NAS) servers'
+			)}
+			{@render softwareProjectCard(
+				'Pi-Hole',
+				'An anti-ad and anti-tracking network middleware on my personal network'
+			)}
+			{@render softwareProjectCard('This Site!', 'How I built this site')}
+		</ul>
+	</section>
+	<br class="h-4" />
+	<section>
+		<h2 class="h2">Wood Projects</h2>
+		<p>
+			I do woodworking in my spare time. I enjoy making bespoke trinkets, but have recently been
+			tackling bigger projects. My goal for 2026 is to have a table at a craft show!
+		</p>
+		<ul class="mt-4 flex flex-wrap justify-between gap-4">
+			{@render woodProjectCard(
+				'Crokinole Game Boards',
+				`Me and my dad's current project: six crokinole boards. A lot like a miniature version of curling, but easy to learn and very engaging!`,
+				crokinoleImage
+			)}
+			{@render woodProjectCard(
+				`Faux Violin`,
+				`One of my first projects: a miniature (non-functional) walnut violin for my violin instructor`,
+				violinImage
+			)}
+			{@render woodProjectCard(
+				'Maple End Tables',
+				`A set of maple tables, for my mom's birthday. You would not believe how easy it was`,
+				bannerImage,
+				'/posts/end-tables'
+			)}
+			{@render woodProjectCard(`Kiwi Table`, `A small conversation piece for my wife`, kiwiImage)}
+			{@render woodProjectCard(
+				`Cutting Boards`,
+				`This one was for my grandma. I've made many as gifts!`,
+				cuttingboardImage
+			)}
+		</ul>
+	</section>
+</div>

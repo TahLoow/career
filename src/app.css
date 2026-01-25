@@ -1,103 +1,65 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton-svelte';
+@import '@skeletonlabs/skeleton/themes/hamlindigo';
+/* @import './windfall.css'; */
+
+@import './prose.css';
+
+@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+
+@font-face {
+	font-family: 'Orbitron';
+	src: url('/fonts/orbitron-light-webfont.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Orbitron';
+	src: url('/fonts/orbitron-medium-webfont.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Orbitron';
+	src: url('/fonts/orbitron-bold-webfont.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
 
 @layer base {
 	:root {
-		--background: 0 0% 87%;
-		--foreground: 0 0% 3.9%;
-
-		--muted: 0 0% 96.1%;
-		--muted-foreground: 0 0% 45.1%;
-
-		--popover: 0 0% 100%;
-		--popover-foreground: 0 0% 3.9%;
-
-		--card: 0 0% 100%;
-		--card-foreground: 0 0% 3.9%;
-
-		--border: 0 0% 89.8%;
-		--input: 0 0% 89.8%;
-
-		--primary: 0 0% 9%;
-		--primary-foreground: 0 0% 98%;
-
-		--primary-text: 0 0% 33%;
-
-		--secondary: 0 0% 96.1%;
-		--secondary-foreground: 0 0% 9%;
-
-		--accent: 0 0% 96.1%;
-		--accent-foreground: 0 0% 9%;
-
-		--destructive: 0 72.2% 50.6%;
-		--destructive-foreground: 0 0% 98%;
-
-		--ring: 0 0% 3.9%;
-
-		--radius: 0.5rem;
+		--header-height: 96px;
 	}
+}
 
-	.dark {
-		--background: 0 2.44% 9.38%;
-		--foreground: 0 0% 98%;
+@theme {
+	--font-accent: 'Orbitron';
+}
 
-		--muted: 0 0% 14.9%;
-		--muted-foreground: 0 0% 63.9%;
-
-		--popover: 0 0% 3.9%;
-		--popover-foreground: 0 0% 98%;
-
-		--card: 0 0% 3.9%;
-		--card-foreground: 0 0% 98%;
-
-		--border: 0 0% 14.9%;
-		--input: 0 0% 14.9%;
-
-		--primary: 0 0% 98%;
-		--primary-foreground: 0 0% 9%;
-
-		--primary-text: 249 19% 78%;
-
-		--secondary: 0 0% 14.9%;
-		--secondary-foreground: 0 0% 98%;
-
-		--accent: 0 0% 14.9%;
-		--accent-foreground: 0 0% 98%;
-
-		--destructive: 0 62.8% 30.6%;
-		--destructive-foreground: 0 0% 98%;
-
-		--ring: 0 0% 83.1%;
-	}
-
-	h1, h2, h3, h4, button {
-		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	}
-
-	a, p, h5, h6 {
-		font-family: Arial, Helvetica, sans-serif;
-	}
-
-	h1 {
-		font-size: 34px;
-	}
-
-	h2 {
-		font-size: 30px;
-	}
-
-	p {
-		font-size: 16px;
-		color: hsl(var(--primary-text));
-		text-indent: 10px;
-	}
-
-	a {
-		&:not([data-button-root]) {
-			text-decoration: underline;
-			text-underline-offset: 2px;
-			text-decoration-color: rgba(hsl(var(--primary-text)), 0.8);
+@layer utilities {
+	.stripes {
+		background: repeating-linear-gradient(
+			-45deg,
+			color-mix(in oklab, var(--color-primary-950) 0%, transparent),
+			color-mix(in oklab, var(--color-primary-950) 0%, transparent) 10px,
+			color-mix(in oklab, var(--color-primary-950) 15%, transparent) 20px,
+			color-mix(in oklab, var(--color-primary-950) 20%, transparent) 30px
+		);
+		&:where([data-mode='dark'], [data-mode='dark'] *) {
+			background: repeating-linear-gradient(
+				-45deg,
+				color-mix(in oklab, var(--color-primary-300) 0%, transparent),
+				color-mix(in oklab, var(--color-primary-300) 0%, transparent) 10px,
+				color-mix(in oklab, var(--color-primary-300) 10%, transparent) 20px,
+				color-mix(in oklab, var(--color-primary-300) 20%, transparent) 30px
+			);
 		}
 	}
 }
