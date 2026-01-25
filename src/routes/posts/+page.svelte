@@ -16,24 +16,48 @@
 			name: '',
 			children: [
 				{
-					id: 'node_modules',
-					name: 'node_modules',
+					id: 'wood-projects',
+					name: 'Wood Projects',
 					children: [
 						{
-							id: 'node_modules/@skeletonlabs',
-							name: '@skeletonlabs',
-							children: [
-								{
-									id: 'node_modules/@skeletonlabs/skeleton',
-									name: 'skeleton'
-								}
-							]
+							id: 'wood-projects/crokinole-game-boards',
+							name: 'Crokinole Game Boards'
+						},
+						{
+							id: 'wood-projects/faux-violin',
+							name: 'Faux Violin'
+						},
+						{
+							id: 'wood-projects/end-tables',
+							name: 'End Tables'
+						},
+						{
+							id: 'wood-projects/kiwi-table',
+							name: 'Kiwi Table'
+						},
+						{
+							id: 'wood-projects/cutting-boards',
+							name: 'Cutting Boards'
 						}
 					]
 				},
 				{
-					id: 'package.json',
-					name: 'package.json'
+					id: 'software-projects',
+					name: 'Software Projects',
+					children: [
+						{
+							id: 'software-projects/nas-backup',
+							name: 'NAS Backup Scheme'
+						},
+						{
+							id: 'software-projects/pi-hole',
+							name: 'Pi-Hole'
+						},
+						{
+							id: 'software-projects/this-site',
+							name: 'This Site'
+						}
+					]
 				}
 			]
 		}
@@ -41,7 +65,7 @@
 </script>
 
 <svelte:head>
-	<title>About</title>
+	<title>Projects</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 
@@ -50,10 +74,12 @@
 		<h1 class="font-accent text-5xl font-bold italic">Projects</h1>
 	</div>
 
-	<p>Here you can find all of my projects; in a tabular form, wow!</p>
+	<p class="mb-4">
+		Click into folders to see my projects. They're also located on the welcome page.
+	</p>
 
 	<TreeView {collection}>
-		<TreeView.Label>File System</TreeView.Label>
+		<TreeView.Label>All Projects</TreeView.Label>
 		<TreeView.Tree>
 			{#each collection.rootNode.children || [] as node, index (node)}
 				{@render treeNode(node, [index])}

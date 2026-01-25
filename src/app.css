@@ -2,7 +2,10 @@
 
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton-svelte';
-@import './windfall.css';
+@import '@skeletonlabs/skeleton/themes/hamlindigo';
+/* @import './windfall.css'; */
+
+@import './prose.css';
 
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
 
@@ -34,37 +37,29 @@
 	:root {
 		--header-height: 96px;
 	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	button {
-		font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-	}
-
-	a,
-	p,
-	h5,
-	h6 {
-		font-family:
-			ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-			'Segoe UI Symbol', 'Noto Color Emoji';
-	}
-
-	p {
-		a {
-			&:not([data-button-root]) {
-				text-decoration: underline;
-				text-underline-offset: 2px;
-				text-decoration-color: rgba(var(--primary-text), 0.8);
-			}
-		}
-	}
 }
 
 @theme {
 	--font-accent: 'Orbitron';
-	--font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-	--font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+@layer utilities {
+	.stripes {
+		background: repeating-linear-gradient(
+			-45deg,
+			color-mix(in oklab, var(--color-primary-950) 0%, transparent),
+			color-mix(in oklab, var(--color-primary-950) 0%, transparent) 10px,
+			color-mix(in oklab, var(--color-primary-950) 15%, transparent) 20px,
+			color-mix(in oklab, var(--color-primary-950) 20%, transparent) 30px
+		);
+		&:where([data-mode='dark'], [data-mode='dark'] *) {
+			background: repeating-linear-gradient(
+				-45deg,
+				color-mix(in oklab, var(--color-primary-300) 0%, transparent),
+				color-mix(in oklab, var(--color-primary-300) 0%, transparent) 10px,
+				color-mix(in oklab, var(--color-primary-300) 10%, transparent) 20px,
+				color-mix(in oklab, var(--color-primary-300) 20%, transparent) 30px
+			);
+		}
+	}
 }

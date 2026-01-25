@@ -3,12 +3,12 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="text-column">
+<div>
 	<div class="pt-4 pb-2">
 		<h1 class="font-accent text-5xl font-bold italic">Contact</h1>
 	</div>
 
-	<h2>Hey</h2>
+	<h2 class="h2">Hey</h2>
 	<p>
 		This is a <a href="https://svelte.dev/docs/kit">SvelteKit</a> app. You can make your own by typing
 		the following into your command line and following the prompts:

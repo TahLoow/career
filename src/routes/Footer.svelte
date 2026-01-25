@@ -17,11 +17,11 @@
 </script>
 
 {#snippet bookItem(title: string, author: string, href: string)}
-	<li class="mt-2">
-		<a {href}>
-			<p class="hover:bg-secondary rounded-sm px-1">
+	<li class="mt-2 flex">
+		<a {href} class="card card-hover bg-surface-400 dark:bg-surface-700 block px-1 py-0.5">
+			<p class="px-1">
+				<ExternalLink size={16} strokeWidth={2} class="mb-1 inline" />
 				<span class="font-semibold">{title}</span>
-				<ExternalLink size={16} strokeWidth={2} class="mb-0.5 inline" />
 			</p>
 			<p class="ml-2 text-xs leading-5 tracking-wider italic">
 				{author}
@@ -56,8 +56,10 @@
 					</Tooltip.Content>
 				</Tooltip.Positioner>
 			</Portal>
-			<Tooltip.Trigger>
-				<p class="hover:bg-secondary flex items-center rounded-sm pr-2 pl-1">
+			<Tooltip.Trigger class="cursor-default">
+				<p
+					class="card card-hover bg-surface-400 dark:bg-surface-700 flex items-center rounded-sm pr-2 pl-1"
+				>
 					<span class="flex w-8 justify-center">
 						<img
 							src={icon}

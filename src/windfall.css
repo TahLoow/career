@@ -10,8 +10,8 @@
 	--base-font-weight: normal;
 	--base-font-style: normal;
 	--base-letter-spacing: 0em;
-	--heading-font-color: var(--color-primary-800);
-	--heading-font-color-dark: var(--color-primary-300);
+	--heading-font-color: var(--color-secondary-900);
+	--heading-font-color-dark: var(--color-secondary-300);
 	--heading-font-family:
 		Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia,
 		serif;

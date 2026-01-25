@@ -24,7 +24,7 @@
 </svelte:head>
 
 <Switch {checked} {onCheckedChange}>
-	<Switch.Control class="bg-primary-300 dark:bg-primary-600">
+	<Switch.Control class="bg-secondary-300 dark:bg-secondary-700">
 		<Switch.Thumb>
 			<Switch.Context>
 				{#snippet children(switch_)}

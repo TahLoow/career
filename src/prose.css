@@ -1,0 +1,132 @@
+/* Base prose */
+.prose {
+	color: var(--color-surface-900);
+	font-size: var(--text-base);
+	line-height: 1.7;
+}
+
+/* Vertical rhythm */
+.prose > * + * {
+	margin-top: 1em;
+}
+
+/* Headings */
+.prose h1 {
+	@apply h1;
+	@apply mb-6;
+}
+
+.prose h2 {
+	@apply h2;
+}
+
+.prose h3 {
+	@apply h3;
+}
+
+.prose h4 {
+	@apply h4;
+}
+
+.prose ul {
+	@apply mt-6 mb-2 list-inside list-disc space-y-2;
+}
+
+.prose ol {
+	@apply mt-4 mb-6 list-inside list-decimal space-y-2;
+}
+
+.prose .captioned-image {
+	@apply my-4 flex flex-col items-center;
+
+	> p {
+		font-size: var(--text-sm);
+		color: var(--color-surface-700-300);
+	}
+}
+
+/* Paragraphs */
+.prose p {
+	@apply indent-4;
+	margin: 0;
+
+	& + p {
+		&:not(:first-of-type) {
+			margin-top: 20px;
+		}
+	}
+}
+
+/* Links */
+.prose a {
+	@apply anchor;
+}
+
+.prose a:hover {
+	color: var(--color-primary-600);
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+	padding-left: 1.5rem;
+}
+
+.prose li {
+	margin: 0.25rem 0;
+}
+
+/* Blockquotes */
+.prose blockquote {
+	border-left: 4px solid var(--color-surface-300);
+	padding-left: 1rem;
+	color: var(--color-surface-600);
+	font-style: italic;
+}
+
+/* Inline code */
+.prose code {
+	background: var(--color-surface-200);
+	padding: 0.15em 0.35em;
+	border-radius: var(--radius-sm);
+	font-size: 0.9em;
+}
+
+/* Code blocks */
+.prose pre {
+	background: var(--color-surface-900);
+	color: var(--color-surface-50);
+	padding: 1rem;
+	border-radius: var(--radius-lg);
+	overflow-x: auto;
+}
+
+/* ------------------------------ */
+/* Dark mode overrides            */
+/* ------------------------------ */
+
+[data-mode='dark'] .prose {
+	color: var(--color-surface-100);
+}
+
+[data-mode='dark'] .prose a {
+	color: var(--color-primary-400);
+}
+
+[data-mode='dark'] .prose a:hover {
+	color: var(--color-primary-300);
+}
+
+[data-mode='dark'] .prose blockquote {
+	border-left-color: var(--color-surface-700);
+	color: var(--color-surface-300);
+}
+
+[data-mode='dark'] .prose code {
+	background: var(--color-surface-800);
+}
+
+[data-mode='dark'] .prose pre {
+	background: var(--color-surface-950);
+	color: var(--color-surface-50);
+}

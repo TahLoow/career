@@ -3,7 +3,7 @@
 	import crokinoleImage from '$lib/images/wood-projects/crokinole.png';
 	import cuttingboardImage from '$lib/images/wood-projects/cuttingboard.jpg';
 	import kiwiImage from '$lib/images/wood-projects/kiwi.png';
-	import tablesImage from '$lib/images/wood-projects/tables.png';
+	import bannerImage from '$lib/images/posts/end-tables/banner.png';
 	import violinImage from '$lib/images/wood-projects/violin.png';
 </script>
 
@@ -15,16 +15,16 @@
 	<li class="w-full lg:w-[30%]">
 		<a href={'#'} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
 			<article>
-				<h3 class="mb-2 text-xl">{title}</h3>
+				<h4 class="h4 mb-2">{title}</h4>
 				<p>{subtitle}</p>
 			</article>
 		</a>
 	</li>
 {/snippet}
 
-{#snippet woodProjectCard(title: string, subtitle: string, image?: string)}
+{#snippet woodProjectCard(title: string, subtitle: string, image?: string, route?: string)}
 	<li class="w-full lg:w-[30%]">
-		<a href={'#'} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
+		<a href={route} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
 			<article>
 				<h3 class="mb-2 text-xl">{title}</h3>
 				<img src={image} alt="Full image of {title}" class="mb-2 w-full self-center rounded-sm" />
@@ -52,7 +52,7 @@
 
 <div class="px-[10%] pt-10 pb-4">
 	<section class="mb-4">
-		<h2 class="text-2xl">Software Projects</h2>
+		<h2 class="h2">Software Projects</h2>
 		<p>Here are some of the things I've been working on!</p>
 
 		<ul class="mt-4 flex w-full flex-wrap justify-between gap-4">
@@ -69,7 +69,7 @@
 	</section>
 	<br class="h-4" />
 	<section>
-		<h2 class="text-2xl">Wood Projects</h2>
+		<h2 class="h2">Wood Projects</h2>
 		<p>
 			I do woodworking in my spare time. I enjoy making bespoke trinkets, but have recently been
 			tackling bigger projects. My goal for 2026 is to have a table at a craft show!
@@ -87,8 +87,9 @@
 			)}
 			{@render woodProjectCard(
 				'Maple End Tables',
-				`A set of maple tables, for my mom's birthday`,
-				tablesImage
+				`A set of maple tables, for my mom's birthday. You would not believe how easy it was`,
+				bannerImage,
+				'/posts/end-tables'
 			)}
 			{@render woodProjectCard(`Kiwi Table`, `A small conversation piece for my wife`, kiwiImage)}
 			{@render woodProjectCard(
