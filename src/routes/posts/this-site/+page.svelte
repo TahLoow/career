@@ -32,22 +32,25 @@
 		capable, more confusing, and ultimately uglier.
 	</p>
 	<p>
-		Of the design systems I've used, some were too unopinionated (<a
-			href="https://uswds-tailwind.com/components">USWDS</a
-		>), and some were too opinionated (<a href="https://mui.com/material-ui/all-components/"
-			>Material UI</a
-		>) for my taste. I needed something lightweight, highly functional, and also stylistically
+		Of the design systems I've used, some were too unopinionated (
+		<a href="https://uswds-tailwind.com/components">USWDS</a>
+		), and some were too opinionated (
+		<a href="https://mui.com/material-ui/all-components/">Material UI</a>
+		) for my taste. I needed something lightweight, highly functional, and also stylistically
 		modifiable when necessary. Skeleton works nicely for this.
 	</p>
 
 	<h4>3. Tailwind</h4>
 	<p>
-		<a href="https://tailwindcss.com/">Tailwind</a> comes standard with Skeleton. Rather than
-		playing what-does-this-class-do all day, I can instead use the globally-recognizable tailwind
-		inline classes. When I do need a custom class, I define it locally in the
+		<a href="https://tailwindcss.com/">Tailwind</a>
+		comes standard with Skeleton. Rather than playing what-does-this-class-do all day, I can instead
+		use the globally-recognizable tailwind inline classes. When I do need a custom class, I define
+		it locally in the
 		<code class="code">&lt;style&gt;</code>
-		tag of my Svelte file, or globally in my <code class="code">app.css</code>. I like to prepend
-		"css-" to custom classes, so I can recognize which classes aren't from Tailwind.
+		tag of my Svelte file, or globally in my
+		<code class="code">app.css</code>
+		. I like to prepend "css-" to custom classes, so I can recognize which classes aren't from
+		Tailwind.
 	</p>
 
 	<h4>4. Figma</h4>

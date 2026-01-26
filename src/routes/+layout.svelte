@@ -37,9 +37,9 @@
 	{#snippet children(toast)}
 		<Toast {toast}>
 			<Toast.Message>
-				<Toast.Title class="inline-flex items-center gap-2 text-xl"
-					><ConstructionIcon />Under Construction<ConstructionIcon /></Toast.Title
-				>
+				<Toast.Title class="inline-flex items-center gap-2 text-xl">
+					<ConstructionIcon />Under Construction<ConstructionIcon />
+				</Toast.Title>
 				<Toast.Description>Please explore, and thank you for visiting!</Toast.Description>
 			</Toast.Message>
 			<Toast.CloseTrigger />

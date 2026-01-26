@@ -216,8 +216,9 @@
 			times to make sure I got it right:
 			<a
 				href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DTFn7JZmyFqk&amp;sa=D&amp;source=editors&amp;ust=1769279717398046&amp;usg=AOvVaw3xIpX2JXXxyT3whNBz2dLk"
-				>Watch Here</a
 			>
+				Watch Here
+			</a>
 		</li>
 		<li>The dowels go through the mortise and the tenon</li>
 		<li>

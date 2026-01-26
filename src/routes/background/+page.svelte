@@ -1,12 +1,5 @@
 <script lang="ts">
-	import {
-		ArrowLeftIcon,
-		ArrowRightIcon,
-		MailIcon,
-		PhoneIcon,
-		SmileIcon,
-		StickerIcon
-	} from '@lucide/svelte';
+	import { ArrowLeftIcon, ArrowRightIcon, MailIcon, StickerIcon } from '@lucide/svelte';
 	import { createToaster, Toast } from '@skeletonlabs/skeleton-svelte';
 
 	async function handleCopy() {
