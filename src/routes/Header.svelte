@@ -13,7 +13,7 @@
 			href={route}
 			class="{page.route.id === route
 				? 'stripes'
-				: ''} border-surface-200 transition-background bg-surface-400 dark:bg-surface-800 card card-hover inline-flex h-2/3 items-center border-b-3 px-7 py-0.5 font-sans text-lg font-semibold"
+				: ''} border-surface-200 transition-border bg-surface-400 dark:bg-surface-800 card card-hover inline-flex h-2/3 items-center px-7 py-0.5 font-sans text-lg font-semibold duration-75 hover:border-b-3"
 		>
 			{label}
 		</a>

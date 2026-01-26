@@ -74,7 +74,7 @@
 	</li>
 {/snippet}
 
-<footer class="bg-surface-400 dark:bg-surface-700 px-4 py-4">
+<footer class="bg-surface-200 dark:bg-surface-800 px-4 py-4">
 	<div class="flex justify-center gap-16">
 		<ul>
 			<p class="mb-4 w-full text-lg font-semibold">My 2026 Reads</p>
