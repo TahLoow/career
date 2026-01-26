@@ -45,10 +45,14 @@
 		<h2 class="h2">Software Projects</h2>
 		<p>Here are some of the things I've been working on!</p>
 
-		<ul class="mt-4 flex w-full flex-wrap justify-center gap-4">
+		<ul class="mx-2 mt-4 flex w-full flex-wrap gap-4">
 			{#each allPosts.findNode('software-projects')?.children as post}
 				{@render postCard(post.name, post.description, post.bannerImage, post.route)}
 			{/each}
+			{@render postCard(
+				'More to come...',
+				"These posts take a while to write up, but they're fun to make!"
+			)}
 		</ul>
 	</section>
 	<br class="h-4" />
@@ -58,7 +62,7 @@
 			I do woodworking in my spare time. I enjoy making bespoke trinkets, but have recently been
 			tackling bigger projects. My goal for 2026 is to have a table at a craft show!
 		</p>
-		<ul class="mt-4 flex flex-wrap justify-center gap-4">
+		<ul class="mx-2 mt-4 flex flex-wrap gap-4">
 			{#each allPosts.findNode('wood-projects')?.children as post}
 				{@render postCard(post.name, post.description, post.bannerImage, post.route)}
 			{/each}

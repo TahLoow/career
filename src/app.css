@@ -47,17 +47,17 @@
 	.stripes {
 		background: repeating-linear-gradient(
 			-45deg,
-			color-mix(in oklab, var(--color-primary-950) 0%, transparent),
-			color-mix(in oklab, var(--color-primary-950) 0%, transparent) 10px,
-			color-mix(in oklab, var(--color-primary-950) 15%, transparent) 20px,
-			color-mix(in oklab, var(--color-primary-950) 20%, transparent) 30px
+			color-mix(in oklab, var(--color-surface-400) 0%, transparent),
+			color-mix(in oklab, var(--color-surface-400) 0%, transparent) 5px,
+			color-mix(in oklab, var(--color-surface-400) 25%, transparent) 10px,
+			color-mix(in oklab, var(--color-surface-400) 40%, transparent) 30px
 		);
 		&:where([data-mode='dark'], [data-mode='dark'] *) {
 			background: repeating-linear-gradient(
 				-45deg,
 				color-mix(in oklab, var(--color-primary-300) 0%, transparent),
-				color-mix(in oklab, var(--color-primary-300) 0%, transparent) 10px,
-				color-mix(in oklab, var(--color-primary-300) 10%, transparent) 20px,
+				color-mix(in oklab, var(--color-primary-300) 0%, transparent) 5px,
+				color-mix(in oklab, var(--color-primary-300) 10%, transparent) 10px,
 				color-mix(in oklab, var(--color-primary-300) 20%, transparent) 30px
 			);
 		}

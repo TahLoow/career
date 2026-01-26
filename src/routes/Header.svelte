@@ -12,8 +12,8 @@
 		<a
 			href={route}
 			class="{page.route.id === route
-				? 'stripes'
-				: ''} border-surface-200 transition-border bg-surface-400 dark:bg-surface-800 card card-hover inline-flex h-2/3 items-center px-7 py-0.5 font-sans text-lg font-semibold duration-75 hover:border-b-3"
+				? 'stripes text-shadow-surface-100 dark:text-shadow-surface-800 text-shadow-lg '
+				: ''} border-surface-400 dark:border-surface-200 transition-border bg-surface-200 dark:bg-surface-800 card card-hover inline-flex h-2/3 items-center px-7 py-0.5 font-sans text-lg font-semibold duration-75 hover:border-b-3"
 		>
 			{label}
 		</a>
@@ -21,7 +21,7 @@
 {/snippet}
 
 <header
-	class="bg-surface-400 dark:bg-surface-800 fixed top-0 z-50 flex h-[var(--header-height)] w-full justify-between py-2"
+	class="bg-surface-200 dark:bg-surface-800 fixed top-0 z-50 flex h-[var(--header-height)] w-full justify-between py-2"
 >
 	<nav class="inline-flex w-full justify-between px-16">
 		<ul class="flex items-end justify-start gap-4">

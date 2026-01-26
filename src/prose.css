@@ -23,10 +23,12 @@
 
 .prose h3 {
 	@apply h3;
+	@apply mb-4;
 }
 
 .prose h4 {
 	@apply h4;
+	@apply mb-3;
 }
 
 .prose ul {
