@@ -1,20 +1,21 @@
 <script>
-	import image1 from '$lib/images/posts/end-tables/image1.jpg';
-	import image2 from '$lib/images/posts/end-tables/image2.png';
-	import image3 from '$lib/images/posts/end-tables/image3.png';
-	import image4 from '$lib/images/posts/end-tables/image4.png';
-	import image5 from '$lib/images/posts/end-tables/image5.png';
-	import mortiseAndTenonImage from '$lib/images/posts/end-tables/mortise-and-tenon.png';
-	import banner from '$lib/images/posts/end-tables/banner.png';
+	import tableFrames from './images/table-frames.jpg';
+	import panelGrooves from './images/panel-grooves.png';
+	import legMortises from './images/leg-mortises.png';
+	import postFinishing from './images/post-finishing.png';
+	import tableTop from './images/table-top.png';
+	import mortiseAndTenonImage from './images/mortise-and-tenon.png';
+	import banner from './images/banner.png';
+	import ImageUnderlay from '$lib/components/image-underlay/ImageUnderlay.svelte';
 	import BannerImage from '$lib/features/posts/banner-image/BannerImage.svelte';
-
-	const lastUpdated = '1/24/2026';
 </script>
 
 <BannerImage src={banner} alt="" />
 
 <div class="prose self-center md:w-3/5">
 	<h1>Wood Project: End Tables</h1>
+	<hr class="hr" />
+
 	<p>My summary, "You would not believe how easy it is", is satire.</p>
 	<p>
 		I graduated from CalU during mid-covid. Without a job and with a my graduate school application
@@ -86,10 +87,14 @@
 		that fits into the hole perfectly. To prevent rotation of the tenon, the mating profile is typically
 		a square. If well-fit, the mortise and tenon leave no space for jarring movement.
 	</p>
-	<p class="captioned-image">
-		<img alt="" src={mortiseAndTenonImage} title="" />
-		Mortise and Tenon (First Google Result)
-	</p>
+	<div class="captioned-image">
+		<ImageUnderlay
+			src={mortiseAndTenonImage}
+			alt="Image of a typical mortise and tenon"
+			class="h-[400px]"
+		/>
+		<p>Mortise and Tenon (First Google Result)</p>
+	</div>
 	<p>
 		During blueprinting, I decided that mortise-and-tenon would be a good structural approach: The
 		legs would have 3 mortises, and 3 horizontal rails with tenons would connect all of the legs.
@@ -99,10 +104,10 @@
 		of the material within each mortise. For the second pass, I uses a sharpened chisel to square
 		the circular remnants. See below:
 	</p>
-	<p class="captioned-image">
-		<img alt="" src={image3} style="width: 417px; height: 471px" title="" />
-		Leg mortises
-	</p>
+	<div class="captioned-image">
+		<ImageUnderlay src={legMortises} alt="Image of a leg mortises" class="h-[450px]" />
+		<p>Leg mortises</p>
+	</div>
 	<p>
 		Not every leg was perfect, and I had no replacements. So I moved the pretty faces towards the
 		front, and the less pretty faces towards the back. If you notice in the photo, the mortise lines
@@ -125,10 +130,10 @@
 		face, and which two mortises it fit into. It was truly a jigsaw, but it looked good. I completed
 		the frame around Christmas, and I was emboldened.
 	</p>
-	<p class="captioned-image">
-		<img alt="" src={image1} style="width: 624px; height: 281px" title="" />
-		Two frames in my apartment
-	</p>
+	<div class="captioned-image">
+		<ImageUnderlay src={tableFrames} alt="Image of a typical mortise and tenon" class="h-[280px]" />
+		<p>Two frames in my apartment</p>
+	</div>
 	<h2>The Panels</h2>
 	<p>
 		The design features three side panels that fill in the gaps between the lower frame. I wanted
@@ -138,8 +143,12 @@
 		picture.
 	</p>
 	<div class="captioned-image">
-		<img alt="" src={image5} style="width: 344px; height: 287px" title="" />
-		The panel is pressed outwards, into the grooves
+		<ImageUnderlay
+			src={panelGrooves}
+			alt="Image of a typical mortise and tenon"
+			class="h-[280px]"
+		/>
+		<p>The panel is pressed outwards, into the grooves</p>
 	</div>
 	<p>
 		I used a router to cut the grooves. The panel had to be flush against the groove, so I ensured
@@ -164,10 +173,10 @@
 	<p>
 		The table top is a "soft maple". Its softness isn't a great concern, however, it's plenty hard.
 	</p>
-	<p class="captioned-image">
-		<img alt="" src={image2} style="width: 513px; height: 506px" title="" />
-		Be grateful I'm not a photographer
-	</p>
+	<div class="captioned-image">
+		<ImageUnderlay src={tableTop} alt="The maple tabletop" class="h-[450px]" />
+		<p>Blurry photo of maple tabletop</p>
+	</div>
 	<h4>Getting the Lumber (Story Heavy)</h4>
 	<p>
 		I bought it early in the project at a family-owned Polish lumber mill in rural Pittsburgh. I
@@ -301,9 +310,9 @@
 		am tremendously proud. The memories I have working with my family are treasures, and the
 		experience I earned will hopefully prevent some simple, painful mistakes.
 	</p>
-	<p class="captioned-image">
-		<img alt="" src={image4} style="width: 486px; height: 587px" title="" />
-		One of the tables
-	</p>
+	<div class="captioned-image">
+		<ImageUnderlay src={postFinishing} alt="One of the finished tables" class="h-[450px]" />
+		<p>One of the finished tables</p>
+	</div>
 	<p>Thank you for reading!</p>
 </div>

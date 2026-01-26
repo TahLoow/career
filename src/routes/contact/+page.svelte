@@ -1,29 +1,62 @@
+<script lang="ts">
+	import {
+		ArrowLeftIcon,
+		ArrowRightIcon,
+		MailIcon,
+		PhoneIcon,
+		SmileIcon,
+		StickerIcon
+	} from '@lucide/svelte';
+	import { createToaster, Toast } from '@skeletonlabs/skeleton-svelte';
+
+	async function handleCopy() {
+		await navigator.clipboard.writeText('macleanp98@gmail.com');
+		toaster.info({ description: 'Copied to clipboard!' });
+	}
+
+	const toaster = createToaster({
+		placement: 'top'
+	});
+</script>
+
 <svelte:head>
-	<title>About</title>
-	<meta name="description" content="About this app" />
+	<title>Paul - Contact</title>
+	<meta name="Contact" content="Getting in contact with me" />
 </svelte:head>
 
-<div>
-	<div class="pt-4 pb-2">
-		<h1 class="font-accent text-5xl font-bold italic">Contact</h1>
+<div class="flex w-full justify-center">
+	<div class="card bg-surface-200-800 mt-8 w-2/3 flex-col px-8 py-6">
+		<h1 class="font-accent pb-4 text-5xl font-bold italic">Contact</h1>
+
+		<div class="prose mb-4">
+			<p>I'd love to talk. Reach out!</p>
+			<p>May take up to 48 hours to see your email, but I check it regularly.</p>
+		</div>
+
+		<div class="inline-flex w-full items-center justify-center gap-4">
+			<ArrowRightIcon />
+			<button
+				class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
+				onclick={handleCopy}
+			>
+				<MailIcon class="mr-1 h-4 select-none" />
+				macleanp98@gmail.com
+			</button>
+			<ArrowLeftIcon />
+		</div>
 	</div>
-
-	<h2 class="h2">Hey</h2>
-	<p>
-		This is a <a href="https://svelte.dev/docs/kit">SvelteKit</a> app. You can make your own by typing
-		the following into your command line and following the prompts:
-	</p>
-
-	<pre>npx sv create</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
-	</p>
 </div>
+
+<Toast.Group {toaster}>
+	{#snippet children(toast)}
+		<Toast {toast}>
+			<Toast.Message>
+				<Toast.Title class="inline-flex items-center gap-2 text-xl"
+					>Copied to clipboard <StickerIcon /></Toast.Title
+				>
+				<Toast.Description>Hear from you soon!</Toast.Description>
+			</Toast.Message>
+			<Toast.CloseTrigger />
+		</Toast>
+	{/snippet}
+</Toast.Group>

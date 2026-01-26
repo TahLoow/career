@@ -18,14 +18,17 @@
 
 .prose h2 {
 	@apply h2;
+	@apply mb-4;
 }
 
 .prose h3 {
 	@apply h3;
+	@apply mb-4;
 }
 
 .prose h4 {
 	@apply h4;
+	@apply mb-3;
 }
 
 .prose ul {
@@ -37,9 +40,10 @@
 }
 
 .prose .captioned-image {
-	@apply my-4 flex flex-col items-center;
+	@apply mt-4 mb-2 flex flex-col items-center;
 
 	> p {
+		@apply mt-3;
 		font-size: var(--text-sm);
 		color: var(--color-surface-700-300);
 	}
