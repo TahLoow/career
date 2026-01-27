@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		ArrowDownIcon,
 		ArrowLeftIcon,
 		ArrowRightIcon,
 		MailIcon,
@@ -25,7 +26,7 @@
 </svelte:head>
 
 <div class="flex w-full justify-center">
-	<div class="card bg-surface-200-800 mt-8 w-2/3 flex-col px-8 py-6">
+	<div class="card bg-surface-200-800 mt-8 w-full flex-col px-3 py-6 sm:w-2/3 sm:px-8">
 		<h1 class="font-accent pb-4 text-5xl font-bold italic">Contact</h1>
 
 		<div class="prose mb-4">
@@ -33,8 +34,13 @@
 			<p>May take up to 48 hours to see your email, but I check it regularly.</p>
 		</div>
 
+		<div class="mb-4 inline-flex w-full justify-center gap-4 sm:hidden">
+			<ArrowDownIcon />
+			<ArrowDownIcon />
+		</div>
+
 		<div class="inline-flex w-full items-center justify-center gap-4">
-			<ArrowRightIcon />
+			<ArrowRightIcon class="hidden sm:block" />
 			<button
 				class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
 				onclick={handleCopy}
@@ -42,7 +48,7 @@
 				<MailIcon class="mr-1 h-4 select-none" />
 				macleanp98@gmail.com
 			</button>
-			<ArrowLeftIcon />
+			<ArrowLeftIcon class="hidden sm:block" />
 		</div>
 	</div>
 </div>
