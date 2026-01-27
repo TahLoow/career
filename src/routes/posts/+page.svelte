@@ -18,7 +18,7 @@
 	<meta name="Projects" content="Projects I've worked on" />
 </svelte:head>
 
-<div class="card bg-surface-200-800 mt-8 w-2/3 flex-col px-8 py-6">
+<div class="card bg-surface-200-800 mt-8 w-full flex-col px-3 py-6 sm:w-2/3 sm:px-8">
 	<h1 class="font-accent pb-4 text-5xl font-bold italic">Projects</h1>
 
 	<p class="mb-4">

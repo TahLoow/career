@@ -40,12 +40,12 @@
 
 <hr class="hr border-surface-400 mt-3 border-t-6" />
 
-<div class="px-[10%] pt-10 pb-4">
+<div class="pt-10 pb-4 lg:px-[10%]">
 	<section class="mb-4">
 		<h2 class="h2">Software Projects</h2>
 		<p>Here are some of the things I've been working on!</p>
 
-		<ul class="mx-2 mt-4 flex w-full flex-wrap gap-4">
+		<ul class="mt-4 flex w-full flex-wrap gap-4 px-2">
 			{#each allPosts.findNode('software-projects')?.children as post}
 				{@render postCard(post.name, post.description, post.bannerImage, post.route)}
 			{/each}
@@ -62,7 +62,7 @@
 			I do woodworking in my spare time. I enjoy making bespoke trinkets, but have recently been
 			tackling bigger projects. My goal for 2026 is to have a table at a craft show!
 		</p>
-		<ul class="mx-2 mt-4 flex flex-wrap gap-4">
+		<ul class="mt-4 flex flex-wrap gap-4 px-2">
 			{#each allPosts.findNode('wood-projects')?.children as post}
 				{@render postCard(post.name, post.description, post.bannerImage, post.route)}
 			{/each}

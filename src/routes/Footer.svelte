@@ -32,12 +32,16 @@
 
 {#snippet catItem(name: string, icon: string, fullImage: string, notes: string[])}
 	<li class="mt-1">
-		<Tooltip positioning={{ placement: 'right', offset: { mainAxis: 50 } }} openDelay={0}>
+		<Tooltip
+			positioning={{ placement: 'top', offset: { mainAxis: 50 } }}
+			openDelay={0}
+			closeOnClick={false}
+		>
 			<Portal>
 				<Tooltip.Positioner>
 					<Tooltip.Content class="card preset-filled-surface-950-50 p-2">
 						<span>
-							<img src={fullImage} alt="Full image of {name}" class="w-[175px]" />
+							<img src={fullImage} alt="Full image of {name}" class="mb-2 w-[175px] rounded-md" />
 							<ul style="list-style-type: circle" class="pl-4">
 								{#each notes as note}
 									<li>
