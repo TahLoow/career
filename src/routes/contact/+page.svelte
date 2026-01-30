@@ -31,8 +31,10 @@
 
 		<div class="prose mb-4">
 			<h3>Reach out!</h3>
-			<p>I'd love to talk.</p>
-			<p>May take up to 48 hours to see your email, but I check it regularly.</p>
+			<p>
+				I'd love to learn about what you do, and share my experiences. It may take up to 48 hours to
+				see your email, but I check it regularly.
+			</p>
 		</div>
 
 		<div class="mb-4 inline-flex w-full justify-center gap-4 sm:hidden">
