@@ -81,7 +81,7 @@
 				{@render routes()}
 			</ul>
 		</AppBar.Headline>
-		<AppBar.Trail class="flex justify-end">
+		<AppBar.Trail class="flex justify-end lg:pr-4">
 			<ul class="inline-flex items-center gap-2">
 				<li class="ml-5">
 					<a href="https://github.com/TahLoow" type="button" class="btn-icon hover:preset-tonal">
