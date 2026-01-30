@@ -1,67 +1,46 @@
 <script lang="ts">
-	import { SegmentedControl, Switch } from '@skeletonlabs/skeleton-svelte';
+	import { SegmentedControl } from '@skeletonlabs/skeleton-svelte';
 	import { ComputerIcon, MoonIcon, SunIcon } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
 	export const modes = {
 		system: 'system',
-		userLight: 'light',
-		userDark: 'dark'
-	};
+		light: 'light',
+		dark: 'dark'
+	} as const;
 	type Mode = keyof typeof modes;
 
-	let mode: Mode = $state('system');
+	let mode: Mode = $state(modes.system);
 
-	let darkChecked = $state(false);
+	onMount(() => {
+		const userModeDefined = localStorage.getItem('mode') as Mode;
 
-	// $derived.by(() => {
-	// 	const modeOverride = localStorage.getItem('mode');
+		updateDocument();
 
-	// 	if (modeOverride) {
-	// 		document.documentElement.setAttribute(
-	// 			'data-mode',
-	// 			modeOverride === 'dark' ? 'dark' : 'light'
-	// 		);
-	// 	} else {
-	// 		const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	// 		if (systemDarkMode) {
-	// 		}
-	// 	}
-	// });
+		mode = userModeDefined;
+	});
 
-	// onMount(() => {
-	// 	const userModeDefined = localStorage.getItem('mode');
+	function updateDocument() {
+		const storedMode = localStorage.getItem('mode') as Mode;
 
-	// 	if (userModeDefined) {
-	// 		const userMode = localStorage.getItem('mode');
-	// 		darkChecked = userMode === 'dark';
-	// 		document.documentElement.setAttribute('data-mode', userMode!);
-	// 		console.log('using user set mode: ' + darkChecked);
-	// 	} else {
-	// 		darkChecked = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	// 		document.documentElement.setAttribute('data-mode', 'system');
-	// 		console.log('using system mode:' + darkChecked);
-	// 	}
-
-	// 	console.log(darkChecked);
-	// });
-
-	const handleValueChange = ({ value }: { value: string | null }) => {
-		console.log(value);
-
-		if (value === 'system') {
-			console.log('deleting localstorage selection');
-			localStorage.removeItem('mode');
-			document.documentElement.setAttribute('data-mode', 'system');
-		} else if (value === 'light' || value === 'dark') {
-			localStorage.setItem('mode', value);
-			document.documentElement.setAttribute('data-mode', value);
+		if (storedMode && storedMode in modes) {
+			document.documentElement.setAttribute('data-mode', storedMode);
 		} else {
-			console.error('Invalid mode value: ' + mode);
+			throw new Error('Invalid mode value: ' + mode);
+		}
+	}
+
+	function handleValueChange({ value }: { value: string | null }) {
+		if (value && value in modes) {
+			localStorage.setItem('mode', value);
+		} else {
+			throw new Error('Invalid mode value: ' + mode);
 		}
 
+		updateDocument();
+
 		mode = value as Mode;
-	};
+	}
 </script>
 
 <svelte:head>
@@ -73,7 +52,7 @@
 </svelte:head>
 
 <SegmentedControl defaultValue="system" value={mode} onValueChange={handleValueChange}>
-	<SegmentedControl.Control>
+	<SegmentedControl.Control class="border-surface-300-700 p-1">
 		<SegmentedControl.Indicator />
 		<SegmentedControl.Item class="w-4" value="system" title="system" aria-label="system">
 			<SegmentedControl.ItemText>
