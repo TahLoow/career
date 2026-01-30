@@ -7,7 +7,19 @@
 
 @import './prose.css';
 
-@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+@custom-variant dark {
+	/* 1. Manual Dark Mode: Triggered by [data-mode="dark"] */
+	&:where([data-mode='dark'], [data-mode='dark'] *) {
+		@slot;
+	}
+
+	/* 2. System Mode: Triggered by [data-mode="system"] ONLY if OS is dark */
+	@media (prefers-color-scheme: dark) {
+		&:where([data-mode='system'], [data-mode='system'] *) {
+			@slot;
+		}
+	}
+}
 
 @font-face {
 	font-family: 'Orbitron';
