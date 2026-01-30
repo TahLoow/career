@@ -40,7 +40,7 @@
 					</ul>
 				</div>
 				<button
-					class="css-carousel-container relative h-[600px] w-full basis-2/5 overflow-auto rounded-sm px-4 text-left hover:backdrop-brightness-96 lg:min-w-[300px]"
+					class="css-carousel-container relative h-[600px] w-full basis-2/5 overflow-auto rounded-sm px-4 text-left sm:hover:backdrop-brightness-96 lg:min-w-[300px]"
 					class:pause
 					onclick={() => (pause = !pause)}
 				>
