@@ -13,32 +13,37 @@
 	let mode: Mode = $state(modes.system);
 
 	onMount(() => {
-		const userModeDefined = localStorage.getItem('mode') as Mode;
+		// Get mode from localstorage
+		const storedMode = getStoredMode();
 
-		updateDocument();
+		// Assert mode is in localstorage
+		updateStoredMode(storedMode);
 
-		mode = userModeDefined;
+		// Update control
+		mode = storedMode;
 	});
 
-	function updateDocument() {
-		const storedMode = localStorage.getItem('mode') as Mode;
+	function getStoredMode(): Mode {
+		return (localStorage.getItem('mode') || modes.system) as Mode;
+	}
 
-		if (storedMode && storedMode in modes) {
-			document.documentElement.setAttribute('data-mode', storedMode);
+	function updateStoredMode(newMode?: Mode): void {
+		if (newMode && modes[newMode]) {
+			// Remember this mode via localstorage
+			localStorage.setItem('mode', newMode);
+
+			// Update the document whenever the mode changes
+			document.documentElement.setAttribute('data-mode', newMode);
 		} else {
 			throw new Error('Invalid mode value: ' + mode);
 		}
 	}
 
 	function handleValueChange({ value }: { value: string | null }) {
-		if (value && value in modes) {
-			localStorage.setItem('mode', value);
-		} else {
-			throw new Error('Invalid mode value: ' + mode);
-		}
+		// Persist the new value, update the document
+		updateStoredMode(value as Mode);
 
-		updateDocument();
-
+		// Update the control
 		mode = value as Mode;
 	}
 </script>
