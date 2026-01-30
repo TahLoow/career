@@ -21,7 +21,7 @@
 <Tooltip.Provider value={tooltip}>
 	<Portal>
 		<Tooltip.Positioner>
-			<Tooltip.Content class="card  preset-filled-surface-950-50 z-20 w-[175px] p-2">
+			<Tooltip.Content class="card preset-filled-surface-950-50 z-20 w-[175px] p-2">
 				<span>
 					<img src={fullImage} alt="Full image of {name}" class="mb-2 rounded-md" />
 					<ul style="list-style-type: circle" class="pl-4">
@@ -49,7 +49,7 @@
 		}}
 	>
 		<p
-			class="card card-hover bg-surface-400 dark:bg-surface-700 flex items-center rounded-sm pr-2 pl-1"
+			class="card card-hover bg-surface-300 dark:bg-surface-700 flex items-center rounded-sm pr-2 pl-1"
 		>
 			<span class="flex w-8 justify-center">
 				<img

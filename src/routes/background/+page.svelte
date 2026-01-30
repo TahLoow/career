@@ -40,7 +40,7 @@
 					</ul>
 				</div>
 				<button
-					class="css-carousel-container relative h-[600px] w-full basis-2/5 overflow-auto rounded-sm px-4 text-left sm:hover:backdrop-brightness-96 lg:min-w-[300px]"
+					class="css-carousel-container relative h-[600px] w-full basis-2/5 overflow-auto rounded-sm px-4 text-left hover:backdrop-brightness-96 lg:min-w-[300px]"
 					class:pause
 					onclick={() => (pause = !pause)}
 				>
@@ -51,7 +51,6 @@
 							<PauseIcon class="size-4" />
 						{/if}
 					</div>
-					<!-- class="css-carousel-fade bg-surface-200-800 absolute top-0 left-0 z-9 h-full w-full" -->
 					<div
 						class="css-carousel-fade bg-surface-200-800 absolute top-0 left-0 z-9 h-full w-full"
 					></div>
@@ -192,7 +191,9 @@
 
 		&:hover {
 			.css-carousel-list {
-				animation-play-state: paused;
+				@media (min-width: 500px) {
+					animation-play-state: paused;
+				}
 			}
 
 			.css-pause-button {

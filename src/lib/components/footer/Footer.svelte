@@ -19,7 +19,7 @@
 
 {#snippet bookItem(title: string, author: string, href: string)}
 	<li class="mt-2 flex">
-		<a {href} class="card card-hover bg-surface-400 dark:bg-surface-700 block px-1 py-0.5">
+		<a {href} class="card card-hover bg-surface-300 dark:bg-surface-700 block px-1 py-0.5">
 			<p class="px-1">
 				<ExternalLink size={16} strokeWidth={2} class="mb-1 inline" />
 				<span class="font-semibold">{title}</span>
