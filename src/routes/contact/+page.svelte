@@ -3,6 +3,12 @@
 		ArrowDownIcon,
 		ArrowLeftIcon,
 		ArrowRightIcon,
+		ExternalLink,
+		ExternalLinkIcon,
+		GithubIcon,
+		Link2Icon,
+		LinkedinIcon,
+		LinkIcon,
 		MailIcon,
 		PhoneIcon,
 		SmileIcon,
@@ -42,17 +48,51 @@
 			<ArrowDownIcon />
 		</div>
 
-		<div class="inline-flex w-full items-center justify-center gap-4">
-			<ArrowRightIcon class="hidden sm:block" />
-			<button
-				class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
-				onclick={handleCopy}
-			>
-				<MailIcon class="mr-1 h-4 select-none" />
-				macleanp98@gmail.com
-			</button>
-			<ArrowLeftIcon class="hidden sm:block" />
-		</div>
+		<ul class="flex flex-col gap-4">
+			<li class="inline-flex w-full items-center justify-center gap-4">
+				<ArrowRightIcon class="hidden sm:block" />
+				<button
+					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
+					onclick={handleCopy}
+				>
+					<MailIcon class="mr-1/2 h-4 select-none" />
+					macleanp98@gmail.com
+				</button>
+				<ArrowLeftIcon class="hidden sm:block" />
+			</li>
+
+			<li class="inline-flex w-full items-center justify-center gap-4">
+				<ArrowRightIcon class="hidden sm:block" />
+				<a
+					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
+					href="https://www.linkedin.com/in/paul-maclean"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Visit my LinkedIn profile"
+					type="button"
+				>
+					<ExternalLinkIcon class="mr-1/2 h-4 select-none" />
+					LinkedIn
+				</a>
+				<ArrowLeftIcon class="hidden sm:block" />
+			</li>
+
+			<li class="inline-flex w-full items-center justify-center gap-4">
+				<ArrowRightIcon class="hidden sm:block" />
+				<a
+					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
+					href="https://github.com/TahLoow"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Visit my LinkedIn profile"
+					type="button"
+				>
+					<ExternalLinkIcon class="mr-1/2 h-4 select-none" />
+					GitHub
+				</a>
+				<ArrowLeftIcon class="hidden sm:block" />
+			</li>
+		</ul>
 	</div>
 </div>
 
