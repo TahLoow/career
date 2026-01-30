@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { PauseIcon, PlayIcon } from '@lucide/svelte';
 
-	const items = [];
-
 	let pause = $state(false);
 </script>
 
