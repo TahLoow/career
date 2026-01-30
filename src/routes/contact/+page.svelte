@@ -30,7 +30,8 @@
 		<h1 class="font-accent pb-4 text-5xl font-bold italic">Contact</h1>
 
 		<div class="prose mb-4">
-			<p>I'd love to talk. Reach out!</p>
+			<h3>Reach out!</h3>
+			<p>I'd love to talk.</p>
 			<p>May take up to 48 hours to see your email, but I check it regularly.</p>
 		</div>
 

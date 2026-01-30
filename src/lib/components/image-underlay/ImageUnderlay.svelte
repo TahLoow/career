@@ -21,7 +21,7 @@
 		class="absolute inset-0 h-full w-full scale-110 object-cover blur-xl brightness-80 select-none"
 		aria-hidden="true"
 	/>
-	<img {src} {alt} class="relative z-10 max-h-full max-w-full object-contain" />
+	<img {src} {alt} class="relative max-h-full max-w-full object-contain" />
 	<Dialog>
 		<Dialog.Trigger class="hover:bg-surface-950/10 absolute z-10 h-full w-full"></Dialog.Trigger>
 		<Portal>

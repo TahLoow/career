@@ -3,106 +3,109 @@
 	color: var(--color-surface-900);
 	font-size: var(--text-base);
 	line-height: 1.7;
-}
 
-/* Vertical rhythm */
-.prose > * + * {
-	margin-top: 1em;
-}
-
-/* Headings */
-.prose h1 {
-	@apply h1;
-	@apply mb-6;
-}
-
-.prose h2 {
-	@apply h2;
-	@apply mb-4;
-}
-
-.prose h3 {
-	@apply h3;
-	@apply mb-4;
-}
-
-.prose h4 {
-	@apply h4;
-	@apply mb-3;
-}
-
-.prose ul {
-	@apply mt-6 mb-2 list-inside list-disc space-y-2;
-}
-
-.prose ol {
-	@apply mt-4 mb-6 list-inside list-decimal space-y-2;
-}
-
-.prose .captioned-image {
-	@apply mt-4 mb-2 flex flex-col items-center;
-
-	> p {
-		@apply mt-3;
-		font-size: var(--text-sm);
-		color: var(--color-surface-700-300);
+	/* Vertical rhythm */
+	> * + * {
+		margin-top: 1em;
 	}
-}
 
-/* Paragraphs */
-.prose p {
-	@apply indent-4;
-	margin: 0;
+	/* Headings */
+	h1 {
+		@apply h1;
+		@apply mb-6;
+	}
 
-	& + p {
-		&:not(:first-of-type) {
-			margin-top: 20px;
+	h2 {
+		@apply h2;
+		@apply mb-4;
+	}
+
+	h3 {
+		@apply h3;
+		@apply mb-4;
+	}
+
+	h4 {
+		@apply h4;
+		@apply mb-3;
+	}
+
+	ul {
+		@apply mt-6 mb-2 list-inside list-disc space-y-2;
+		li::marker {
+			color: var(--color-surface-400);
 		}
 	}
-}
 
-/* Links */
-.prose a {
-	@apply anchor;
-}
+	ol {
+		@apply mt-4 mb-6 list-inside list-decimal space-y-2;
+	}
 
-.prose a:hover {
-	color: var(--color-primary-600);
-}
+	.captioned-image {
+		@apply mt-4 mb-6 flex flex-col items-center;
 
-/* Lists */
-.prose ul,
-.prose ol {
-	padding-left: 1.5rem;
-}
+		> p {
+			@apply mt-3;
+			font-size: var(--text-sm);
+			color: var(--color-surface-400-600);
+		}
+	}
 
-.prose li {
-	margin: 0.25rem 0;
-}
+	/* Paragraphs */
+	p {
+		@apply indent-4;
+		margin: 0;
 
-/* Blockquotes */
-.prose blockquote {
-	border-left: 4px solid var(--color-surface-300);
-	padding-left: 1rem;
-	color: var(--color-surface-600);
-	font-style: italic;
-}
+		& + p {
+			&:not(:first-of-type) {
+				margin-top: 20px;
+			}
+		}
+	}
 
-/* Inline code */
-.prose code {
-	background: var(--color-surface-200);
-	padding: 0.15em 0.35em;
-	border-radius: var(--radius-sm);
-	font-size: 0.9em;
-}
+	/* Links */
+	a {
+		@apply anchor;
+	}
 
-/* Code blocks */
-.prose pre {
-	background: var(--color-surface-900);
-	color: var(--color-surface-50);
-	padding: 1rem;
-	border-radius: var(--radius-lg);
-	overflow-x: auto;
+	a:hover {
+		color: var(--color-primary-600);
+	}
+
+	/* Lists */
+	ul,
+	ol {
+		padding-left: 1.5rem;
+	}
+
+	li {
+		margin: 0.25rem 0;
+	}
+
+	/* Blockquotes */
+	blockquote {
+		border-left: 4px solid var(--color-surface-300);
+		padding-left: 1rem;
+		color: var(--color-surface-600);
+		font-style: italic;
+	}
+
+	/* Inline code */
+	code {
+		background: var(--color-surface-200);
+		padding: 0.15em 0.35em;
+		border-radius: var(--radius-sm);
+		font-size: 0.9em;
+	}
+
+	/* Code blocks */
+	pre {
+		background: var(--color-surface-900);
+		color: var(--color-surface-50);
+		padding: 1rem;
+		border-radius: var(--radius-lg);
+		overflow-x: auto;
+	}
 }
 
 /* ------------------------------ */
@@ -111,26 +114,42 @@
 
 [data-mode='dark'] .prose {
 	color: var(--color-surface-100);
-}
 
-[data-mode='dark'] .prose a {
-	color: var(--color-primary-400);
-}
+	a {
+		color: var(--color-primary-400);
+	}
 
-[data-mode='dark'] .prose a:hover {
-	color: var(--color-primary-300);
-}
+	a:hover {
+		color: var(--color-primary-300);
+	}
 
-[data-mode='dark'] .prose blockquote {
-	border-left-color: var(--color-surface-700);
-	color: var(--color-surface-300);
-}
+	blockquote {
+		border-left-color: var(--color-surface-700);
+		color: var(--color-surface-300);
+	}
 
-[data-mode='dark'] .prose code {
-	background: var(--color-surface-800);
-}
+	code {
+		background: var(--color-surface-800);
+	}
 
-[data-mode='dark'] .prose pre {
-	background: var(--color-surface-950);
-	color: var(--color-surface-50);
+	pre {
+		background: var(--color-surface-950);
+		color: var(--color-surface-50);
+	}
+
+	h1 {
+		color: var(--color-surface-100);
+	}
+
+	h2 {
+		color: var(--color-surface-100);
+	}
+
+	h3 {
+		color: var(--color-surface-300);
+	}
+
+	h4 {
+		color: var(--color-surface-300);
+	}
 }

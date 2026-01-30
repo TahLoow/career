@@ -1,6 +1,6 @@
 <script>
 	import Header from './Header.svelte';
-	import Footer from './Footer.svelte';
+	import Footer from '../lib/components/footer/Footer.svelte';
 	import '../app.css';
 	import { createToaster, Toast } from '@skeletonlabs/skeleton-svelte';
 	let { children } = $props();

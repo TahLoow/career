@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Portal, Tooltip } from '@skeletonlabs/skeleton-svelte';
+	import { Portal, Tooltip, useTooltip } from '@skeletonlabs/skeleton-svelte';
 	import { ExternalLink } from '@lucide/svelte';
 	import anchoIcon from '$lib/icons/cats/ancho.png';
 	import cheddarIcon from '$lib/icons/cats/cheddar.png';
@@ -14,6 +14,7 @@
 	import goobFull from '$lib/images/cats/goob.png';
 	import pearFull from '$lib/images/cats/pear.png';
 	import weegieFull from '$lib/images/cats/weegie.png';
+	import CatTooltip from './CatTooltip.svelte';
 </script>
 
 {#snippet bookItem(title: string, author: string, href: string)}
@@ -32,49 +33,7 @@
 
 {#snippet catItem(name: string, icon: string, fullImage: string, notes: string[])}
 	<li class="mt-1">
-		<Tooltip
-			positioning={{ placement: 'top', offset: { mainAxis: 50 } }}
-			openDelay={0}
-			closeOnClick={false}
-		>
-			<Portal>
-				<Tooltip.Positioner>
-					<Tooltip.Content class="card preset-filled-surface-950-50 p-2">
-						<span>
-							<img src={fullImage} alt="Full image of {name}" class="mb-2 w-[175px] rounded-md" />
-							<ul style="list-style-type: circle" class="pl-4">
-								{#each notes as note}
-									<li>
-										<p>
-											{note}
-										</p>
-									</li>
-								{/each}
-							</ul>
-						</span>
-						<Tooltip.Arrow
-							class="[--arrow-background:var(--color-surface-950-50)] [--arrow-size:--spacing(2)]"
-						>
-							<Tooltip.ArrowTip />
-						</Tooltip.Arrow>
-					</Tooltip.Content>
-				</Tooltip.Positioner>
-			</Portal>
-			<Tooltip.Trigger class="cursor-default">
-				<p
-					class="card card-hover bg-surface-400 dark:bg-surface-700 flex items-center rounded-sm pr-2 pl-1"
-				>
-					<span class="flex w-8 justify-center">
-						<img
-							src={icon}
-							alt="8-bit depiction of {name}"
-							style="image-rendering: pixelated; image-rendering: crisp-edges; "
-						/>
-					</span>
-					{name}
-				</p>
-			</Tooltip.Trigger>
-		</Tooltip>
+		<CatTooltip {name} {icon} {fullImage} {notes} />
 	</li>
 {/snippet}
 
