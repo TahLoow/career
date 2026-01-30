@@ -65,4 +65,12 @@
 		/>
 		<p>Figma prototype</p>
 	</div>
+
+	<h2>Hosting</h2>
+
+	I'm hosting this site on Vercel, with a domain from Cloudflare. This is a<span class="font-bold"
+		>static</span
+	>
+	site, so Vercel hosts it for free. Vercel also has amazing Git integration, deploying to the
+	public branch as soon as a change is introduced to <code>main</code>.
 </div>
