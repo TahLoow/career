@@ -3,7 +3,7 @@
 	import figmaImage from './images/figma.png';
 </script>
 
-<div class="prose self-center md:w-3/5">
+<div class="prose mb-2 self-center md:w-3/5">
 	<h1>Software Project: This Site</h1>
 	<hr class="hr" />
 
@@ -15,9 +15,18 @@
 		<li>I wanted to improve my writing abilities</li>
 	</ol>
 
-	<h2>How</h2>
+	<h2>Hosting</h2>
 
-	<p>This is a very simple site. I made this site with the following tools:</p>
+	<p>
+		I'm hosting this site on Vercel, with a domain from Cloudflare. This is a
+		<span class="font-bold">static</span>
+		site, so Vercel hosts it for free. Vercel also has amazing Git integration, deploying to the public
+		branch as soon as a change is introduced to the <code>main</code> branch.
+	</p>
+
+	<h2>Frontend Tooling</h2>
+
+	<p>This is a very simple site. I made it with the following core tools:</p>
 
 	<h4>1. Svelte</h4>
 	<p>
@@ -66,11 +75,17 @@
 		<p>Figma prototype</p>
 	</div>
 
-	<h2>Hosting</h2>
-
-	I'm hosting this site on Vercel, with a domain from Cloudflare. This is a<span class="font-bold"
-		>static</span
-	>
-	site, so Vercel hosts it for free. Vercel also has amazing Git integration, deploying to the
-	public branch as soon as a change is introduced to <code>main</code>.
+	<h2>Custom Pieces</h2>
+	<p>
+		Despite using Skeleton, most of this site is still hand built by me. Of the components I made,
+		the most fun were:
+	</p>
+	<ul>
+		<li>The pixel art cats in the footer (you can hover over them!)</li>
+		<li>
+			The dark mode selector, with <code>system</code>/<code>light</code>/<code>dark</code> modes
+		</li>
+		<li>The expandable image previewer</li>
+		<li>The scrolling frame in the "<a href="/background">background</a>" section</li>
+	</ul>
 </div>
