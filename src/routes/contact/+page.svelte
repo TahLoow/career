@@ -52,7 +52,7 @@
 			<li class="inline-flex w-full items-center justify-center gap-4">
 				<ArrowRightIcon class="hidden sm:block" />
 				<button
-					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
+					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto hover:backdrop-brightness-75"
 					onclick={handleCopy}
 				>
 					<MailIcon class="mr-1/2 h-4 select-none" />
@@ -64,7 +64,7 @@
 			<li class="inline-flex w-full items-center justify-center gap-4">
 				<ArrowRightIcon class="hidden sm:block" />
 				<a
-					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
+					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto hover:underline hover:backdrop-brightness-75"
 					href="https://www.linkedin.com/in/paul-maclean"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -80,7 +80,7 @@
 			<li class="inline-flex w-full items-center justify-center gap-4">
 				<ArrowRightIcon class="hidden sm:block" />
 				<a
-					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto"
+					class="btn preset-tonal inline-flex items-center self-center font-mono select-auto hover:underline hover:backdrop-brightness-75"
 					href="https://github.com/TahLoow"
 					target="_blank"
 					rel="noopener noreferrer"

@@ -101,7 +101,7 @@
 						<LinkedinIcon class="size-6" />
 					</a>
 				</li>
-				<li>
+				<li class="pl-3">
 					<Lightswitch />
 				</li>
 			</ul>

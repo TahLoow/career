@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PauseIcon, PlayIcon } from '@lucide/svelte';
+	import { DownloadIcon, PauseIcon, PlayIcon } from '@lucide/svelte';
 
 	let pause = $state(false);
 </script>
@@ -27,9 +27,10 @@
 					<h3>Resume</h3>
 					<a
 						href="/files/MacLean_Resume.pdf"
-						class="btn preset-tonal-surface no-underline!"
+						class="btn dark:text-surface-200! text-surface-950! dark:preset-filled-surface-500! preset-filled-surface-300-700"
 						download
 					>
+						<DownloadIcon class="size-4" />
 						Download
 					</a>
 					<span class="ml-4 italic">Updated 1/29/2026</span>

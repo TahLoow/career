@@ -43,16 +43,13 @@
 <div class="pt-10 pb-4 lg:px-[10%]">
 	<section class="mb-4">
 		<h2 class="h2">Software Projects</h2>
-		<p>Here are some of the things I've been working on!</p>
+		<p>Here are some the things I've been working on!</p>
 
 		<ul class="mt-4 flex w-full flex-wrap gap-4 px-2">
 			{#each allPosts.findNode('software-projects')?.children as post}
 				{@render postCard(post.name, post.description, post.bannerImage, post.route)}
 			{/each}
-			{@render postCard(
-				'More to come...',
-				"These posts take a while to write up, but they're fun to make!"
-			)}
+			{@render postCard('More to come!')}
 		</ul>
 	</section>
 	<br class="h-4" />
