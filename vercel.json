@@ -1,8 +1,9 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/app.html"
-    }
-  ]
+	"routes": [
+		{
+			"src": "/[^.]+",
+			"dest": "/",
+			"status": 200
+		}
+	]
 }
