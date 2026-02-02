@@ -66,7 +66,7 @@
 				`Perfect in every way`
 			])}
 			{@render catItem('Rosie', cheddarIcon, cheddarFull, [
-				`Nicknames: Cheddar, Cheese, Big Cheese`,
+				`Nicknames: Cheddar, Cheese, One-Punch Cheese`,
 				`Has orange wedge on forehead`,
 				`Yearns to destroy cornbread`,
 				`Obsessed with phones`
