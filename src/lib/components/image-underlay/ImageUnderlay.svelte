@@ -28,7 +28,7 @@
 			<Dialog.Backdrop class="bg-surface-50-950/50 fixed inset-0 z-50" />
 			<Dialog.Positioner class="fixed inset-0 z-50 flex items-center justify-center p-4">
 				<Dialog.Content
-					class="card bg-surface-100-900 flex h-[90vh] w-[70vw] flex-col space-y-4 p-4 shadow-xl {animation}"
+					class="card bg-surface-100-900 flex h-[90dvh] w-[70vw] flex-col space-y-4 p-4 shadow-xl {animation}"
 				>
 					<header class="flex shrink-0 items-center justify-between">
 						<Dialog.Title class="text-lg font-bold">{alt}</Dialog.Title>
