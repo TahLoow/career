@@ -2,6 +2,7 @@
 	import MapIndicator from '$lib/icons/map-indicator.svelte';
 	import ImageUnderlay from '$lib/components/image-underlay/ImageUnderlay.svelte';
 	import { allPosts } from './posts/all-posts';
+	import PixelArtGame from '$lib/components/pixel-art-game/PixelArtGame.svelte';
 </script>
 
 <svelte:head>
@@ -36,6 +37,7 @@
 			<span class="text-nowrap">Pittsburgh, PA</span>
 		</span>
 	</p>
+	<PixelArtGame />
 </div>
 
 <hr class="hr border-surface-400 mt-3 border-t-6" />
