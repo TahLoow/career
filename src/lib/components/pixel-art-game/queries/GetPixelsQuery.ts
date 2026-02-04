@@ -7,12 +7,12 @@ export type Pixels = {
 	color: number;
 };
 
+// Get pixels, but only after getBoardsQuery got data
 export function getPixelsQuery(getBoardsQuery: CreateQueryResult<Board, Error>) {
-	// Second query: get projects, but only after userId is available
 	const pixelsQuery = createQuery<Pixels[]>(() => ({
-		queryKey: ['projects'],
+		queryKey: ['pixels'],
 		queryFn: async () =>
-			(await (await fetch('http://localhost:8787/boards/1')).json()).result.pixels,
+			(await (await fetch(`${env.PUBLIC_API_URL}/boards/1`)).json()).result.pixels,
 		enabled: !!getBoardsQuery.data // Query will not run until boards are present
 	}));
 	return pixelsQuery;
