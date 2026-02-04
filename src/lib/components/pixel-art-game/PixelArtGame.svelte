@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { EraserIcon, PaintbrushIcon } from '@lucide/svelte';
-	import { onMount } from 'svelte';
+	import { getBoardQuery } from './queries/GetBoardQuery';
+	import { getPixelsQuery } from './queries/GetPixelsQuery';
 
 	const cellColors: string[] = [
 		'transparent',
@@ -14,42 +15,55 @@
 		'#384d64'
 	] as const;
 
+	// Color code for transparent cells
 	const transparentColor = cellColors.findIndex((i) => i === 'transparent');
-	const pixelsX = 16;
-	const pixelsY = 10;
-	const canvasX = 400;
-	const canvasY = (pixelsY / pixelsX) * canvasX;
-	let cells: number[] | undefined = $state(undefined);
+
+	// Retrieve data for rendering the board
+	const boardQuery = getBoardQuery();
+	const pixelsQuery = getPixelsQuery(boardQuery);
+
+	// How many pixels should be in the rows and columns of the board
+	const boardRows = $derived(boardQuery.data?.width ?? 0);
+	const boardColumns = $derived(boardQuery.data?.height ?? 0);
+
+	// Dimensions of the user-displayed board container. Keep aspect ratio of board
+	const containerX = 400;
+	const containerY = $derived((boardColumns / boardRows) * containerX);
+
+	// The board's pixels to render
+	let boardPixels: number[] = $state([]);
+
+	// The color that the user has selected to paint with
 	let selectedColor: number = $state(1);
 
-	onMount(async () => {
-		const x = await fetch('http://localhost:8787/boards/1');
-		const dbCells = (await x.json()).result.pixels;
-		const temp = new Array(pixelsX * pixelsY).fill(0);
-		for (const cell of dbCells) {
-			temp[cell.position] = cell.color;
+	$effect(() => {
+		if (pixelsQuery.isSuccess && pixelsQuery.data) {
+			const temp = new Array(boardRows * boardColumns).fill(0);
+			for (const pixel of pixelsQuery.data) {
+				temp[pixel.position] = pixel.color;
+				boardPixels = temp;
+			}
 		}
-		cells = temp;
 	});
 
 	function handleCellClick(i: number) {
-		if (cells) {
-			cells[i] = selectedColor;
-			console.log(cells);
+		if (boardPixels) {
+			boardPixels[i] = selectedColor;
+			console.log(boardPixels);
 		}
 	}
 </script>
 
-{#if cells}
-	<div style="width: {canvasX}px;">
+{#if boardPixels.length}
+	<div style="width: {containerX}px;">
 		<div
 			class="bg-surface-300-700 flex flex-wrap overflow-clip rounded-md"
-			style="height: {canvasY}px;"
+			style="height: {containerY}px;"
 		>
-			{#each cells as cellColorCode, cellIndex}
+			{#each boardPixels as cellColorCode, cellIndex}
 				<button
 					class="bg-surface-300-700 hover:brightness-90"
-					style="width: {canvasX / pixelsX}px; height: {canvasY / pixelsY}px;
+					style="width: {containerX / boardRows}px; height: {containerY / boardColumns}px;
         {cellColors[cellColorCode] !== 'transparent'
 						? `background-color: ${cellColors[cellColorCode]};`
 						: ''}"
