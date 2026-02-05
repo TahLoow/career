@@ -22,12 +22,7 @@ export function createPixelQuery(boardId: number) {
 				method: 'POST',
 				headers: { ['Content-Type']: 'json' },
 				body: JSON.stringify(variables)
-			})
-				.then((res) => res.json())
-				.then(async (data) => {
-					await sleep(1000);
-					return data;
-				}),
+			}).then((res) => res.json()),
 		enabled: false, // Query will not run until boards are present
 		retry: false
 	}));
