@@ -10,6 +10,10 @@ export type Board = {
 export function getBoardQuery() {
 	return createQuery<Board>(() => ({
 		queryKey: ['board'],
-		queryFn: async () => (await (await fetch(`${env.PUBLIC_API_URL}/boards`)).json()).result[0]
+		queryFn: () =>
+			fetch(`${env.PUBLIC_API_URL}/boards`)
+				.then((res) => res.json())
+				.then((data) => data.result[0]),
+		retry: false
 	}));
 }

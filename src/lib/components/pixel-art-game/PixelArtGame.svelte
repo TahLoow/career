@@ -2,6 +2,10 @@
 	import { EraserIcon, PaintbrushIcon } from '@lucide/svelte';
 	import { getBoardQuery } from './queries/GetBoardQuery';
 	import { getPixelsQuery } from './queries/GetPixelsQuery';
+	import { createPixelQuery } from './queries/CreatePixelQuery';
+	import Spinner from '../Spinner.svelte';
+	import { sleep } from '$lib/utils';
+	import ColorMarker from '$lib/icons/color-marker.svelte';
 
 	const cellColors: string[] = [
 		'transparent',
@@ -22,12 +26,14 @@
 	const boardQuery = getBoardQuery();
 	const pixelsQuery = getPixelsQuery(boardQuery);
 
+	const createPixel = createPixelQuery(boardQuery.data?.id!);
+
 	// How many pixels should be in the rows and columns of the board
 	const boardRows = $derived(boardQuery.data?.width ?? 0);
 	const boardColumns = $derived(boardQuery.data?.height ?? 0);
 
 	// Dimensions of the user-displayed board container. Keep aspect ratio of board
-	const containerX = 400;
+	const containerX = 700;
 	const containerY = $derived((boardColumns / boardRows) * containerX);
 
 	// The board's pixels to render
@@ -46,10 +52,14 @@
 		}
 	});
 
-	function handleCellClick(i: number) {
-		if (boardPixels) {
-			boardPixels[i] = selectedColor;
-			console.log(boardPixels);
+	async function handleCellClick(i: number) {
+		if (!createPixel.isPending) {
+			try {
+				await createPixel.mutateAsync({ position: i, color: selectedColor });
+				pixelsQuery.refetch();
+			} catch (error) {
+				console.error(error);
+			}
 		}
 	}
 </script>
@@ -62,14 +72,31 @@
 		>
 			{#each boardPixels as cellColorCode, cellIndex}
 				<button
-					class="bg-surface-300-700 hover:brightness-90"
-					style="width: {containerX / boardRows}px; height: {containerY / boardColumns}px;
-        {cellColors[cellColorCode] !== 'transparent'
-						? `background-color: ${cellColors[cellColorCode]};`
-						: ''}"
+					title="color cell {cellIndex} "
 					onclick={() => handleCellClick(cellIndex)}
-					title="color cell {cellIndex}"
-				></button>
+					class="css-pixel bg-surface-300-700 {cellColorCode === transparentColor
+						? ''
+						: 'border-b border-l'} transition-colors hover:brightness-90"
+					style="width: {containerX / boardRows}px; 
+						height: {containerY / boardColumns}px; 
+						background-color: {cellColors[cellColorCode]}; 
+						border-color: color-mix(in srgb, {cellColors[cellColorCode]} 95%, black);"
+				>
+					{#if createPixel.variables?.position === cellIndex && createPixel.isPending}
+						<!-- Render the loading spinner if a pixel is WIP -->
+						<Spinner class="text-surface-950-50 bg-surface-50-950/60 scale-75 rounded-[50%]" />
+					{:else}
+						<!-- Render the cursor crosshair -->
+						<div class="css-crosshair hidden">
+							<ColorMarker class="h-full w-full" />
+						</div>
+
+						<!-- This is not optimal and that a background image would be better -->
+						<div
+							class="css-shadow m-auto h-2/3 w-2/3 rounded-md shadow-[0.5px_0px_1px_0.5px_rgba(0,0,0,0.2),0_0.5px_0.5px_rgba(255,255,255,0.1)] backdrop-brightness-102"
+						></div>
+					{/if}
+				</button>
 			{/each}
 		</div>
 
@@ -109,3 +136,15 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	.css-pixel:hover {
+		.css-crosshair {
+			display: block;
+		}
+
+		.css-shadow {
+			display: none;
+		}
+	}
+</style>

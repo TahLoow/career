@@ -9,11 +9,13 @@ export type Pixels = {
 
 // Get pixels, but only after getBoardsQuery got data
 export function getPixelsQuery(getBoardsQuery: CreateQueryResult<Board, Error>) {
-	const pixelsQuery = createQuery<Pixels[]>(() => ({
+	return createQuery<Pixels[]>(() => ({
 		queryKey: ['pixels'],
-		queryFn: async () =>
-			(await (await fetch(`${env.PUBLIC_API_URL}/boards/1`)).json()).result.pixels,
-		enabled: !!getBoardsQuery.data // Query will not run until boards are present
+		queryFn: () =>
+			fetch(`${env.PUBLIC_API_URL}/boards/1`)
+				.then((res) => res.json())
+				.then((data) => data.result.pixels),
+		enabled: !!getBoardsQuery.data, // Query will not run until boards are present
+		retry: false
 	}));
-	return pixelsQuery;
 }
