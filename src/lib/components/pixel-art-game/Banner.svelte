@@ -13,7 +13,7 @@
 		<h2 class="h4">Pixel Board</h2>
 		<p>
 			You and other viewers can place pixels on the board. Boards are ocassionally saved and reset.
-			Inspired by <a href="https://rplace.live/">r/place</a>.
+			<a href="/posts/pixel-board">Read more</a>
 		</p>
 	</span>
 	<div class="flex grow flex-col justify-center pb-6">

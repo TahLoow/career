@@ -49,8 +49,8 @@ export class PixelBoardState {
 				const temp = new Array(this.boardRows * this.boardColumns).fill(0);
 				for (const pixel of this.boardQuery.data.pixels) {
 					temp[pixel.position] = pixel.color;
-					this.boardPixels = temp;
 				}
+				this.boardPixels = temp;
 			}
 		});
 	}
