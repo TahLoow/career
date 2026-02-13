@@ -1,5 +1,4 @@
 import { createMutation, createQuery, type CreateQueryResult } from '@tanstack/svelte-query';
-import type { Board } from './GetBoardQuery';
 import { env } from '$env/dynamic/public';
 import { sleep } from '$lib/utils';
 
@@ -21,7 +20,9 @@ export function createPixelQuery(boardId: number) {
 			fetch(`${env.PUBLIC_API_URL}/boards/1/pixels`, {
 				method: 'POST',
 				headers: { ['Content-Type']: 'json' },
-				body: JSON.stringify(variables)
+				body: JSON.stringify({
+					...variables
+				})
 			}).then((res) => res.json()),
 		enabled: false, // Query will not run until boards are present
 		retry: false

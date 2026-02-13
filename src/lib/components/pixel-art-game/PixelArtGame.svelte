@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { EraserIcon, PaintbrushIcon } from '@lucide/svelte';
+	import { EraserIcon, HourglassIcon, PaintbrushIcon, TriangleAlertIcon } from '@lucide/svelte';
 	import { getBoardQuery } from './queries/GetBoardQuery';
-	import { getPixelsQuery } from './queries/GetPixelsQuery';
 	import { createPixelQuery } from './queries/CreatePixelQuery';
 	import Spinner from '../Spinner.svelte';
-	import { sleep } from '$lib/utils';
-	import ColorMarker from '$lib/icons/color-marker.svelte';
+	import { getPixelStreamQuery } from './queries/StreamPixelUpdates.svelte';
+	import { onMount } from 'svelte';
+	import ColorPalette from './queries/ColorPalette.svelte';
 
-	const cellColors: string[] = [
+	export const cellColors: string[] = [
 		'transparent',
 		'#1a1417',
 		'#4b2f29',
@@ -19,13 +19,24 @@
 		'#384d64'
 	] as const;
 
+	// User can place more pixels after this period
+	const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes
+
+	// User can place this many pixels per period
+	const PIXELS_PER_PERIOD = 3;
+
 	// Color code for transparent cells
-	const transparentColor = cellColors.findIndex((i) => i === 'transparent');
+	export const transparentColor = cellColors.findIndex((i) => i === 'transparent');
 
-	// Retrieve data for rendering the board
+	// Retrieve data for rendering the current board
 	const boardQuery = getBoardQuery();
-	const pixelsQuery = getPixelsQuery(boardQuery);
 
+	// Stream updates to the board
+	const { socketState } = getPixelStreamQuery(
+		(position: number, color: number) => (boardPixels[position] = color)
+	);
+
+	// Prepare to create pixels
 	const createPixel = createPixelQuery(boardQuery.data?.id!);
 
 	// How many pixels should be in the rows and columns of the board
@@ -36,16 +47,41 @@
 	const containerX = 700;
 	const containerY = $derived((boardColumns / boardRows) * containerX);
 
+	// Whether to render the board. Must be ready for live updates
+	const loading = $derived(socketState.isConnecting || boardQuery.isLoading);
+
 	// The board's pixels to render
 	let boardPixels: number[] = $state([]);
 
 	// The color that the user has selected to paint with
 	let selectedColor: number = $state(1);
 
+	let pixelBalance = $state(PIXELS_PER_PERIOD);
+
+	let secondsPast = $state(0);
+
+	let secondsUntilRefresh = $derived(PIXEL_BALANCE_REFRESH_PERIOD_SECONDS - secondsPast);
+
+	function reloadBalance() {
+		pixelBalance = PIXELS_PER_PERIOD;
+		secondsPast = 0;
+	}
+
+	onMount(() => {
+		const reloadLoop = () => {
+			if (secondsPast >= PIXEL_BALANCE_REFRESH_PERIOD_SECONDS) {
+				reloadBalance();
+			}
+			secondsPast++;
+			setTimeout(reloadLoop, 1000);
+		};
+		reloadLoop();
+	});
+
 	$effect(() => {
-		if (pixelsQuery.isSuccess && pixelsQuery.data) {
+		if (boardQuery.isSuccess && boardQuery.data) {
 			const temp = new Array(boardRows * boardColumns).fill(0);
-			for (const pixel of pixelsQuery.data) {
+			for (const pixel of boardQuery.data.pixels) {
 				temp[pixel.position] = pixel.color;
 				boardPixels = temp;
 			}
@@ -55,8 +91,14 @@
 	async function handleCellClick(i: number) {
 		if (!createPixel.isPending) {
 			try {
-				await createPixel.mutateAsync({ position: i, color: selectedColor });
-				pixelsQuery.refetch();
+				if (pixelBalance > 0) {
+					if (boardPixels[i] !== selectedColor) {
+						await createPixel.mutateAsync({ position: i, color: selectedColor });
+
+						pixelBalance--;
+					}
+					// Cell is updated via the getPixelStreamQuery
+				}
 			} catch (error) {
 				console.error(error);
 			}
@@ -64,75 +106,87 @@
 	}
 </script>
 
-{#if boardPixels.length}
-	<div style="width: {containerX}px;">
-		<div
-			class="bg-surface-300-700 flex flex-wrap overflow-clip rounded-md"
-			style="height: {containerY}px;"
-		>
-			{#each boardPixels as cellColorCode, cellIndex}
-				<button
-					title="color cell {cellIndex} "
-					onclick={() => handleCellClick(cellIndex)}
-					class="css-pixel bg-surface-300-700 {cellColorCode === transparentColor
-						? ''
-						: 'border-b border-l'} transition-colors hover:brightness-90"
-					style="width: {containerX / boardRows}px; 
-						height: {containerY / boardColumns}px; 
-						background-color: {cellColors[cellColorCode]}; 
-						border-color: color-mix(in srgb, {cellColors[cellColorCode]} 95%, black);"
-				>
-					{#if createPixel.variables?.position === cellIndex && createPixel.isPending}
-						<!-- Render the loading spinner if a pixel is WIP -->
-						<Spinner class="text-surface-950-50 bg-surface-50-950/60 scale-75 rounded-[50%]" />
-					{:else}
-						<!-- Render the cursor crosshair -->
-						<div class="css-crosshair hidden">
-							<ColorMarker class="h-full w-full" />
-						</div>
+{#if socketState.error}
+	<div class="mt-4 flex flex-col items-center gap-3">
+		<div class="h-8 w-8">
+			<TriangleAlertIcon />
+		</div>
+		<p class="text-surface-contrast-400-600">An error occured! Please check back later</p>
+	</div>
+{:else if loading}
+	<div class="mt-4 flex flex-col items-center gap-3">
+		<div class="h-8 w-8">
+			<Spinner />
+		</div>
+		<p class="text-surface-contrast-400-600">Loading Board and Websockets</p>
+	</div>
+{:else}
+	<div class="flex justify-center gap-4">
+		<div class="shrink-0" style="width: {containerX}px;">
+			<ColorPalette />
 
-						<!-- This is not optimal and that a background image would be better -->
-						<div
-							class="css-shadow m-auto h-2/3 w-2/3 rounded-md shadow-[0.5px_0px_1px_0.5px_rgba(0,0,0,0.2),0_0.5px_0.5px_rgba(255,255,255,0.1)] backdrop-brightness-102"
-						></div>
-					{/if}
-				</button>
-			{/each}
+			<div class="flex justify-center pt-4">
+				<div class="flex w-[350px] flex-col gap-2">
+					<div class="grid auto-rows-fr grid-cols-4 place-items-center gap-2">
+						{#each cellColors as cellColor, i}
+							{#if cellColor !== 'transparent'}
+								<button
+									class="btn btn-icon relative h-6 text-white drop-shadow-md"
+									style="background-color: {cellColor};"
+									onclick={() => (selectedColor = i)}
+									title="select color {cellColor}"
+								>
+									<PaintbrushIcon
+										class="size-5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]"
+										opacity={cellColors[selectedColor] === cellColor ? 1 : 0}
+									/>
+								</button>
+							{/if}
+						{/each}
+					</div>
+
+					<button
+						class="btn btn-icon bg-surface-400-600 h-6 w-8 self-center text-white"
+						onclick={() => (selectedColor = transparentColor)}
+						title="erase color"
+					>
+						{#if cellColors[selectedColor] === 'transparent'}
+							<EraserIcon size="sm" class="size-4 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]" />
+						{:else}
+							<EraserIcon
+								class="size-4 stroke-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]"
+								opacity={0.3}
+							/>
+						{/if}
+					</button>
+				</div>
+			</div>
 		</div>
 
-		<div class="mx-auto flex max-w-[350px] flex-col justify-center gap-2 px-8 py-3">
-			<div class="grid auto-rows-fr grid-cols-4 place-items-center gap-2">
-				{#each cellColors as cellColor, i}
-					{#if cellColor !== 'transparent'}
-						<button
-							class="btn btn-icon relative h-6 text-white drop-shadow-md"
-							style="background-color: {cellColor};"
-							onclick={() => (selectedColor = i)}
-							title="select color {cellColor}"
-						>
-							<PaintbrushIcon
-								class="size-5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]"
-								opacity={cellColors[selectedColor] === cellColor ? 1 : 0}
-							/>
-						</button>
-					{/if}
-				{/each}
+		<div class="max-w-[300px] self-stretch" style="height: {containerY}px;">
+			<div class="bg-surface-200-800 flex h-full flex-col rounded-md p-6">
+				<span class="prose">
+					<h2 class="h4">Pixel Board</h2>
+					<p>
+						You and other viewers can place pixels on the board. Boards are ocassionally saved and
+						reset. Inspired by <a href="https://rplace.live/">r/place</a>.
+					</p>
+				</span>
+				<div class="flex grow flex-col justify-center pb-6">
+					<p class="text-md w-full text-center text-2xl font-thin">
+						<span class="font-bold">{pixelBalance}</span> pixel{pixelBalance === 1 ? '' : 's'} left
+					</p>
+					<p class="text-md w-full text-center italic">
+						(refresh in
+						<span class="code text-lg">
+							{Math.floor(secondsUntilRefresh / 60)}:{('' + (secondsUntilRefresh % 60)).padStart(
+								2,
+								'0'
+							)}
+						</span> seconds)
+					</p>
+				</div>
 			</div>
-
-			<button
-				class="btn btn-icon bg-surface-400-600 h-6 w-8 self-center text-white"
-				onclick={() => (selectedColor = transparentColor)}
-				title="erase color"
-			>
-				{#if cellColors[selectedColor] === 'transparent'}
-					<EraserIcon size="sm" class="size-4 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]" />
-				{:else}
-					<EraserIcon
-						class="size-4 stroke-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]"
-						opacity={0.3}
-					/>
-				{/if}
-			</button>
 		</div>
 	</div>
 {/if}
