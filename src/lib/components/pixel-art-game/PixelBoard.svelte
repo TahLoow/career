@@ -2,52 +2,41 @@
 	import Spinner from '$lib/components/Spinner.svelte';
 	import ColorMarker from '$lib/icons/color-marker.svelte';
 	import { HourglassIcon } from '@lucide/svelte';
-	import { transparentColor, cellColors } from '../PixelArtGame.svelte';
+	import type { PixelBoardState } from './pixel-board-state.svelte';
+	import { PIXEL_COLORS, TRANSPARENT_COLOR } from './pixel-board-constants';
+	import type { PixelAllowance } from './pixel-allowance.svelte';
 
 	type Props = {
-		height: number;
-		width: number;
-		boardRows: number;
-		boardColumns: number;
-		pixelBalance: number;
-		boardPixels: number[];
-		handleCellClick: (cellIndex: number) => void;
+		pixelBoardState: PixelBoardState;
+		pixelAllowance: PixelAllowance;
 	};
 
-	const {
-		height,
-		width,
-		boardRows,
-		boardColumns,
-		pixelBalance,
-		boardPixels,
-		handleCellClick
-	}: Props = $props();
+	const { pixelBoardState, pixelAllowance }: Props = $props();
 </script>
 
 <div
 	class="bg-surface-300-700 flex shrink-0 flex-wrap overflow-clip rounded-md"
-	style="height: {height}px;"
+	style="height: {pixelBoardState.containerY}px;"
 >
-	{#each boardPixels as cellColorCode, cellIndex}
+	{#each pixelBoardState.boardPixels as cellColorCode, cellIndex}
 		<button
 			title="color cell {cellIndex} "
-			onclick={() => handleCellClick(cellIndex)}
-			class="css-pixel bg-surface-300-700 {cellColorCode === transparentColor
+			onclick={() => pixelBoardState.createPixel(cellIndex, pixelAllowance)}
+			class="css-pixel bg-surface-300-700 {cellColorCode === TRANSPARENT_COLOR
 				? ''
 				: 'border-b border-l'} transition-colors hover:brightness-90"
-			style="width: {width / boardRows}px; 
-					height: {height / boardColumns}px; 
-					background-color: {cellColors[cellColorCode]}; 
-					border-color: color-mix(in srgb, {cellColors[cellColorCode]} 95%, black);"
+			style="width: {pixelBoardState.containerX / pixelBoardState.boardRows}px; 
+					height: {pixelBoardState.containerY / pixelBoardState.boardColumns}px; 
+					background-color: {PIXEL_COLORS[cellColorCode]}; 
+					border-color: color-mix(in srgb, {PIXEL_COLORS[cellColorCode]} 95%, black);"
 		>
-			{#if createPixel.variables?.position === cellIndex && createPixel.isPending}
+			{#if pixelBoardState.createPixelMutation.variables?.position === cellIndex && pixelBoardState.createPixelMutation.isPending}
 				<!-- Render the loading spinner if a pixel is WIP -->
 				<Spinner class="text-surface-950-50 bg-surface-50-950/60 scale-75 rounded-[50%]" />
 			{:else}
 				<!-- Render the cursor crosshair -->
 				<div class="css-crosshair hidden">
-					{#if pixelBalance === 0}
+					{#if pixelAllowance.balance === 0}
 						<HourglassIcon class="bg-surface-50-950/60 m-auto h-4/5 w-4/5 rounded-sm p-1" />
 					{:else}
 						<ColorMarker class="h-full w-full" />

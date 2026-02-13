@@ -1,7 +1,7 @@
 import { env } from '$env/dynamic/public';
 import PartySocket from 'partysocket';
 
-interface SocketState {
+export interface SocketState {
 	error: Error | null;
 	isConnecting: boolean;
 	isConnected: boolean;
@@ -45,5 +45,5 @@ export function getPixelStreamQuery(onUpdate: (position: number, color: number) 
 		console.error(event.error);
 	};
 
-	return { socket, socketState };
+	return socketState;
 }
