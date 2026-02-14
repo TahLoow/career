@@ -18,7 +18,8 @@
 	</span>
 	<div class="flex grow flex-col justify-center pb-6">
 		<p class="text-md w-full text-center text-2xl font-thin">
-			<span class="font-bold">{pixelAllowance.balance}</span> pixel{pixelAllowance.balance === 1
+			<span class="font-bold">{pixelAllowance.balance.value}</span> pixel{pixelAllowance.balance
+				.value === 1
 				? ''
 				: 's'} left
 		</p>

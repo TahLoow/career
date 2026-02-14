@@ -1,8 +1,5 @@
-import type PartySocket from 'partysocket';
-import { createPixelQuery } from './queries/CreatePixelQuery';
-import { getBoardQuery } from './queries/GetBoardQuery';
-import { getPixelStreamQuery, type SocketState } from './queries/StreamPixelUpdates.svelte';
-import { onDestroy, onMount } from 'svelte';
+import { onDestroy } from 'svelte';
+import { LocalStore, localStore } from './local-storage-state.svelte';
 
 // User can place more pixels after this period
 const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes
@@ -11,13 +8,13 @@ const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes
 const PIXELS_PER_PERIOD = 3;
 
 export class PixelAllowance {
-	balance = $state(PIXELS_PER_PERIOD);
+	balance = localStore('balance', PIXELS_PER_PERIOD);
 
-	secondsPast = $state(0);
+	secondsPast = localStore('secondsPast', 0);
 
-	secondsUntilRefresh = $derived(PIXEL_BALANCE_REFRESH_PERIOD_SECONDS - this.secondsPast);
+	secondsUntilRefresh = $derived(PIXEL_BALANCE_REFRESH_PERIOD_SECONDS - this.secondsPast.value);
 
-	canPlace = $derived(this.balance > 0);
+	canPlace = $derived(this.balance.value > 0);
 
 	displayTime = $derived(
 		Math.floor(this.secondsUntilRefresh / 60) +
@@ -31,17 +28,18 @@ export class PixelAllowance {
 	constructor() {
 		onDestroy(() => {
 			clearInterval(this.reloadLoopId);
+			console.log('destroyed');
 		});
 	}
 
 	reloadBalanceLoop() {
-		if (this.secondsPast >= PIXEL_BALANCE_REFRESH_PERIOD_SECONDS) {
+		if (this.secondsPast.value >= PIXEL_BALANCE_REFRESH_PERIOD_SECONDS) {
 			// reload balance
-			this.balance = PIXELS_PER_PERIOD;
-			this.secondsPast = 0;
+			this.balance.value = PIXELS_PER_PERIOD;
+			this.secondsPast.value = 0;
 		}
 		// console.log(this.secondsPast);
-		this.secondsPast++;
+		this.secondsPast.value++;
 	}
 
 	beginAllowanceLoop() {
@@ -49,6 +47,6 @@ export class PixelAllowance {
 	}
 
 	deduct() {
-		this.balance = Math.max(0, this.balance - 1);
+		this.balance.value = Math.max(0, this.balance.value - 1);
 	}
 }

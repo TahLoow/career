@@ -7,51 +7,50 @@
 	import PixelBoard from './PixelBoard.svelte';
 	import Banner from './Banner.svelte';
 	import ColorPalette from './ColorPalette.svelte';
+	import { blockConcurrentTabs } from '$lib/utils/block-concurrent-tabs';
+	import { page } from '$app/state';
 
 	const pixelBoardState = new PixelBoardState();
 	const pixelAllowance = new PixelAllowance();
 
+	const concurrencyBlock = blockConcurrentTabs(page.route.id!, '/pixel-board/duplicate-tab-error');
+
 	onMount(() => {
-		console.log('mount');
 		pixelAllowance.beginAllowanceLoop();
 	});
 </script>
 
-{#if pixelBoardState.error}
-	<div class="mt-4 flex flex-col items-center gap-3">
-		<div class="h-8 w-8">
-			<TriangleAlertIcon />
-		</div>
-		<p class="text-surface-contrast-400-600">An error occured! Please check back later</p>
-	</div>
-{:else if pixelBoardState.loading}
+{#await concurrencyBlock}
 	<div class="mt-4 flex flex-col items-center gap-3">
 		<div class="h-8 w-8">
 			<Spinner />
 		</div>
-		<p class="text-surface-contrast-400-600">Loading Board and Websockets</p>
 	</div>
-{:else}
-	<div class="flex justify-center gap-4">
-		<div class="shrink-0" style="width: {pixelBoardState.containerX}px;">
-			<PixelBoard {pixelBoardState} {pixelAllowance} />
-			<ColorPalette {pixelBoardState} />
+{:then _}
+	{#if pixelBoardState.error}
+		<div class="mt-4 flex flex-col items-center gap-3">
+			<div class="h-8 w-8">
+				<TriangleAlertIcon />
+			</div>
+			<p class="text-surface-contrast-400-600">An error occured! Please check back later</p>
 		</div>
-
-		<div class="max-w-[300px] self-stretch" style="height: {pixelBoardState.containerY}px;">
-			<Banner {pixelAllowance} />
+	{:else if pixelBoardState.loading}
+		<div class="mt-4 flex flex-col items-center gap-3">
+			<div class="h-8 w-8">
+				<Spinner />
+			</div>
+			<p class="text-surface-contrast-400-600">Loading Board and Websockets</p>
 		</div>
-	</div>
-{/if}
+	{:else}
+		<div class="flex justify-center gap-4">
+			<div class="shrink-0" style="width: {pixelBoardState.containerX}px;">
+				<PixelBoard {pixelBoardState} {pixelAllowance} />
+				<ColorPalette {pixelBoardState} />
+			</div>
 
-<style>
-	.css-pixel:hover {
-		.css-crosshair {
-			display: block;
-		}
-
-		.css-shadow {
-			display: none;
-		}
-	}
-</style>
+			<div class="max-w-[300px] self-stretch" style="height: {pixelBoardState.containerY}px;">
+				<Banner {pixelAllowance} />
+			</div>
+		</div>
+	{/if}
+{/await}
