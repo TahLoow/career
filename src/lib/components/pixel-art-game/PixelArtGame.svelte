@@ -3,14 +3,14 @@
 	import Spinner from '../Spinner.svelte';
 	import { onMount } from 'svelte';
 	import { PixelBoardState } from './pixel-board-state.svelte';
-	import { PixelAllowance } from './pixel-allowance.svelte';
+	import { PixelAllowance } from './pixel-allowance-state.svelte';
 	import PixelBoard from './PixelBoard.svelte';
 	import Banner from './Banner.svelte';
 	import ColorPalette from './ColorPalette.svelte';
 	import { blockConcurrentTabs } from '$lib/utils/block-concurrent-tabs';
 	import { page } from '$app/state';
 
-	const pixelBoardState = new PixelBoardState();
+	const pixelBoard = new PixelBoardState();
 	const pixelAllowance = new PixelAllowance();
 
 	const concurrencyBlock = blockConcurrentTabs(page.route.id!, '/pixel-board/duplicate-tab-error');
@@ -27,14 +27,14 @@
 		</div>
 	</div>
 {:then _}
-	{#if pixelBoardState.error}
+	{#if pixelBoard.error}
 		<div class="mt-4 flex flex-col items-center gap-3">
 			<div class="h-8 w-8">
 				<TriangleAlertIcon />
 			</div>
 			<p class="text-surface-contrast-400-600">An error occured! Please check back later</p>
 		</div>
-	{:else if pixelBoardState.loading}
+	{:else if pixelBoard.loading}
 		<div class="mt-4 flex flex-col items-center gap-3">
 			<div class="h-8 w-8">
 				<Spinner />
@@ -43,12 +43,12 @@
 		</div>
 	{:else}
 		<div class="flex justify-center gap-4">
-			<div class="shrink-0" style="width: {pixelBoardState.containerX}px;">
-				<PixelBoard {pixelBoardState} {pixelAllowance} />
-				<ColorPalette {pixelBoardState} />
+			<div class="shrink-0" style="width: {pixelBoard.containerX}px;">
+				<PixelBoard {pixelBoard} {pixelAllowance} />
+				<ColorPalette {pixelBoard} />
 			</div>
 
-			<div class="max-w-[300px] self-stretch" style="height: {pixelBoardState.containerY}px;">
+			<div class="max-w-[300px] self-stretch" style="height: {pixelBoard.containerY}px;">
 				<Banner {pixelAllowance} />
 			</div>
 		</div>

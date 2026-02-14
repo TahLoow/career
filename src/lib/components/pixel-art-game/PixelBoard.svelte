@@ -2,35 +2,35 @@
 	import Spinner from '$lib/components/Spinner.svelte';
 	import type { PixelBoardState } from './pixel-board-state.svelte';
 	import { PIXEL_COLORS, TRANSPARENT_COLOR } from './pixel-board-constants';
-	import type { PixelAllowance } from './pixel-allowance.svelte';
+	import type { PixelAllowance } from './pixel-allowance-state.svelte';
 	import { HourglassIcon } from '@lucide/svelte';
 	import ColorMarker from '$lib/icons/color-marker.svelte';
 
 	type Props = {
-		pixelBoardState: PixelBoardState;
+		pixelBoard: PixelBoardState;
 		pixelAllowance: PixelAllowance;
 	};
 
-	const { pixelBoardState, pixelAllowance }: Props = $props();
+	const { pixelBoard, pixelAllowance }: Props = $props();
 </script>
 
 <div
 	class="bg-surface-300-700 flex shrink-0 flex-wrap overflow-clip rounded-md"
-	style="height: {pixelBoardState.containerY}px;"
+	style="height: {pixelBoard.containerY}px;"
 >
-	{#each pixelBoardState.boardPixels as cellColorCode, cellIndex (cellIndex)}
+	{#each pixelBoard.boardPixels as cellColorCode, cellIndex (cellIndex)}
 		<button
 			title="color cell {cellIndex} "
-			onclick={() => pixelBoardState.createPixel(cellIndex, pixelAllowance)}
+			onclick={() => pixelBoard.createPixel(cellIndex, pixelAllowance)}
 			class="css-pixel bg-surface-300-700 {cellColorCode === TRANSPARENT_COLOR
 				? ''
 				: 'border-b border-l'} transition-colors hover:brightness-90"
-			style="width: {pixelBoardState.containerX / pixelBoardState.boardRows}px; 
-					height: {pixelBoardState.containerY / pixelBoardState.boardColumns}px; 
+			style="width: {pixelBoard.containerX / pixelBoard.boardRows}px; 
+					height: {pixelBoard.containerY / pixelBoard.boardColumns}px; 
 					background-color: {PIXEL_COLORS[cellColorCode]}; 
 					border-color: color-mix(in srgb, {PIXEL_COLORS[cellColorCode]} 95%, black);"
 		>
-			{#if pixelBoardState.createPixelMutation.variables?.position === cellIndex && pixelBoardState.createPixelMutation.isPending}
+			{#if pixelBoard.createPixelMutation.variables?.position === cellIndex && pixelBoard.createPixelMutation.isPending}
 				<!-- Render the loading spinner if a pixel is WIP -->
 				<Spinner class="text-surface-950-50 bg-surface-50-950/60 scale-75 rounded-[50%]" />
 			{:else}

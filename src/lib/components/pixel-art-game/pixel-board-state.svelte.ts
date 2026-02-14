@@ -2,7 +2,7 @@ import type PartySocket from 'partysocket';
 import { createPixelQuery } from './queries/CreatePixelQuery';
 import { getBoardQuery } from './queries/GetBoardQuery';
 import { getPixelStreamQuery, type SocketState } from './queries/StreamPixelUpdates.svelte';
-import type { PixelAllowance } from './pixel-allowance.svelte';
+import type { PixelAllowance } from './pixel-allowance-state.svelte';
 
 // User can place more pixels after this period
 const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes

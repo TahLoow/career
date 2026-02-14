@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PixelAllowance } from './pixel-allowance.svelte';
+	import type { PixelAllowance } from './pixel-allowance-state.svelte';
 
 	type Props = {
 		pixelAllowance: PixelAllowance;
