@@ -12,11 +12,14 @@
 	};
 
 	const { pixelBoard, pixelAllowance }: Props = $props();
+
+	const pixelHeightPct = $derived((1 / pixelBoard.boardRows) * 100);
+	const pixelWidthPct = $derived((1 / pixelBoard.boardColumns) * 100);
 </script>
 
 <div
 	class="bg-surface-300-700 flex shrink-0 flex-wrap overflow-clip rounded-md"
-	style="height: {pixelBoard.containerY}px;"
+	style="aspect-ratio: {pixelBoard.boardRows / pixelBoard.boardColumns};"
 >
 	{#each pixelBoard.boardPixels as cellColorCode, cellIndex (cellIndex)}
 		<button
@@ -25,8 +28,8 @@
 			class="css-pixel bg-surface-300-700 {cellColorCode === TRANSPARENT_COLOR
 				? ''
 				: 'border-b border-l'} transition-colors hover:brightness-90"
-			style="width: {pixelBoard.containerX / pixelBoard.boardRows}px; 
-					height: {pixelBoard.containerY / pixelBoard.boardColumns}px; 
+			style="width: {pixelHeightPct}%; 
+					height: {pixelWidthPct}%; 
 					background-color: {PIXEL_COLORS[cellColorCode]}; 
 					border-color: color-mix(in srgb, {PIXEL_COLORS[cellColorCode]} 95%, black);"
 		>

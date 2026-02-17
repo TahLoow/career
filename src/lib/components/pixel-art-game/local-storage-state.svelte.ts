@@ -18,10 +18,8 @@ export class LocalStore<T> {
 		});
 
 		window.addEventListener('storage', (event) => {
-			console.log('storge');
 			// You can perform actions based on the specific key that changed
 			if (event.key === key && event.newValue !== event.oldValue) {
-				console.log('hmmm');
 				// Update UI or state in this window
 				this.value = this.deserialize(event.newValue as string);
 			}

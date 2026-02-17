@@ -1,11 +1,6 @@
 import { onDestroy } from 'svelte';
-import { LocalStore, localStore } from './local-storage-state.svelte';
-
-// User can place more pixels after this period
-const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes
-
-// User can place this many pixels per period
-const PIXELS_PER_PERIOD = 3;
+import { localStore } from './local-storage-state.svelte';
+import { PIXEL_BALANCE_REFRESH_PERIOD_SECONDS, PIXELS_PER_PERIOD } from './pixel-board-constants';
 
 export class PixelAllowance {
 	balance = localStore('balance', PIXELS_PER_PERIOD);
@@ -28,7 +23,6 @@ export class PixelAllowance {
 	constructor() {
 		onDestroy(() => {
 			clearInterval(this.reloadLoopId);
-			console.log('destroyed');
 		});
 	}
 
@@ -38,7 +32,6 @@ export class PixelAllowance {
 			this.balance.value = PIXELS_PER_PERIOD;
 			this.secondsPast.value = 0;
 		}
-		// console.log(this.secondsPast);
 		this.secondsPast.value++;
 	}
 

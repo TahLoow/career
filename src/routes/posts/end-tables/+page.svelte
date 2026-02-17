@@ -145,7 +145,7 @@
 	<div class="captioned-image">
 		<ImageUnderlay
 			src={panelGrooves}
-			alt="Image of a typical mortise and tenon"
+			alt="Image of a the grooves that hold the panel"
 			class="h-[280px]"
 		/>
 		<p>The panel is pressed outwards, into the grooves</p>

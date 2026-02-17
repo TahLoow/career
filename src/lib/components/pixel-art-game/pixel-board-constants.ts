@@ -12,3 +12,9 @@ export const PIXEL_COLORS: string[] = [
 
 // Color code for transparent cells
 export const TRANSPARENT_COLOR = PIXEL_COLORS.findIndex((i) => i === 'transparent');
+
+// User can place more pixels after this period
+export const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes
+
+// User can place this many pixels per period
+export const PIXELS_PER_PERIOD = 3;

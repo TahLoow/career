@@ -6,12 +6,13 @@
 		src: string;
 		alt: string;
 		class?: string;
+		blur?: boolean;
 	};
 
 	const animation =
 		'transition transition-discrete opacity-0 translate-y-[100px] starting:data-[state=open]:opacity-0 starting:data-[state=open]:translate-y-[100px] data-[state=open]:opacity-100 data-[state=open]:translate-y-0';
 
-	const { src, alt, class: _class = '' }: Props = $props();
+	const { src, alt, class: _class = '', blur = true }: Props = $props();
 </script>
 
 <div class="relative flex w-full items-center justify-center overflow-hidden rounded-lg {_class}">
@@ -20,6 +21,7 @@
 		{alt}
 		class="absolute inset-0 h-full w-full scale-110 object-cover blur-xl brightness-80 select-none"
 		aria-hidden="true"
+		class:hidden={!blur}
 	/>
 	<img {src} {alt} class="relative max-h-full max-w-full object-contain" />
 	<Dialog>

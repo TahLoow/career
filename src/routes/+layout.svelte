@@ -2,23 +2,29 @@
 	import Header from './Header.svelte';
 	import Footer from '../lib/components/footer/Footer.svelte';
 	import '../app.css';
-	import { createToaster, Toast } from '@skeletonlabs/skeleton-svelte';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 	let { children } = $props();
 
 	import { onMount } from 'svelte';
-	import { ConstructionIcon } from '@lucide/svelte';
-
-	const toaster = createToaster({
-		placement: 'top'
-	});
+	import NotificationContainer from '$lib/features/notification/notificationContainer.svelte';
+	import { notificationService } from '$lib/features/notification/notification.service.svelte';
+	import { HandMetal } from '@lucide/svelte';
 
 	onMount(() => {
-		toaster.info({});
+		notificationService.info({
+			title: 'Welcome!',
+			description:
+				'Please explore, and thank you for visiting! Some features are still under development.',
+			meta: { icon }
+		});
 	});
 
 	const queryClient = new QueryClient();
 </script>
+
+{#snippet icon()}
+	<HandMetal />
+{/snippet}
 
 <QueryClientProvider client={queryClient}>
 	<div class="bg-surface-50 dark:bg-surface-950 relative flex flex-col">
@@ -36,18 +42,6 @@
 		</div>
 		<Footer></Footer>
 	</div>
-
-	<Toast.Group {toaster}>
-		{#snippet children(toast)}
-			<Toast {toast}>
-				<Toast.Message>
-					<Toast.Title class="inline-flex items-center gap-2 text-xl"
-						><ConstructionIcon />Under Construction<ConstructionIcon /></Toast.Title
-					>
-					<Toast.Description>Please explore, and thank you for visiting!</Toast.Description>
-				</Toast.Message>
-				<Toast.CloseTrigger />
-			</Toast>
-		{/snippet}
-	</Toast.Group>
 </QueryClientProvider>
+
+<NotificationContainer />

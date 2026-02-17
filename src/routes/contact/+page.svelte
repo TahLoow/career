@@ -1,30 +1,32 @@
 <script lang="ts">
+	import { notificationService } from '$lib/features/notification/notification.service.svelte';
 	import {
 		ArrowDownIcon,
 		ArrowLeftIcon,
 		ArrowRightIcon,
-		ExternalLink,
 		ExternalLinkIcon,
-		GithubIcon,
-		Link2Icon,
-		LinkedinIcon,
-		LinkIcon,
 		MailIcon,
-		PhoneIcon,
-		SmileIcon,
 		StickerIcon
 	} from '@lucide/svelte';
-	import { createToaster, Toast } from '@skeletonlabs/skeleton-svelte';
+	import { createToaster } from '@skeletonlabs/skeleton-svelte';
 
 	async function handleCopy() {
 		await navigator.clipboard.writeText('macleanp98@gmail.com');
-		toaster.info({ description: 'Copied to clipboard!' });
+		notificationService.info({
+			title: 'Copied to clipboard!',
+			description: 'Hear from you soon!',
+			meta: { icon }
+		});
 	}
 
 	const toaster = createToaster({
 		placement: 'top'
 	});
 </script>
+
+{#snippet icon()}
+	<StickerIcon />
+{/snippet}
 
 <svelte:head>
 	<title>Paul - Contact</title>
@@ -95,17 +97,3 @@
 		</ul>
 	</div>
 </div>
-
-<Toast.Group {toaster}>
-	{#snippet children(toast)}
-		<Toast {toast}>
-			<Toast.Message>
-				<Toast.Title class="inline-flex items-center gap-2 text-xl"
-					>Copied to clipboard <StickerIcon /></Toast.Title
-				>
-				<Toast.Description>Hear from you soon!</Toast.Description>
-			</Toast.Message>
-			<Toast.CloseTrigger />
-		</Toast>
-	{/snippet}
-</Toast.Group>

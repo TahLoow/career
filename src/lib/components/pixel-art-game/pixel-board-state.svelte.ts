@@ -1,14 +1,9 @@
-import type PartySocket from 'partysocket';
 import { createPixelQuery } from './queries/CreatePixelQuery';
 import { getBoardQuery } from './queries/GetBoardQuery';
 import { getPixelStreamQuery, type SocketState } from './queries/StreamPixelUpdates.svelte';
 import type { PixelAllowance } from './pixel-allowance-state.svelte';
-
-// User can place more pixels after this period
-const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes
-
-// User can place this many pixels per period
-const PIXELS_PER_PERIOD = 3;
+import { getTurnstileState } from '../turnstile/turnstile-state.svelte';
+import { notificationService } from '$lib/features/notification/notification.service.svelte';
 
 export class PixelBoardState {
 	// Retrieve data for rendering the current board
@@ -26,15 +21,13 @@ export class PixelBoardState {
 	boardRows = $derived(this.boardQuery.data?.width ?? 0);
 	boardColumns = $derived(this.boardQuery.data?.height ?? 0);
 
-	// Dimensions of the user-displayed board container. Keep aspect ratio of board
-	containerX = 700;
-	containerY = $derived((this.boardColumns / this.boardRows) * this.containerX);
-
 	// Whether to render the board. Must be ready for live updates
 	loading = $derived(this.socketState.isConnecting || this.boardQuery.isLoading);
 
 	// Whether an error exists in the presentational state
 	error = $derived(this.boardQuery.error || this.socketState.error);
+
+	ready = $derived(this.socketState.isConnected && !this.boardQuery.isLoading);
 
 	// The board's pixels to render
 	boardPixels: number[] = $state([]);
@@ -43,6 +36,11 @@ export class PixelBoardState {
 	selectedColor: number = $state(1);
 
 	constructor() {
+		const turnstileState = getTurnstileState();
+		turnstileState.handlers.onSuccessCallback = () => {
+			this.boardQuery.refetch();
+		};
+
 		// Build the boardPixels array whenever the boardQuery reruns. Typically only uses first run
 		$effect(() => {
 			if (this.boardQuery.isSuccess && this.boardQuery.data) {
@@ -56,19 +54,35 @@ export class PixelBoardState {
 	}
 
 	async createPixel(position: number, pixelAllowance: PixelAllowance) {
+		// prevent multiple parallel pixel placements
 		if (this.createPixelMutation.isPending) {
 			return;
 		}
 
-		if (pixelAllowance.canPlace && this.boardPixels[position] !== this.selectedColor) {
-			try {
-				// Tell server to create the pixel
-				await this.createPixelMutation.mutateAsync({ position, color: this.selectedColor });
-				// Deduct 1 pixel
-				pixelAllowance.deduct();
-			} catch (error) {
-				console.error(error);
-			}
+		if (!pixelAllowance.canPlace) {
+			return;
 		}
+
+		// don't place pixels that are already that color
+		if (this.boardPixels[position] === this.selectedColor) {
+			return;
+		}
+
+		// Tell server to create the pixel
+		const response = await this.createPixelMutation.mutateAsync({
+			position,
+			color: this.selectedColor
+		});
+
+		if (!response.success) {
+			notificationService.error({
+				title: 'An error occurred',
+				description: 'Please try again or reload this page.'
+			});
+			return;
+		}
+
+		// Deduct 1 pixel
+		pixelAllowance.deduct();
 	}
 }

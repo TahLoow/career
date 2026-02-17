@@ -11,7 +11,7 @@
 </script>
 
 <div class="flex justify-center pt-4">
-	<div class="flex w-[350px] flex-col gap-2">
+	<div class="flex flex-col gap-2">
 		<div class="grid auto-rows-fr grid-cols-4 place-items-center gap-2">
 			{#each PIXEL_COLORS as cellColor, i}
 				{#if cellColor !== 'transparent'}

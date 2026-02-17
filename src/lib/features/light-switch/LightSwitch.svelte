@@ -2,15 +2,9 @@
 	import { SegmentedControl } from '@skeletonlabs/skeleton-svelte';
 	import { ComputerIcon, MoonIcon, SunIcon } from '@lucide/svelte';
 	import { onMount } from 'svelte';
+	import { getModeState, modes, type Mode } from './mode-state.svelte';
 
-	export const modes = {
-		system: 'system',
-		light: 'light',
-		dark: 'dark'
-	} as const;
-	type Mode = keyof typeof modes;
-
-	let mode: Mode = $state(modes.system);
+	let mode = getModeState();
 
 	onMount(() => {
 		// Get mode from localstorage
