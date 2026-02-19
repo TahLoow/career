@@ -17,4 +17,4 @@ export const TRANSPARENT_COLOR = PIXEL_COLORS.findIndex((i) => i === 'transparen
 export const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = 60 * 2 * 0.1; // 2 minutes
 
 // User can place this many pixels per period
-export const PIXELS_PER_PERIOD = 3;
+export const PIXELS_PER_PERIOD = 180;
