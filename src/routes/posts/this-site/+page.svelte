@@ -86,6 +86,6 @@
 			The dark mode selector, with <code>system</code>/<code>light</code>/<code>dark</code> modes
 		</li>
 		<li>The expandable image previewer</li>
-		<li>The scrolling frame in the "<a href="/background">background</a>" section</li>
+		<li>The scrolling frame in the "<a href="/about">About</a>" section</li>
 	</ul>
 </div>

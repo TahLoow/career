@@ -1,5 +1,7 @@
 import { createTreeViewCollection } from '@skeletonlabs/skeleton-svelte';
 import endTablesBannerImage from './end-tables/images/banner.png';
+import pixelBoardBannerImage from './pixel-board/images/banner.png';
+import thisSiteBannerImage from './this-site/images/banner.png';
 
 export interface PostNode {
 	id: string;
@@ -25,7 +27,16 @@ export const allPosts = createTreeViewCollection<PostNode>({
 						id: 'software-projects/this-site',
 						route: '/posts/this-site',
 						name: 'This Site!',
-						description: 'Read more about how I made this site!'
+						bannerImage: thisSiteBannerImage,
+						description: 'A walk-through of how I made this site: tools, platforms, and sundries'
+					},
+					{
+						id: 'software-projects/pixel-board',
+						route: '/posts/pixel-board',
+						name: 'Pixel Board',
+						bannerImage: pixelBoardBannerImage,
+						description:
+							'A realtime, collaborative, authenticated minigame. Contribute one pixel at a time'
 					}
 				]
 			},
