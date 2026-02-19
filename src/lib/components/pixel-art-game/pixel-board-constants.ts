@@ -16,7 +16,9 @@ export const PIXEL_COLORS: string[] = [
 export const TRANSPARENT_COLOR = PIXEL_COLORS.findIndex((i) => i === 'transparent');
 
 // User can place more pixels after this period
-export const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = env.PUBLIC_PIXEL_BALANCE_REFRESH_PERIOD_SECONDS; // 2 minutes
+export const PIXEL_BALANCE_REFRESH_PERIOD_SECONDS = Number(
+	env.PUBLIC_PIXEL_BALANCE_REFRESH_PERIOD_SECONDS
+);
 
 // User can place this many pixels per period
-export const PIXELS_PER_PERIOD = env.PUBLIC_PIXELS_PER_PERIOD;
+export const PIXELS_PER_PERIOD = Number(env.PUBLIC_PIXELS_PER_PERIOD);

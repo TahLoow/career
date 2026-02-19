@@ -17,8 +17,8 @@
 	<p>
 		The "pixel board" is an anonymous, collaborative, realtime drawing experiment. Visitors can
 		place a couple pixels to alter the design of the board. My sister suggested this to me and I
-		took some inspiration from the r/place subreddit. I had fun implementing this in a new
-		cloudflare. This post goes over the origin, architecture, and complications with this fun
+		took some inspiration from the r/place subreddit. I had fun implementing this serverless in
+		Cloudflare. This post goes over the origin, architecture, and complications with this fun
 		project. Read more and learn how to cheat it (a little)! Unfortunately I can't devote my life to
 		securing a pixel app, so please be kind.
 	</p>
@@ -105,8 +105,7 @@
 	<ol>
 		<li>Cloudflare's Ephemeral IDs. Enterprise-only</li>
 		<li>
-			FingerprintJS. Per GitHub: "vulnerable to spoofing". Lots of rolling my own auth, which I'd
-			rather avoid
+			FingerprintJS. Per GitHub: "vulnerable to spoofing", and perhaps too much work to implement
 		</li>
 		<li>Fingerprint Identification. Premium version of FingerprintJS</li>
 		<li>Stych device fingerprinting. Not permitted for personal projects</li>
