@@ -32,7 +32,7 @@
 					<DownloadIcon class="size-4" />
 					Download
 				</a>
-				<span class="ml-4 italic">Updated 2/19/2026</span>
+				<span class="ml-4 italic">Updated 1/29/2026</span>
 				<h3>Education</h3>
 				<ul>
 					<li class="list-none">M.S. Computer Science, West Virginia University</li>

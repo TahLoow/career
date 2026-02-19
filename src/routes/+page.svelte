@@ -46,9 +46,9 @@
 
 <hr class="hr border-surface-400 mt-3 border-t-6" />
 
-<!-- <div class="py-8">
+<div class="py-8">
 	<PixelArtGame />
-</div> -->
+</div>
 
 <div class="pt-10 pb-4 lg:px-[10%]">
 	<section class="mb-4">
