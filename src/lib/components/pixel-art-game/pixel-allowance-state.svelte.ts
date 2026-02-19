@@ -1,6 +1,17 @@
-import { onDestroy } from 'svelte';
+import { getContext, onDestroy, setContext } from 'svelte';
 import { localStore } from './local-storage-state.svelte';
 import { PIXEL_BALANCE_REFRESH_PERIOD_SECONDS, PIXELS_PER_PERIOD } from './pixel-board-constants';
+
+export function getPixelAllowanceState() {
+	let pixelAllowanceState: PixelAllowance = getContext('pixel-allowance');
+
+	if (!pixelAllowanceState) {
+		pixelAllowanceState = new PixelAllowance();
+		setContext('pixel-allowance', pixelAllowanceState);
+	}
+
+	return pixelAllowanceState;
+}
 
 export class PixelAllowance {
 	balance = localStore('balance', PIXELS_PER_PERIOD);

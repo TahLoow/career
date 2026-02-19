@@ -1,0 +1,129 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram name="Page-1" id="OuLPPI2pNjiMp1Bb3wYW">
+    <mxGraphModel dx="1828" dy="1075" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ncexmd-lttcDF8fUJyJz-49" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="750" width="470" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-64" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#376387;" vertex="1" parent="1">
+          <mxGeometry x="380" y="800" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-65" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7B2741;" vertex="1" parent="1">
+          <mxGeometry x="180" y="800" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-51" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="90" width="670" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-57" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9A7626;" vertex="1" parent="1">
+          <mxGeometry x="580" y="140" width="160" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-56" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7B2741;" vertex="1" parent="1">
+          <mxGeometry x="180" y="140" width="160" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-55" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#376387;" vertex="1" parent="1">
+          <mxGeometry x="380" y="140" width="160" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-3" target="ncexmd-lttcDF8fUJyJz-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-3" value="Client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="200" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-4" value="Hono Server" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="400" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-5" value="Cloudflare siteverify API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="600" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-9" target="ncexmd-lttcDF8fUJyJz-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-9" target="ncexmd-lttcDF8fUJyJz-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-9" value="Sign turnstile token as a JWT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="400" y="420" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-10" target="ncexmd-lttcDF8fUJyJz-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-10" value="Request auth JWT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="200" y="420" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-11" value="Render turnstile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="200" y="300" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-13" target="ncexmd-lttcDF8fUJyJz-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-13" value="Set-Cookie the JWT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="400" y="480" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-14" value="Browser caches httpOnly JWT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="200" y="480" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-15" target="ncexmd-lttcDF8fUJyJz-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-15" value="User A&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ction&lt;/span&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="20" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-16" target="ncexmd-lttcDF8fUJyJz-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-16" value="User accesses pixel board" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="200" y="240" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-22" target="ncexmd-lttcDF8fUJyJz-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-22" value="User generates challenge token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="200" y="360" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-23" target="ncexmd-lttcDF8fUJyJz-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-23" value="User A&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ction&lt;/span&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="20" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-27" value="Verify challenge token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#121212,#121212);" vertex="1" parent="1">
+          <mxGeometry x="600" y="420" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-40" value="User places a pixel" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="810" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-42" target="ncexmd-lttcDF8fUJyJz-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-42" value="User A&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ction&lt;/span&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="810" width="20" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-43" value="Verify JWT cookie" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="810" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="ncexmd-lttcDF8fUJyJz-43">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="830" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ncexmd-lttcDF8fUJyJz-46" target="ncexmd-lttcDF8fUJyJz-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-46" value="Unverified (timeout); reject request" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="870" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-47" value="Request new challenge" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="870" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-66" value="Session Authentication" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=21;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="330" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ncexmd-lttcDF8fUJyJz-68" value="Session Re-Authentication" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=21;" vertex="1" parent="1">
+          <mxGeometry x="100" y="760" width="460" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

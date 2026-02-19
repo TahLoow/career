@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CalendarIcon, CircleUserIcon, MenuIcon, SearchIcon } from '@lucide/svelte';
+	import { MenuIcon } from '@lucide/svelte';
 
 	import { page } from '$app/state';
 	import Lightswitch from '$lib/features/light-switch/LightSwitch.svelte';

@@ -1,17 +1,13 @@
 <script lang="ts">
 	import Spinner from '$lib/components/Spinner.svelte';
-	import type { PixelBoardState } from './pixel-board-state.svelte';
 	import { PIXEL_COLORS, TRANSPARENT_COLOR } from './pixel-board-constants';
-	import type { PixelAllowance } from './pixel-allowance-state.svelte';
 	import { HourglassIcon } from '@lucide/svelte';
 	import ColorMarker from '$lib/icons/color-marker.svelte';
+	import { getPixelBoardState } from './pixel-board-state.svelte';
+	import { getPixelAllowanceState } from './pixel-allowance-state.svelte';
 
-	type Props = {
-		pixelBoard: PixelBoardState;
-		pixelAllowance: PixelAllowance;
-	};
-
-	const { pixelBoard, pixelAllowance }: Props = $props();
+	const pixelBoard = getPixelBoardState();
+	const pixelAllowance = getPixelAllowanceState();
 
 	const pixelHeightPct = $derived((1 / pixelBoard.boardRows) * 100);
 	const pixelWidthPct = $derived((1 / pixelBoard.boardColumns) * 100);

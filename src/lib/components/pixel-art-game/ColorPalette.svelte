@@ -1,13 +1,9 @@
 <script lang="ts">
 	import { EraserIcon, PaintbrushIcon } from '@lucide/svelte';
 	import { PIXEL_COLORS, TRANSPARENT_COLOR } from './pixel-board-constants';
-	import type { PixelBoardState } from './pixel-board-state.svelte';
+	import { getPixelBoardState } from './pixel-board-state.svelte';
 
-	type Props = {
-		pixelBoard: PixelBoardState;
-	};
-
-	const { pixelBoard }: Props = $props();
+	const pixelBoard = getPixelBoardState();
 </script>
 
 <div class="flex justify-center pt-4">

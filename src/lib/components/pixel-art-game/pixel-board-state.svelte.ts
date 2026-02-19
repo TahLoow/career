@@ -2,8 +2,19 @@ import { createPixelQuery } from './queries/CreatePixelQuery';
 import { getBoardQuery } from './queries/GetBoardQuery';
 import { getPixelStreamQuery, type SocketState } from './queries/StreamPixelUpdates.svelte';
 import type { PixelAllowance } from './pixel-allowance-state.svelte';
-import { getTurnstileState } from '../turnstile/turnstile-state.svelte';
-import { notificationService } from '$lib/features/notification/notification.service.svelte';
+import { getTurnstileState } from '$lib/features/turnstile/turnstile-state.svelte';
+import { getContext, setContext } from 'svelte';
+
+export function getPixelBoardState() {
+	let pixelBoardState: PixelBoardState = getContext('pixel-board');
+
+	if (!pixelBoardState) {
+		pixelBoardState = new PixelBoardState();
+		setContext('pixel-board', pixelBoardState);
+	}
+
+	return pixelBoardState;
+}
 
 export class PixelBoardState {
 	// Retrieve data for rendering the current board
@@ -37,9 +48,11 @@ export class PixelBoardState {
 
 	constructor() {
 		const turnstileState = getTurnstileState();
-		turnstileState.handlers.onSuccessCallback = () => {
+
+		turnstileState.sessionEvent.addEventListener('success', () => {
+			this.socketState.socket.reconnect();
 			this.boardQuery.refetch();
-		};
+		});
 
 		// Build the boardPixels array whenever the boardQuery reruns. Typically only uses first run
 		$effect(() => {
@@ -74,15 +87,9 @@ export class PixelBoardState {
 			color: this.selectedColor
 		});
 
-		if (!response.success) {
-			notificationService.error({
-				title: 'An error occurred',
-				description: 'Please try again or reload this page.'
-			});
-			return;
+		if (response.success) {
+			// Deduct 1 pixel
+			pixelAllowance.deduct();
 		}
-
-		// Deduct 1 pixel
-		pixelAllowance.deduct();
 	}
 }

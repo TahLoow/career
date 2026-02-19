@@ -1,6 +1,6 @@
 <script>
 	import Header from './Header.svelte';
-	import Footer from '../lib/components/footer/Footer.svelte';
+	import Footer from '$lib/components/footer/Footer.svelte';
 	import '../app.css';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 	let { children } = $props();
