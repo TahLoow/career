@@ -11,7 +11,7 @@
 
 {#snippet postCard(title: string, description?: string, bannerImage?: string, route?: string)}
 	<li class="w-full lg:w-[30%]">
-		<a href={route} class="card card-hover bg-surface-300 dark:bg-surface-800 block h-full p-4">
+		<a href={route} class="card card-hover bg-surface-300 dark:bg-surface-800 block p-4">
 			<article>
 				<h4 class="h4 mb-2">{title}</h4>
 				{#if bannerImage}
@@ -19,7 +19,7 @@
 						src={bannerImage}
 						alt="Full image of {title}"
 						expand={false}
-						class="mb-6 h-[170px]"
+						class="mb-6 max-h-[200px]"
 					/>
 				{/if}
 				{#if description}
