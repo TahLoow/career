@@ -38,7 +38,7 @@ export class PixelBoardState {
 	// Whether an error exists in the presentational state
 	error = $derived(this.boardQuery.error || this.socketState.error);
 
-	ready = $derived(this.socketState.isConnected && !this.boardQuery.isLoading);
+	ready = $derived(this.boardQuery.isSuccess && this.socketState.isConnected);
 
 	// The board's pixels to render
 	boardPixels: number[] = $state([]);
@@ -49,7 +49,7 @@ export class PixelBoardState {
 	constructor() {
 		const turnstileState = getTurnstileState();
 
-		turnstileState.sessionEvent.addEventListener('success', () => {
+		turnstileState.sessionEvent.addEventListener('sessionSuccess', () => {
 			this.socketState.socket.reconnect();
 			this.boardQuery.refetch();
 		});

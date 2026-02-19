@@ -115,9 +115,9 @@ export class TurnstileState {
 
 		this.sessionSuccess = data.message === 'Session established';
 		if (this.sessionSuccess) {
-			this.sessionEvent.dispatchEvent(new CustomEvent('success'));
+			this.sessionEvent.dispatchEvent(new CustomEvent('sessionSuccess'));
 		} else {
-			this.sessionEvent.dispatchEvent(new CustomEvent('error'));
+			this.sessionEvent.dispatchEvent(new CustomEvent('sessionError'));
 		}
 	}
 
