@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Spinner from '$lib/components/Spinner.svelte';
 	import { PIXEL_COLORS, TRANSPARENT_COLOR } from './pixel-board-constants';
 	import { HourglassIcon } from '@lucide/svelte';
-	import ColorMarker from '$lib/icons/color-marker.svelte';
 	import { getPixelBoardState } from './pixel-board-state.svelte';
 	import { getPixelAllowanceState } from './pixel-allowance-state.svelte';
+	import Spinner from '../Spinner.svelte';
+	import ColorMarker from '$lib/icons/color-marker.svelte';
 
 	const pixelBoard = getPixelBoardState();
 	const pixelAllowance = getPixelAllowanceState();
