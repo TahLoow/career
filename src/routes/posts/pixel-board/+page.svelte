@@ -4,6 +4,7 @@
 	import banner from './images/banner.png';
 	import highLevelDiagram from './images/high-level-diagram.png';
 	import erd from './images/erd.png';
+	import sessionAuth from './images/session-auth.png';
 </script>
 
 <BannerImage src={banner} alt="" />
@@ -87,7 +88,7 @@
 		project challenging from a security perspective:
 	</p>
 	<ol>
-		<li>Participation is frictionless, e.g. no logins. Result: anonymous users</li>
+		<li>Participation is low-friction, e.g. no logins. Result: anonymous users</li>
 		<li>The app has some measure of antiexploit</li>
 	</ol>
 	<p>
@@ -110,24 +111,37 @@
 		<li>Fingerprint Identification. Premium version of FingerprintJS</li>
 		<li>Stych device fingerprinting. Not permitted for personal projects</li>
 	</ol>
-	<h3>Rate Limiting</h3>
-	<p>
-		I needed something (anything) to prevent brute-force exploits. I went with the most accessible
-		solution: IP rate limiting. This has the downside of blocking devices sharing the same network.
-	</p>
 	<h3>Anti-botting (Turnstile)</h3>
 	<p>
-		I also enabled Turnstile to do human verification. Requests to the board APIs require turnstile
-		tokens, so that bots are prevented.
+		I also rely on Turnstile as a form of authentication, to ensure humans are in the loop. Each
+		Turnstile token can only be verified once, so I decided to convert a user's first token into a
+		JWT cookie. The JWT is then used as a "badge" of authentication, at least until it expires.
 	</p>
-	<h3>Multi-Tab Exploir</h3>
+	<div class="captioned-image">
+		<ImageUnderlay
+			src={sessionAuth}
+			alt="Diagram of how users get a JWT"
+			blur={false}
+			class="rounded-none"
+		/>
+		<p>How users get a JWT</p>
+	</div>
+	When a user's token expires, the server responds with a<code>403</code> status. I wrote the board
+	to then re-prompt the user with a new turnstile challenge, and then re-authenticate with the
+	server.
+	<h3>Rate Limiting</h3>
+	<p>
+		I needed something to prevent brute-force exploits. I went with the most accessible solution: IP
+		rate limiting. This has the downside of blocking devices sharing the same network.
+	</p>
+	<h3>Multi-Tab Exploit</h3>
 	<p>
 		Because I don't have user accounts or device fingerprinting, I have no way to monitor how many
 		pixels a user placed from the backend. This isn't ideal, but I've accepted the risk. I still
 		wanted some measure of protection from casually sneaky people. I added a frontend measure to
 		counteract the pixel board from being in multiple tabs at once, and stored the pixel counts and
-		refresh counter into localstorage. There is no denying that this can be worked around, and I
-		talk about how next.
+		refresh counter into localstorage. There's no denying that this can be worked around, and I talk
+		about how next.
 	</p>
 	<h3>How you can Exploit (a little)</h3>
 	<p>

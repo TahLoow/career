@@ -47,7 +47,7 @@
 		> p {
 			@apply mt-3;
 			font-size: var(--text-sm);
-			color: var(--color-surface-400-600);
+			color: var(--color-surface-700-300);
 		}
 	}
 
