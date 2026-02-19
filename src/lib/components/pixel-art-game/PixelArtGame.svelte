@@ -44,6 +44,14 @@
 					</div>
 				{:else if !turnstileState.localSuccess}
 					<Turnstile {turnstileState} />
+					{#if turnstileState.localError}
+						<button
+							class="btn preset-tonal-primary"
+							onclick={() => turnstileState.resetChallenge()}
+						>
+							Try Again
+						</button>
+					{/if}
 				{:else if !turnstileState.sessionSuccess}
 					<div class="h-8 w-8">
 						<Spinner />

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { TurnstileState } from './turnstile-state.svelte';
+	import { widgetId, type TurnstileState } from './turnstile-state.svelte';
 
 	type Props = {
 		turnstileState: TurnstileState;
@@ -25,4 +25,4 @@
 	></script>
 </svelte:head>
 
-<div id="turnstile-widget"></div>
+<div id={widgetId}></div>
