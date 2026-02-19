@@ -19,7 +19,9 @@
 			<h2 class="h4">Pixel Board</h2>
 		</span>
 		{#if displayBoardContent}
-			<div class="bg-surface-300-700 mb-6 flex grow flex-col justify-center rounded-sm p-3">
+			<div
+				class="bg-surface-300-700 mb-6 flex h-[135px] grow flex-col justify-center rounded-sm p-3"
+			>
 				<p class="text-md w-full text-center text-2xl font-thin">
 					<span class="font-bold">{pixelAllowance.balance.value}</span> pixel{pixelAllowance.balance
 						.value === 1
@@ -41,5 +43,9 @@
 				<a href="/posts/pixel-board">Read more</a>
 			</p>
 		</span>
+		{#if !displayBoardContent}
+			<!-- Buffer vertical space during loading -->
+			<div class="mb-6 hidden h-[135px] w-full md:block"></div>
+		{/if}
 	</div>
 </div>

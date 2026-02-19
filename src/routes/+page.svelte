@@ -15,7 +15,12 @@
 			<article>
 				<h4 class="h4 mb-2">{title}</h4>
 				{#if bannerImage}
-					<ImageUnderlay src={bannerImage} alt="Full image of {title}" class="mb-6 max-h-[200px]" />
+					<ImageUnderlay
+						src={bannerImage}
+						alt="Full image of {title}"
+						expand={false}
+						class="mb-6 max-h-[200px]"
+					/>
 				{/if}
 				{#if description}
 					<p>{description}</p>

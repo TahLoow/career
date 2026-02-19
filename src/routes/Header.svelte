@@ -39,7 +39,7 @@
 {#snippet routes()}
 	{@render pagePill('Welcome!', '/')}
 	<!-- {@render pagePill('Projects', '/posts')} -->
-	{@render pagePill('Background', '/background')}
+	{@render pagePill('About', '/about')}
 	{@render pagePill('Contact', '/contact')}
 {/snippet}
 

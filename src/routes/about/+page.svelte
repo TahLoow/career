@@ -5,13 +5,13 @@
 </script>
 
 <svelte:head>
-	<title>Paul - Background</title>
-	<meta name="Background" content="My background" />
+	<title>Paul - About</title>
+	<meta name="About" content="About Paul" />
 </svelte:head>
 
 <div class="flex justify-center">
 	<div class="card bg-surface-200-800 mt-8 mb-4 flex-col px-3 py-6 sm:w-2/3 sm:px-8">
-		<h1 class="font-accent pb-4 text-3xl font-bold italic sm:text-5xl">Background</h1>
+		<h1 class="font-accent pb-4 text-3xl font-bold italic sm:text-5xl">About</h1>
 
 		<div class="items-center gap-6 lg:flex">
 			<div class="prose not-lg:mb-4 lg:basis-3/5">
