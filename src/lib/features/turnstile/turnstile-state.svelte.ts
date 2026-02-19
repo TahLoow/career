@@ -3,6 +3,9 @@ import { getContext, setContext } from 'svelte';
 import { getModeState } from '../light-switch/mode-state.svelte';
 import { notificationService } from '../notification/notification.service.svelte';
 
+export const widgetId = 'turnstile-widget';
+export const widgetSelector = '#' + widgetId;
+
 export function getTurnstileState() {
 	let turnstileState: TurnstileState = getContext('turnstile');
 
@@ -65,6 +68,11 @@ export class TurnstileState {
 		return response;
 	}
 
+	resetChallenge() {
+		this.reset();
+		this.turnstile?.reset(widgetSelector);
+	}
+
 	// Resets state of object
 	reset() {
 		this.localSuccess = false;
@@ -89,7 +97,7 @@ export class TurnstileState {
 				['timeout-callback']: () => this.onLocalTimeout()
 			};
 
-			turnstile.render('#turnstile-widget', turnstileConfig);
+			turnstile.render(widgetSelector, turnstileConfig);
 			this.turnstile = turnstile;
 		}
 	}
