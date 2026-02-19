@@ -38,7 +38,7 @@
 		{/if}
 		<span class="prose">
 			<p>
-				You and other viewers can place pixels on the board. Boards are ocassionally saved and
+				You and other viewers can place pixels on the board. Boards are occasionally saved and
 				reset. Harassing imagery is not permitted.
 				<a href="/posts/pixel-board">Read more</a>
 			</p>
