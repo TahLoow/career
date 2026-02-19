@@ -26,7 +26,7 @@ export class PixelBoardState {
 	);
 
 	// Prepare to create pixels
-	createPixelMutation = createPixelQuery(this.boardQuery.data?.id!);
+	createPixelMutation = createPixelQuery();
 
 	// How many pixels should be in the rows and columns of the board
 	boardRows = $derived(this.boardQuery.data?.width ?? 0);
@@ -84,7 +84,8 @@ export class PixelBoardState {
 		// Tell server to create the pixel
 		const response = await this.createPixelMutation.mutateAsync({
 			position,
-			color: this.selectedColor
+			color: this.selectedColor,
+			boardId: this.boardQuery.data?.id!
 		});
 
 		if (response.success) {

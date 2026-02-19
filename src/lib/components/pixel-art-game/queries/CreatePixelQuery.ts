@@ -10,23 +10,25 @@ export type PixelCreated = {
 export type CreatePixelVariables = {
 	position: number;
 	color: number;
+	boardId: number;
 };
 
 // Create a pixel
-export function createPixelQuery(boardId: number) {
+export function createPixelQuery() {
 	const turnstile = getTurnstileState();
 
 	return createMutation<PixelCreated, Error, CreatePixelVariables>(() => ({
-		queryKey: ['pixels', boardId],
+		queryKey: ['pixels'],
 		mutationFn: (variables: CreatePixelVariables): Promise<PixelCreated> =>
 			turnstile.authFetch(
-				fetch(`${env.PUBLIC_API_URL}/boards/1/pixels`, {
+				fetch(`${env.PUBLIC_API_URL}/boards/${variables.boardId}/pixels`, {
 					method: 'POST',
 					headers: {
 						['Content-Type']: 'json'
 					},
 					body: JSON.stringify({
-						...variables
+						position: variables.position,
+						color: variables.color
 					}),
 					credentials: 'include'
 				}).then((res) => res.json())
