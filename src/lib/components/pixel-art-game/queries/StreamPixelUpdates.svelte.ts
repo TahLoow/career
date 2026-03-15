@@ -13,7 +13,7 @@ export interface SocketState {
 export function getPixelStreamQuery(onUpdate: (position: number, color: number) => any) {
 	// Establish websocket
 	const socket = new PartySocket({
-		host: env.PUBLIC_API_URL,
+		host: env.PUBLIC_API_URL!,
 		party: env.PUBLIC_SOCKET_PARTY,
 		room: env.PUBLIC_SOCKET_ROOM,
 		startClosed: true,

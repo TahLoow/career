@@ -2,6 +2,7 @@ import { createTreeViewCollection } from '@skeletonlabs/skeleton-svelte';
 import endTablesBannerImage from './end-tables/images/banner.png';
 import pixelBoardBannerImage from './pixel-board/images/banner.png';
 import thisSiteBannerImage from './this-site/images/banner.png';
+import fishBannerImage from './fish-wall-ornaments/images/banner.jpg';
 
 export interface PostNode {
 	id: string;
@@ -50,6 +51,13 @@ export const allPosts = createTreeViewCollection<PostNode>({
 						name: 'End Tables',
 						description: `A set of maple tables, for my mom's birthday. You would not believe how easy it was.`,
 						bannerImage: endTablesBannerImage
+					},
+					{
+						id: 'wood-projects/end-tables',
+						route: '/posts/fish-wall-ornaments',
+						name: 'Fish Wall Ornaments',
+						description: `A miniature project- a school of red oak fish, as a birthday gift`,
+						bannerImage: fishBannerImage
 					}
 				]
 			}
