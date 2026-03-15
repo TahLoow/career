@@ -8,11 +8,20 @@ This node app uses [SvelteKit](https://svelte.dev/docs/kit/introduction), which 
 
 ## Developing
 
-Once you've downloaded/cloned this project and installed dependencies with `pnpm install`, start the development server:
+### Dependencies
+**Node JS**. The core dependency for this app is `node` >= `23.0.0`. I recommend using `nvm` so you can easily switch between node versions, but it isn't strictly necessary for this application. 
 
-```bash
-npm run dev
-```
+**pnpm**. Pnpm is a very fast, caching package manager. It's used for installing the dependencies. 
+
+### Setup
+
+1. Clone this repository with ``git clone https://github.com/TahLoow/career.git``
+
+2. Install node modules with ``pnpm install``
+
+3. Run the application locally with ``npm run start:local``
+
+4. Access the locally hosted app in your browser, at ``localhost:5173``
 
 ## Vercel
 
