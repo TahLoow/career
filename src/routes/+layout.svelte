@@ -9,14 +9,19 @@
 	import NotificationContainer from '$lib/features/notification/notificationContainer.svelte';
 	import { notificationService } from '$lib/features/notification/notification.service.svelte';
 	import { HandMetal } from '@lucide/svelte';
+	import { localStore } from '$lib/utils/local-storage-state.svelte';
+
+	const welcomed = localStore('welcome', false);
 
 	onMount(() => {
-		notificationService.info({
-			title: 'Welcome!',
-			description:
-				'Please explore, and thank you for visiting! Some features are still under development.',
-			meta: { icon }
-		});
+		if (!welcomed.value) {
+			notificationService.info({
+				title: 'Welcome!',
+				description: 'Please explore, and thank you for visiting! ',
+				meta: { icon }
+			});
+		}
+		welcomed.value = true;
 	});
 
 	const queryClient = new QueryClient();
@@ -27,10 +32,10 @@
 {/snippet}
 
 <QueryClientProvider client={queryClient}>
-	<div class="bg-surface-50 dark:bg-surface-950 relative flex flex-col">
+	<div class="relative flex flex-col">
 		<Header></Header>
 		<div
-			class="mt-[calc(var(--header-height))] flex w-full flex-1 grow grid-cols-12 grid-rows-1 lg:px-16"
+			class="mt-[calc(2rem+var(--header-height))] flex w-full flex-1 grow grid-cols-12 grid-rows-1 lg:px-16"
 		>
 			<div class="lg:col-span-1"></div>
 			<main

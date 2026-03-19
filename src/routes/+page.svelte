@@ -50,7 +50,7 @@
 	<PixelArtGame />
 </div>
 
-<div class="pt-10 pb-4 lg:px-[10%]">
+<div class="pt-10 pb-4">
 	<section class="mb-4">
 		<h2 class="h2">Portfolio Projects</h2>
 		<p class="py-2 text-lg">Here are some the things I've been working on in the software space</p>
