@@ -51,7 +51,7 @@
 			}}
 			class="border-surface-400 dark:border-surface-200 transition-border hover:bg-surface-200 hover:dark:bg-surface-800 card card-hover inline-flex h-full w-full items-center self-stretch px-7 py-2 font-sans text-lg font-semibold duration-75 hover:border-b-3
 			{(page.route.id === '/' && route === '/') || (page.route.id?.startsWith(route) && route !== '/')
-				? ' text-shadow-surface-100 dark:text-shadow-surface-800 bg-secondary-400 dark:bg-secondary-200 text-shadow-lg'
+				? ' text-surface-100-900 bg-secondary-400 dark:bg-secondary-200 hover:text-surface-contrast-100-900 text-shadow-lg'
 				: ''}"
 		>
 			{label}

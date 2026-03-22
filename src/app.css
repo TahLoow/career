@@ -69,12 +69,12 @@
 	}
 
 
-	.bodybg {
+	.refractive-bg {
 		@variant dark {
 			background: 
 				/* Two radiuses, one offset to smoothen things */
-				radial-gradient(at 20% 30%, color-mix(in oklab, var(--color-secondary-400) 8%, var(--color-secondary-400) 10%) 0px, var(--color-surface-950) 40%), 
-				radial-gradient(at 15% 6%,  color-mix(in oklab, var(--color-secondary-400) 8%, var(--color-secondary-400) 10%) 0px, var(--color-surface-950) 90%) !important;
+				radial-gradient(at 6% 30%, color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 2%) 0px, var(--color-surface-950) 40%), 
+				radial-gradient(at 8% 6%,  color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 3%) 0px, var(--color-surface-950) 90%) !important; 
 		}
 		background: 
 			radial-gradient(at 10% 30%, color-mix(in oklab, var(--color-secondary-200) 24%, var(--color-secondary-200) 0%) 0px, var(--color-surface-50) 40%), 
