@@ -63,20 +63,23 @@
 	.stripes {
 		background: repeating-linear-gradient(-45deg,
 				color-mix(in oklab, var(--color-surface-400) 0%, transparent),
-				color-mix(in oklab, var(--color-surface-400) 0%, transparent) 5px,
-				color-mix(in oklab, var(--color-surface-400) 25%, transparent) 10px,
-				color-mix(in oklab, var(--color-surface-400) 40%, transparent) 30px);
+				color-mix(in oklab, var(--color-surface-400) 0%, transparent) 40px,
+				color-mix(in oklab, var(--color-surface-400) 2%, transparent) 45px,
+				color-mix(in oklab, var(--color-surface-400) 5%, transparent) 100px);
 	}
 
 
 	.refractive-bg {
+		background-attachment: fixed;
+
 		@variant dark {
-			background: 
+			background-image: 
 				/* Two radiuses, one offset to smoothen things */
-				radial-gradient(at 6% 30%, color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 2%) 0px, var(--color-surface-950) 40%), 
-				radial-gradient(at 8% 6%,  color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 3%) 0px, var(--color-surface-950) 90%) !important; 
+				radial-gradient(circle 150vw at 4vw 80vh, color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 4%) 0px, transparent 40%),
+				radial-gradient(circle 150vw at 96vw 80vh, color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 4%) 0px, transparent 40%) !important
+
 		}
-		background: 
+		background-image: 
 			radial-gradient(at 10% 30%, color-mix(in oklab, var(--color-secondary-200) 24%, var(--color-secondary-200) 0%) 0px, var(--color-surface-50) 40%), 
 			radial-gradient(at 15% 6%,  color-mix(in oklab, var(--color-secondary-200) 24%, var(--color-secondary-200) 0%) 0px, var(--color-surface-50) 90%);
 	}

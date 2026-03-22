@@ -12,7 +12,7 @@
 </script>
 
 {#if items.length > 1}
-	<nav aria-label="Breadcrumb" class="mb-4 text-lg">
+	<nav aria-label="Breadcrumb" class="py-4 text-lg">
 		<ol class="text-surface-600 dark:text-surface-300 flex flex-wrap items-center gap-2">
 			{#each items as item, i}
 				<li class="flex items-center gap-2">

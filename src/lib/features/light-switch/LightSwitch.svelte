@@ -52,7 +52,7 @@
 
 <SegmentedControl defaultValue="system" value={mode} onValueChange={handleValueChange}>
 	<SegmentedControl.Control class="border-surface-300-700 p-1">
-		<SegmentedControl.Indicator class="bg-secondary-400 dark:bg-secondary-200" />
+		<SegmentedControl.Indicator class="text-surface-100-900 preset-filled-secondary-800-200" />
 		<SegmentedControl.Item class="w-4" value="system" title="system" aria-label="system">
 			<SegmentedControl.ItemText>
 				<ComputerIcon class="size-4" />
