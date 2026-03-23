@@ -96,24 +96,24 @@
 			Moreover, I'm always invested in the outcomes of my work.
 		</p>
 	</div>
-	<div class="flex flex-col items-center justify-end pt-6 pb-12">
+	<div class="hidden flex-col items-center justify-end pt-6 pb-12 md:flex">
 		{@render jumpButton('Core Work Values', 'section-core-work-values', 200)}
 	</div>
 </div>
 
-<section id="section-core-work-values" class="flex h-dvh flex-col justify-around">
-	<div class="flex grow flex-col items-center justify-center">
+<section id="section-core-work-values" class="flex min-h-dvh flex-col justify-around">
+	<div class="flex grow flex-col items-center justify-center pb-20">
 		<CoreValues />
 	</div>
 
-	<div class="flex flex-col items-center justify-end pb-12">
+	<div class="hidden flex-col items-center justify-end pb-12 md:flex">
 		{@render jumpButton('Portfolio', 'welcome-main-content', 2000)}
 	</div>
 </section>
 
 <hr class="hr border-secondary-400 dark:border-secondary-200 border-t-6" />
 
-<div id="welcome-main-content" class="pt-20 pb-4">
+<div id="welcome-main-content" class="min-h-dvh pt-20 pb-4">
 	<section class="mb-4">
 		<h2 class="text-secondary-800-200 font-2xl h2">Portfolio Projects</h2>
 		<p class="py-2">Here are some the things I've been working on in the software space</p>
@@ -122,7 +122,6 @@
 			{#each allPosts.findNode('software-projects')?.children as post}
 				{@render postCard(post.name, post.description, post.bannerImage, post.route)}
 			{/each}
-			<!-- {@render postCard('More to come!')} -->
 		</ul>
 	</section>
 	<br class="h-4" />

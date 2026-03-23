@@ -1,26 +1,13 @@
 <script lang="ts">
 	import CoreValueCard from './CoreValueCard.svelte';
 
-	import ImageUnderlay from '$lib/components/image-underlay/ImageUnderlay.svelte';
-	import { allPosts } from '../../../routes/posts/all-posts';
-	import {
-		ArrowDownIcon,
-		BringToFrontIcon,
-		ComputerIcon,
-		EyeIcon,
-		HandshakeIcon
-	} from '@lucide/svelte';
-	import { onDestroy, onMount, type Component } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import { expoIn } from 'svelte/easing';
-
-	const sectionHeight = 'h-[calc(100dvh-var(--header-height))]';
+	import { BringToFrontIcon, ComputerIcon, HandshakeIcon } from '@lucide/svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	let hideCoreValues = $state(true);
 
 	function triggerDisplayCoreValues(entries: IntersectionObserverEntry[]) {
-		console.log('trigger');
-		hideCoreValues = !entries[0].isIntersecting;
+		hideCoreValues = false;
 	}
 
 	const options = {
@@ -40,7 +27,10 @@
 	});
 </script>
 
-<ul id="container-core-values" class="flex h-2/5 w-3/5 justify-center gap-20 rounded px-12 py-4">
+<ul
+	id="container-core-values"
+	class="flex flex-col justify-center gap-20 rounded py-4 md:h-2/5 md:flex-row md:px-12"
+>
 	{#if !hideCoreValues}
 		<CoreValueCard
 			icon={ComputerIcon}
