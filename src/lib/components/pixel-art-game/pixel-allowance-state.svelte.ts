@@ -1,6 +1,6 @@
 import { getContext, onDestroy, setContext } from 'svelte';
-import { localStore } from './local-storage-state.svelte';
 import { PIXEL_BALANCE_REFRESH_PERIOD_SECONDS, PIXELS_PER_PERIOD } from './pixel-board-constants';
+import { localStore } from '$lib/utils/local-storage-state.svelte';
 
 export function getPixelAllowanceState() {
 	let pixelAllowanceState: PixelAllowance = getContext('pixel-allowance');
@@ -24,8 +24,8 @@ export class PixelAllowance {
 
 	displayTime = $derived(
 		Math.floor(this.secondsUntilRefresh / 60) +
-			':' +
-			(this.secondsUntilRefresh % 60).toString().padStart(2, '0')
+		':' +
+		(this.secondsUntilRefresh % 60).toString().padStart(2, '0')
 	);
 
 	// ID for the allowance reload loop. Lets us clean up

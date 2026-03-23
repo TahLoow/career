@@ -27,7 +27,7 @@ export const allPosts = createTreeViewCollection<PostNode>({
 					{
 						id: 'software-projects/this-site',
 						route: '/posts/this-site',
-						name: 'This Site!',
+						name: 'This Site',
 						bannerImage: thisSiteBannerImage,
 						description: 'A walk-through of how I made this site: tools, platforms, and sundries'
 					},

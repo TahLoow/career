@@ -1,13 +1,17 @@
 @import 'tailwindcss';
 
+
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton-svelte';
 @import '@skeletonlabs/skeleton/themes/hamlindigo';
 /* @import './windfall.css'; */
 
+@source "./app.html";
+
 @import './prose.css';
 
 @custom-variant dark {
+
 	/* 1. Manual Dark Mode: Triggered by [data-mode="dark"] */
 	&:where([data-mode='dark'], [data-mode='dark'] *) {
 		@slot;
@@ -57,12 +61,27 @@
 
 @layer utilities {
 	.stripes {
-		background: repeating-linear-gradient(
-			-45deg,
-			color-mix(in oklab, var(--color-surface-400) 0%, transparent),
-			color-mix(in oklab, var(--color-surface-400) 0%, transparent) 5px,
-			color-mix(in oklab, var(--color-surface-400) 25%, transparent) 10px,
-			color-mix(in oklab, var(--color-surface-400) 40%, transparent) 30px
-		);
+		background: repeating-linear-gradient(-45deg,
+				color-mix(in oklab, var(--color-surface-400) 0%, transparent),
+				color-mix(in oklab, var(--color-surface-400) 0%, transparent) 40px,
+				color-mix(in oklab, var(--color-surface-400) 2%, transparent) 45px,
+				color-mix(in oklab, var(--color-surface-400) 5%, transparent) 100px);
 	}
+
+
+	.refractive-bg {
+		background-attachment: fixed;
+
+		@variant dark {
+			background-image: 
+				/* Two radiuses, one offset to smoothen things */
+				radial-gradient(circle 150vw at 4vw 80vh, color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 4%) 0px, transparent 40%),
+				radial-gradient(circle 150vw at 96vw 80vh, color-mix(in oklab, var(--color-secondary-400) 3%, var(--color-secondary-400) 4%) 0px, transparent 40%) !important
+
+		}
+		background-image: 
+			radial-gradient(circle 150vw at 4vw 80vh, color-mix(in oklab, var(--color-secondary-200) 3%, var(--color-secondary-200) 2%) 0px, transparent 40%), 
+			radial-gradient(circle 150vw at 96vw 80vh, color-mix(in oklab, var(--color-secondary-200) 3%, var(--color-secondary-200) 2%) 0px, transparent 40%);
+	}
+
 }

@@ -5,6 +5,7 @@
 	import highLevelDiagram from './images/high-level-diagram.png';
 	import erd from './images/erd.png';
 	import sessionAuth from './images/session-auth.png';
+	import PixelArtGame from '$lib/components/pixel-art-game/PixelArtGame.svelte';
 </script>
 
 <BannerImage src={banner} alt="" />
@@ -22,6 +23,10 @@
 		project. Read more and learn how to cheat it (a little)! Unfortunately I can't devote my life to
 		securing a pixel app, so please be kind.
 	</p>
+
+	<div class="py-8">
+		<PixelArtGame />
+	</div>
 
 	<h2>Architecture</h2>
 	<div class="captioned-image">

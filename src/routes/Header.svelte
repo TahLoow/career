@@ -17,7 +17,30 @@
 		'transition transition-discrete opacity-0 starting:data-[state=open]:opacity-0 data-[state=open]:opacity-100';
 	const animModal =
 		'transition transition-discrete opacity-0 -translate-x-full starting:data-[state=open]:opacity-0 starting:data-[state=open]:-translate-x-full data-[state=open]:opacity-100 data-[state=open]:translate-x-0';
+
+	let collapseNavBar = $state(false);
+
+	let lastKnownScrollPosition = 0;
+	let deltaY = 0;
+	let debounce = false;
+
+	function handleScroll() {
+		// Event throttling
+		if (!debounce) {
+			requestAnimationFrame(() => {
+				deltaY = window.scrollY - lastKnownScrollPosition;
+				lastKnownScrollPosition = window.scrollY;
+				collapseNavBar = deltaY > 0;
+
+				debounce = false;
+			});
+
+			debounce = true;
+		}
+	}
 </script>
+
+<svelte:window onscroll={handleScroll} />
 
 {#snippet pagePill(label: string, route: string)}
 	<li>
@@ -26,10 +49,10 @@
 			onclick={() => {
 				appBarDialog().setOpen(false);
 			}}
-			class="{(page.route.id === '/' && route === '/') ||
-			(page.route.id?.startsWith(route) && route !== '/')
-				? 'stripes text-shadow-surface-100 dark:text-shadow-surface-800 text-shadow-lg '
-				: ''} border-surface-400 dark:border-surface-200 transition-border hover:bg-surface-200 hover:dark:bg-surface-800 card card-hover inline-flex h-full w-full items-center self-stretch px-7 py-2 font-sans text-lg font-semibold duration-75 hover:border-b-3"
+			class="border-surface-400 dark:border-surface-200 transition-border hover:bg-surface-200 hover:dark:bg-surface-800 card card-hover inline-flex h-full w-full items-center self-stretch px-7 py-2 font-sans text-lg font-semibold duration-75 hover:border-b-3
+			{(page.route.id === '/' && route === '/') || (page.route.id?.startsWith(route) && route !== '/')
+				? ' text-surface-100-900 preset-filled-secondary-800-200 hover:text-surface-contrast-100-900'
+				: ''}"
 		>
 			{label}
 		</a>
@@ -44,9 +67,11 @@
 {/snippet}
 
 <AppBar
-	class="bg-surface-200 dark:bg-surface-800/50 border-surface-400/50 fixed top-0 z-50 h-[var(--header-height)] border-b backdrop-blur-lg"
+	class="bg-surface-200 dark:bg-surface-800/50 border-surface-400/50 fixed top-0 z-50 h-[var(--header-height)]  items-center border-b backdrop-blur-lg transition-transform {collapseNavBar
+		? '-translate-y-[var(--header-height)]'
+		: ''}"
 >
-	<AppBar.Toolbar class="justify-apart h-full grid-cols-[auto_1fr_auto]">
+	<AppBar.Toolbar class="h-full w-full grid-cols-[auto_1fr_auto] justify-between lg:max-w-7xl">
 		<AppBar.Lead>
 			<Dialog>
 				<Dialog.Provider value={appBarDialog}>
@@ -76,7 +101,7 @@
 				</Dialog.Provider>
 			</Dialog>
 		</AppBar.Lead>
-		<AppBar.Headline class="hidden h-full lg:flex">
+		<AppBar.Headline class="hidden h-full  lg:flex">
 			<ul class="flex items-stretch justify-start gap-4">
 				{@render routes()}
 			</ul>
