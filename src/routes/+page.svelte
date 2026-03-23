@@ -3,41 +3,10 @@
 
 	import ImageUnderlay from '$lib/components/image-underlay/ImageUnderlay.svelte';
 	import { allPosts } from './posts/all-posts';
-	import {
-		ArrowDownIcon,
-		BringToFrontIcon,
-		ComputerIcon,
-		EyeIcon,
-		HandshakeIcon
-	} from '@lucide/svelte';
-	import { onDestroy, onMount, type Component } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import { expoIn } from 'svelte/easing';
+	import { ArrowDownIcon } from '@lucide/svelte';
+	import { fade } from 'svelte/transition';
 
 	const sectionHeight = 'h-[calc(100dvh-var(--header-height))]';
-
-	let hideCoreValues = $state(true);
-
-	function triggerDisplayCoreValues(entries: IntersectionObserverEntry[]) {
-		console.log('trigger');
-		hideCoreValues = !entries[0].isIntersecting;
-	}
-
-	const options = {
-		rootMargin: '0px',
-		scrollMargin: '0px',
-		threshold: 0
-	};
-
-	const observer = new IntersectionObserver(triggerDisplayCoreValues, options);
-
-	onMount(() => {
-		observer.observe(document.querySelector('#container-core-values')!);
-	});
-
-	onDestroy(() => {
-		observer.disconnect();
-	});
 </script>
 
 <svelte:head>
