@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { DownloadIcon, PauseIcon, PlayIcon } from '@lucide/svelte';
-
-	let pause = $state(false);
 </script>
 
 <svelte:head>
 	<title>Paul - AI Notice</title>
-	<meta name="About" content="About Paul" />
+	<meta name="AI Notice" content="AI Notice" />
 </svelte:head>
 
 <div class="flex justify-center">
