@@ -48,7 +48,7 @@
 	<li class="w-full lg:w-[30%]">
 		<a href={route} class="card card-hover bg-surface-300 dark:bg-surface-800 block h-full p-4">
 			<article>
-				<h4 class="h4 mb-2">{title}</h4>
+				<h4 class="h4 font-accent mb-2">{title}</h4>
 				{#if bannerImage}
 					<ImageUnderlay
 						src={bannerImage}
@@ -58,7 +58,7 @@
 					/>
 				{/if}
 				{#if description}
-					<p>{description}</p>
+					<p class="text-lg">{description}</p>
 				{/if}
 			</article>
 		</a>
@@ -113,10 +113,10 @@
 
 <hr class="hr border-secondary-400 dark:border-secondary-200 border-t-6" />
 
-<div id="welcome-main-content" class="min-h-dvh pt-20 pb-4">
+<div id="welcome-main-content" class="m-auto flex min-h-dvh w-4/5 flex-col gap-12 pt-20 pb-4">
 	<section class="mb-4">
-		<h2 class="text-secondary-800-200 font-2xl h2">Portfolio Projects</h2>
-		<p class="py-2">Here are some the things I've been working on in the software space</p>
+		<h2 class="text-secondary-800-200 font-2xl h2 font-accent">Portfolio Projects</h2>
+		<p class="py-2 text-lg">Here are some the things I've been working on in the software space</p>
 
 		<ul class="mt-4 flex w-full flex-wrap gap-4 px-2">
 			{#each allPosts.findNode('software-projects')?.children as post}
@@ -124,10 +124,9 @@
 			{/each}
 		</ul>
 	</section>
-	<br class="h-4" />
 	<section>
-		<h2 class="h2 text-secondary-800-200 font-2xl">Personal Projects</h2>
-		<p class=" py-2">
+		<h2 class="h2 text-secondary-800-200 font-2xl font-accent">Personal Projects</h2>
+		<p class=" py-2 text-lg">
 			I do woodworking in my spare time. I enjoy making bespoke trinkets, but have recently been
 			tackling bigger projects. My goal for 2026 is to have a table at a craft show!
 		</p>

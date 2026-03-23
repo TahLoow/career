@@ -40,7 +40,7 @@
 				<p>{@html text}</p>
 				<svelte:component this={icon} strokeWidth="2" class="size-7" />
 			</div>
-			<div class="text-center text-pretty" class:hidden={!hovered}>
+			<div class="text-center" class:hidden={!hovered}>
 				{context}
 			</div>
 		</div>

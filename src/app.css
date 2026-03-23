@@ -80,8 +80,8 @@
 
 		}
 		background-image: 
-			radial-gradient(at 10% 30%, color-mix(in oklab, var(--color-secondary-200) 24%, var(--color-secondary-200) 0%) 0px, var(--color-surface-50) 40%), 
-			radial-gradient(at 15% 6%,  color-mix(in oklab, var(--color-secondary-200) 24%, var(--color-secondary-200) 0%) 0px, var(--color-surface-50) 90%);
+			radial-gradient(circle 150vw at 4vw 80vh, color-mix(in oklab, var(--color-secondary-200) 3%, var(--color-secondary-200) 2%) 0px, transparent 40%), 
+			radial-gradient(circle 150vw at 96vw 80vh, color-mix(in oklab, var(--color-secondary-200) 3%, var(--color-secondary-200) 2%) 0px, transparent 40%);
 	}
 
 }
