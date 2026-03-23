@@ -21,10 +21,10 @@
 	in:fly={{
 		y: -60,
 		easing: expoIn,
-		// duration: 300,
-		// delay: (sequence - 1) * 500
-		delay: 0,
-		duration: 0
+		duration: 300,
+		delay: (sequence - 1) * 500
+		// delay: 0,
+		// duration: 0
 	}}
 >
 	<button

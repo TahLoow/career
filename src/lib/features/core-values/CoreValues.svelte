@@ -4,10 +4,12 @@
 	import { BringToFrontIcon, ComputerIcon, HandshakeIcon } from '@lucide/svelte';
 	import { onDestroy, onMount } from 'svelte';
 
-	let hideCoreValues = $state(true);
+	let showCoreValues = $state(false);
 
 	function triggerDisplayCoreValues(entries: IntersectionObserverEntry[]) {
-		hideCoreValues = false;
+		if (entries[0].isIntersecting) {
+			showCoreValues = true;
+		}
 	}
 
 	const options = {
@@ -31,7 +33,7 @@
 	id="container-core-values"
 	class="flex flex-col justify-center gap-20 rounded py-4 md:h-2/5 md:flex-row md:px-12"
 >
-	{#if !hideCoreValues}
+	{#if showCoreValues}
 		<CoreValueCard
 			icon={ComputerIcon}
 			text="Stack<br />Versatile"
