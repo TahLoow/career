@@ -10,7 +10,7 @@
 </svelte:head>
 
 <div class="flex justify-center">
-	<div class="card bg-surface-200-800 mt-8 mb-4 flex-col px-3 py-6 sm:w-2/3 sm:px-8">
+	<div class="card bg-surface-100-900 mt-8 mb-4 flex-col px-3 py-6 sm:w-2/3 sm:px-8">
 		<h1 class="font-accent pb-4 text-3xl font-bold italic sm:text-5xl">About</h1>
 
 		<div class="items-center gap-6 lg:flex">
@@ -52,7 +52,7 @@
 					{/if}
 				</div>
 				<div
-					class="css-carousel-fade bg-surface-200-800 absolute top-0 left-0 z-9 h-full w-full"
+					class="css-carousel-fade bg-surface-100-900 absolute top-0 left-0 z-9 h-full w-full"
 				></div>
 				<div class="relative flex h-full items-center overflow-hidden">
 					<ul class="css-carousel-list">

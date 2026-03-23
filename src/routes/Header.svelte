@@ -63,6 +63,7 @@
 	{@render pagePill('Welcome!', '/')}
 	{@render pagePill('Projects', '/posts')}
 	{@render pagePill('About', '/about')}
+	{@render pagePill('AI Notice', '/ai-notice')}
 	{@render pagePill('Contact', '/contact')}
 {/snippet}
 

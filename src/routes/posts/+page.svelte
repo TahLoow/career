@@ -18,8 +18,8 @@
 	<meta name="Projects" content="Projects I've worked on" />
 </svelte:head>
 
-<div class="card bg-surface-200-800 mt-8 w-full flex-col px-3 py-6 sm:w-2/3 sm:px-8">
-	<h1 class="font-accent pb-4 text-5xl font-bold italic">Projects</h1>
+<div class="card bg-surface-100-900 mt-8 w-full flex-col px-3 py-6 sm:w-2/3 sm:px-8">
+	<h1 class="font-accent pb-8 text-5xl font-bold italic">Projects</h1>
 
 	<p class="mb-4">
 		Click into folders to see my projects. They're also located on the welcome page.
