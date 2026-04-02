@@ -110,9 +110,13 @@
 	<ol>
 		<li>Cloudflare's Ephemeral IDs. Enterprise-only</li>
 		<li>
-			FingerprintJS. Per GitHub: "vulnerable to spoofing", and perhaps too much work to implement
+			FingerprintJS. Per GitHub: "vulnerable to spoofing". Wouldn't be able to reliably distinguish
+			between browsers on the same device, and too much overhead for a low-risk project
 		</li>
-		<li>Fingerprint Identification. Premium version of FingerprintJS</li>
+		<li>
+			Fingerprint Identification. Premium version of FingerprintJS. <strong>Can</strong> reliably distinguish
+			between browsers. Can only feasibly place 1000 pixels per month on free plan
+		</li>
 		<li>Stych device fingerprinting. Not permitted for personal projects</li>
 	</ol>
 	<h3>Anti-botting (Turnstile)</h3>
