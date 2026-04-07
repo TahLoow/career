@@ -35,27 +35,30 @@
 {/snippet}
 
 {#snippet jumpButton(label: string, targetId: string, delay: number)}
-	<button
-		class="btn preset-filled-secondary-800-200 text-surface-100-900 btn-lg inline-flex animate-bounce items-center gap-6"
-		onclick={() => document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })}
-		in:fade={{ delay }}
-	>
-		<ArrowDownIcon class="size-6" />
-		<p class="pt-1 text-center text-xl">{label}</p>
-		<ArrowDownIcon class="size-6" />
-	</button>
+	<div class="relative">
+		<button
+			class="btn preset-filled-secondary-700-300 text-surface-100-900 hover:text-surface-900-100 btn-lg inline-flex animate-bounce items-center gap-6 shadow-lg hover:bg-transparent"
+			onclick={() => document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })}
+			in:fade={{ delay }}
+		>
+			<ArrowDownIcon class="size-6" />
+			<p class="pt-1 text-center text-xl">{label}</p>
+			<ArrowDownIcon class="size-6" />
+		</button>
+		<span class="scrobble-backdrop h-full w-full"> </span>
+	</div>
 {/snippet}
 
 <div class="{sectionHeight} flex flex-col justify-around">
 	<div class="flex grow flex-col items-center justify-center">
 		<h1
-			class="font-accent flex items-end justify-center pt-8 pb-6 text-center text-5xl font-extralight lg:text-7xl"
+			class="font-accent flex items-end justify-center pt-8 pb-4 text-center text-5xl font-extralight lg:text-7xl"
 		>
 			Paul MacLean
 		</h1>
 
-		<p class="text-surface-600-400 w-full pb-12 text-center text-2xl leading-none italic">
-			<span class="">Full Stack Developer</span>
+		<p class="text-surface-600-400 w-full pb-12 text-center text-2xl leading-none">
+			<span>Full Stack Developer</span>
 		</p>
 
 		<p class="wrap-none px-8 pt-8 text-center text-lg text-pretty">
@@ -106,3 +109,63 @@
 		</ul>
 	</section>
 </div>
+
+<style>
+	@keyframes spike-low {
+		0%,
+		100% {
+			height: 10px;
+		}
+		50% {
+			height: 30%;
+		}
+	}
+
+	@keyframes spike-medium {
+		0%,
+		100% {
+			height: 10px;
+		}
+		50% {
+			height: 70%;
+		}
+	}
+
+	@keyframes spike-high {
+		0%,
+		10%,
+		100% {
+			height: 10px;
+		}
+		50% {
+			height: 100%;
+		}
+	}
+
+	.scrobble-backdrop {
+		animation: spike-medium 2s ease-in-out infinite;
+	}
+
+	.scrobble-backdrop:nth-child(3n) {
+		animation-name: spike-medium;
+		animation-duration: 1.3s;
+	}
+	.scrobble-backdrop:nth-child(3n + 1) {
+		animation-name: spike-low;
+		animation-duration: 1.7s;
+		animation-delay: -0.9s;
+	}
+	.scrobble-backdrop:nth-child(3n + 2) {
+		animation-name: spike-high;
+		animation-duration: 1.4s;
+		animation-delay: -1.2s;
+	}
+
+	/* Staggering the start times */
+	.scrobble-backdrop:nth-child(even) {
+		animation-delay: 0.2s;
+	}
+	.scrobble-backdrop:nth-child(odd) {
+		animation-delay: 0.4s;
+	}
+</style>
