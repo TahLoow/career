@@ -39,15 +39,11 @@
 		<div
 			class="mt-[calc(var(--header-height))] flex w-full flex-1 grow grid-cols-12 grid-rows-1 lg:px-16"
 		>
-			<div class="fixed top-[calc(80px+var(--header-height))] z-2 lg:col-span-1">
-				<ScrobbleWidget />
-			</div>
 			<main
 				class="col-span-12 m-auto box-border min-h-[-webkit-fill-available] min-h-[calc(100dvh-40px)] w-full px-3 pb-8 sm:px-4 sm:pb-8 lg:col-span-10 lg:max-w-7xl"
 			>
 				{@render children()}
 			</main>
-			<div class="lg:col-span-1"></div>
 		</div>
 		<Footer></Footer>
 	</div>

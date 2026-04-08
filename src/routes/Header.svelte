@@ -8,6 +8,7 @@
 
 	import { XIcon } from '@lucide/svelte';
 	import { Dialog, Portal } from '@skeletonlabs/skeleton-svelte';
+	import ScrobbleWidget from '$lib/components/scrobble-widget/ScrobbleWidget.svelte';
 
 	const appBarDialog = useDialog({ id: 'app-bar-dialog' });
 
@@ -49,9 +50,9 @@
 			onclick={() => {
 				appBarDialog().setOpen(false);
 			}}
-			class=" dark:hover:text-surface-950 hover:bg-secondary-700 dark:hover:bg-secondary-200 card card-hover inline-flex h-full w-full items-center self-stretch rounded-sm px-7 py-2 font-sans text-lg font-semibold hover:text-white
+			class=" dark:hover:text-surface-950 hover:bg-secondary-100 dark:hover:bg-secondary-200 card card-hover inline-flex h-full w-full items-center self-stretch rounded-sm px-7 py-2 font-sans text-lg font-semibold
 			{(page.route.id === '/' && route === '/') || (page.route.id?.startsWith(route) && route !== '/')
-				? ' bg-surface-300 dark:bg-surface-800 shadow-lg'
+				? ' bg-surface-200-800 shadow-lg'
 				: ''}"
 		>
 			{label}
@@ -133,4 +134,10 @@
 			</ul>
 		</AppBar.Trail>
 	</AppBar.Toolbar>
+
+	<div class="absolute bottom-0 h-0 not-lg:right-1 not-lg:left-0">
+		<div class="relative w-full p-8 lg:w-120">
+			<ScrobbleWidget />
+		</div>
+	</div>
 </AppBar>

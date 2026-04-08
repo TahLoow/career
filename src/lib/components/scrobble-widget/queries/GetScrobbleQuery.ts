@@ -169,6 +169,7 @@ async function getScrobbleRequest() {
         console.error(err)
         throw err
       }
+
     })
 }
 

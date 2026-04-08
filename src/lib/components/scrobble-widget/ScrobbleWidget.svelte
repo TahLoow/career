@@ -1,83 +1,68 @@
 <script>
-	import {
-		BadgeQuestionMarkIcon,
-		CircleQuestionMarkIcon,
-		ExternalLinkIcon,
-		FileQuestionMark,
-		XIcon
-	} from '@lucide/svelte';
+	import { CircleQuestionMarkIcon, ExternalLinkIcon, MusicIcon, XIcon } from '@lucide/svelte';
 	import { getScrobbleQuery } from './queries/GetScrobbleQuery';
 	import TidalLogo from './TidalLogo.svelte';
-	import { fly, scale, slide } from 'svelte/transition';
-	import { expoIn, expoInOut } from 'svelte/easing';
 
 	// Object containing all state of the latest scrobble
 	let scrobbleQuery = getScrobbleQuery();
 
-	// Whether the user closed the widget
-	let widgetClosed = $state(false);
-
+	// Whether the widget is collapsed
 	let widgetCollapsed = $state(false);
 </script>
 
-{#if scrobbleQuery.isSuccess && !widgetClosed}
-	<dialog class="inline-flex h-25 gap-2 bg-transparent">
-		<menu class="text-surface-800-100 z-3 flex h-full w-9 flex-col justify-around px-1">
+{#if scrobbleQuery.isSuccess}
+	<dialog
+		class="bg-surface-100-900 inline-flex rounded shadow-xl outline transition-all duration-300 {widgetCollapsed
+			? ' outline-surface-300-700 max-h-25  w-9 '
+			: 'w-full outline-transparent'}"
+	>
+		<menu class="text-surface-800-100 z-3 flex min-w-9 flex-col items-center justify-between p-1">
 			<button
-				class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded border shadow"
-				onclick={() => (widgetCollapsed = true)}
+				class=" hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded {widgetCollapsed
+					? 'bg-secondary-500 text-secondary-50-950 dark:bg-secondary-200'
+					: ''}"
+				onclick={() => (widgetCollapsed = !widgetCollapsed)}
 			>
-				<XIcon class="size-4" />
+				<XIcon
+					class="size-4 transition-transform duration-300 {widgetCollapsed ? 'rotate-135' : ''}"
+				/>
 			</button>
-			<a
-				class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded border shadow"
-				href={scrobbleQuery.data?.url}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<ExternalLinkIcon class="size-4" />
-			</a>
-			<a
-				class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded border shadow"
-				href={'/posts/tidal-link'}
-			>
-				<CircleQuestionMarkIcon class="size-4" />
-			</a>
+			{#if !widgetCollapsed}
+				<a
+					class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded"
+					href={scrobbleQuery.data?.url}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<ExternalLinkIcon class="size-4" />
+				</a>
+				<a
+					class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded"
+					href={'/posts/tidal-link'}
+				>
+					<CircleQuestionMarkIcon class="size-4" />
+				</a>
+			{:else}
+				<MusicIcon class="mt-3 mb-1 aspect-square size-4 w-full" />
+			{/if}
 		</menu>
 		{#if !widgetCollapsed}
-			<summary
-				class="inline-flex h-25 rounded-xl shadow-xl"
-				in:fly={{
-					x: -20,
-					easing: expoIn,
-					duration: 500
-				}}
-				out:fly={{
-					x: -20,
-					easing: expoInOut,
-					duration: 500
-				}}
-			>
+			<summary class="z-2 inline-flex h-25 grow rounded-xl">
 				<!-- Album cover -->
 				{#if scrobbleQuery.data?.images.large}
 					<img
-						class="relative z-2 h-25 w-25 shadow"
+						class="h-25 w-25 min-w-25 shadow"
 						alt="Album Cover"
 						src={scrobbleQuery.data?.images.large}
 					/>
 				{/if}
 
 				<div
-					class="bg-surface-100-900 relative inline-flex grow rounded-r px-4 py-2 {scrobbleQuery
-						.data?.images.large
+					class="relative inline-flex grow rounded-r px-4 py-2 {scrobbleQuery.data?.images.large
 						? ''
 						: 'px-6'}"
-					out:fly={{
-						x: -40,
-						duration: 100
-					}}
 				>
-					<div class="relative z-2 flex h-full w-50 flex-col justify-center gap-1">
+					<div class="relative z-2 flex h-full grow flex-col justify-center gap-1">
 						<p class="line-clamp-2 leading-tight font-extrabold">
 							{scrobbleQuery.data?.name}
 						</p>
@@ -87,7 +72,9 @@
 						</p>
 					</div>
 
-					<div class="text-surface-700-300 flex w-10 shrink-0 flex-col justify-between pb-1.5">
+					<div
+						class="text-surface-700-300 relative flex w-10 shrink-0 flex-col justify-between py-1.5"
+					>
 						{#if scrobbleQuery.data?.currentlyPlaying}
 							<div class="flex items-center justify-center gap-1">
 								<div class="flex h-full w-min items-center gap-0.5">
