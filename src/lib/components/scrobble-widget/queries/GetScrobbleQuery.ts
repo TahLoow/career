@@ -143,6 +143,7 @@ export function getScrobbleQuery() {
                   id: track.album.mbid
                 },
                 images: (await Promise.all(track.image.map(src => preloadSrc(src)))).reduce((obj, image) => {
+                  // Exclude this non-image (looks like a non-descript white star)
                   if (image['#text'].includes('2a96cbd8b46e442fc41c2b86b821562f')) {
                     obj[image.size] = ""
                   } else {
@@ -154,7 +155,6 @@ export function getScrobbleQuery() {
                 datePlayed
               } as ScrobbleTrackQuery
 
-              console.log(scrobble.images)
 
               return scrobble
             } catch (err) {

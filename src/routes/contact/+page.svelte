@@ -33,14 +33,16 @@
 	<meta name="Contact" content="Getting in contact with me" />
 </svelte:head>
 
-<div class="flex w-full justify-center">
-	<div class="card bg-surface-100-900 mt-8 w-full flex-col px-3 py-6 sm:w-2/3 sm:px-8">
+<div class="flex grow flex-col items-center justify-center">
+	<div
+		class="border-surface-100-900 dark:bg-surface-900 bg-surface-50/50 mt-8 w-full grow flex-col rounded-2xl border px-3 pt-12 pb-16 shadow-lg sm:w-2/3 sm:px-8"
+	>
 		<h1 class="font-accent pb-8 text-5xl font-bold italic">Contact</h1>
 
 		<div class="prose mb-4">
 			<h3>Reach out!</h3>
 			<p>
-				I'd love to learn about what you do, and share my experiences. It may take up to 48 hours to
+				I'd love to learn about what you do, and share experiences. It may take up to 48 hours to
 				see your email, but I check it regularly.
 			</p>
 		</div>

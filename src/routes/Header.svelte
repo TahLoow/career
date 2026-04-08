@@ -49,9 +49,9 @@
 			onclick={() => {
 				appBarDialog().setOpen(false);
 			}}
-			class="border-surface-400 dark:border-surface-200 transition-border hover:bg-surface-200 hover:dark:bg-surface-800 card card-hover inline-flex h-full w-full items-center self-stretch rounded-sm px-7 py-2 font-sans text-lg font-semibold duration-75 hover:border-b-3
+			class=" dark:hover:text-surface-950 hover:bg-secondary-700 dark:hover:bg-secondary-200 card card-hover inline-flex h-full w-full items-center self-stretch rounded-sm px-7 py-2 font-sans text-lg font-semibold hover:text-white
 			{(page.route.id === '/' && route === '/') || (page.route.id?.startsWith(route) && route !== '/')
-				? ' text-surface-100-900 preset-filled-secondary-800-200 hover:text-surface-contrast-100-900 shadow-xl'
+				? ' bg-surface-300 dark:bg-surface-800 shadow-lg'
 				: ''}"
 		>
 			{label}
@@ -68,7 +68,7 @@
 {/snippet}
 
 <AppBar
-	class="bg-surface-200 dark:bg-surface-800/50 fixed top-0 z-50 h-[var(--header-height)]  items-center shadow-md backdrop-blur-lg transition-transform {collapseNavBar
+	class="bg-surface-100/50 dark:bg-surface-900/50 fixed top-0 z-50 h-[var(--header-height)]  items-center shadow-md backdrop-blur-lg transition-transform {collapseNavBar
 		? '-translate-y-[var(--header-height)]'
 		: ''}"
 >

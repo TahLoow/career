@@ -6,15 +6,17 @@
 	<meta name="AI Notice" content="AI Notice" />
 </svelte:head>
 
-<div class="flex justify-center">
-	<div class="card bg-surface-100-900 mt-8 mb-4 flex-col px-3 py-6 sm:w-2/3 sm:px-8">
+<div class="flex grow flex-col items-center justify-center">
+	<div
+		class="border-surface-100-900 dark:bg-surface-900 bg-surface-50/50 mt-8 w-full grow flex-col rounded-2xl border px-3 pt-12 pb-16 shadow-lg sm:w-2/3 sm:px-8"
+	>
 		<h1 class="font-accent pb-8 text-3xl font-bold italic sm:text-5xl">AI Notice</h1>
 
 		<div class="prose">
 			<h3>In Short</h3>
 			<p>
-				I write everything. Generally, I don't use AI, so that I can keep my skills sharp. However,
-				I do use AI for development nuisances and ideating.
+				I write all the content, and use AI for some code. I don't generally use AI, so that I can
+				keep my skills sharp. However, I do use AI for development nuisances and ideating.
 			</p>
 			<h3>My AI Philosophy</h3>
 			<p>

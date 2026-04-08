@@ -5,6 +5,7 @@
 	import { allPosts } from './posts/all-posts';
 	import { ArrowDownIcon } from '@lucide/svelte';
 	import { fade } from 'svelte/transition';
+	import GridBackground from '$lib/components/scrobble-widget/GridBackground.svelte';
 
 	const sectionHeight = 'h-[calc(100dvh-var(--header-height))]';
 </script>
@@ -49,7 +50,9 @@
 	</div>
 {/snippet}
 
-<div class="{sectionHeight} flex flex-col justify-around">
+<div class="{sectionHeight} relative flex flex-col justify-around">
+	<GridBackground />
+
 	<div class="flex grow flex-col items-center justify-center">
 		<h1
 			class="font-accent flex items-end justify-center pt-8 pb-4 text-center text-5xl font-extralight lg:text-7xl"
@@ -57,7 +60,7 @@
 			Paul MacLean
 		</h1>
 
-		<p class="text-surface-600-400 w-full pb-12 text-center text-2xl leading-none">
+		<p class="text-surface-600-400 w-full pb-12 text-center text-2xl leading-none font-bold">
 			<span>Full Stack Developer</span>
 		</p>
 
@@ -82,8 +85,6 @@
 		{@render jumpButton('Portfolio', 'welcome-main-content', 2000)}
 	</div>
 </section>
-
-<hr class="hr border-secondary-400 dark:border-secondary-200 border-t-6" />
 
 <div id="welcome-main-content" class="m-auto flex min-h-dvh w-4/5 flex-col gap-12 pt-20 pb-4">
 	<section class="mb-4">

@@ -39,7 +39,7 @@
 		<div
 			class="mt-[calc(var(--header-height))] flex w-full flex-1 grow grid-cols-12 grid-rows-1 lg:px-16"
 		>
-			<div class="absolute top-[calc(100dvh-var(--header-height)-58px)] lg:col-span-1">
+			<div class="absolute top-[calc(80px+var(--header-height))] lg:col-span-1">
 				<ScrobbleWidget />
 			</div>
 			<main
