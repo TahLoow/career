@@ -134,10 +134,4 @@
 			</ul>
 		</AppBar.Trail>
 	</AppBar.Toolbar>
-
-	<div class="absolute bottom-0 h-0 not-lg:right-1 not-lg:left-0">
-		<div class="relative w-full p-8 lg:w-120">
-			<ScrobbleWidget />
-		</div>
-	</div>
 </AppBar>

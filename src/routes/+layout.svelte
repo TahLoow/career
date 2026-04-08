@@ -40,12 +40,17 @@
 			class="mt-[calc(var(--header-height))] flex w-full flex-1 grow grid-cols-12 grid-rows-1 lg:px-16"
 		>
 			<main
-				class="col-span-12 m-auto box-border min-h-[-webkit-fill-available] min-h-[calc(100dvh-40px)] w-full px-3 pb-8 sm:px-4 sm:pb-8 lg:col-span-10 lg:max-w-7xl"
+				class="col-span-12 m-auto box-border min-h-[-webkit-fill-available] min-h-[calc(100dvh-40px)] w-full px-3 sm:px-4 sm:pb-8 lg:col-span-10 lg:max-w-7xl"
 			>
 				{@render children()}
 			</main>
 		</div>
+
 		<Footer></Footer>
+
+		<div class="sticky bottom-0 h-25 lg:bottom-12 lg:ml-8 lg:w-120">
+			<ScrobbleWidget />
+		</div>
 	</div>
 </QueryClientProvider>
 
