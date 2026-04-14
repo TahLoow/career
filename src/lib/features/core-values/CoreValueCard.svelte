@@ -17,7 +17,7 @@
 </script>
 
 <li
-	class="h-80 w-72 grow transition-all md:basis-0"
+	class="h-80 w-72 grow transition-all lg:basis-0"
 	in:fly={{
 		y: -60,
 		easing: expoIn,
