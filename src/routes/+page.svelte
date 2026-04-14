@@ -71,7 +71,7 @@
 			Moreover, I'm always invested in the outcomes of my work.
 		</p>
 	</div>
-	<div class="hidden flex-col items-center justify-end pt-6 pb-12 md:flex">
+	<div class="hidden flex-col items-center justify-end pt-6 pb-12 lg:flex">
 		{@render jumpButton('Core Work Values', 'section-core-work-values', 200)}
 	</div>
 </div>
@@ -81,7 +81,7 @@
 		<CoreValues />
 	</div>
 
-	<div class="hidden flex-col items-center justify-end pb-12 md:flex">
+	<div class="hidden flex-col items-center justify-end pb-12 lg:flex">
 		{@render jumpButton('Portfolio', 'welcome-main-content', 2000)}
 	</div>
 </section>

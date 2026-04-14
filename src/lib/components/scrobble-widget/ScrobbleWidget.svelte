@@ -2,6 +2,7 @@
 	import { CircleQuestionMarkIcon, ExternalLinkIcon, MusicIcon, XIcon } from '@lucide/svelte';
 	import { getScrobbleQuery } from './queries/GetScrobbleQuery';
 	import TidalLogo from './TidalLogo.svelte';
+	import { fly } from 'svelte/transition';
 
 	// Object containing all state of the latest scrobble
 	let scrobbleQuery = getScrobbleQuery();
@@ -15,18 +16,11 @@
 		class="bg-surface-100-900 inline-flex rounded shadow-xl outline transition-all duration-300 {widgetCollapsed
 			? ' outline-surface-300-700 max-h-25  w-9 '
 			: 'w-full outline-transparent'}"
+		in:fly={{
+			x: '-20'
+		}}
 	>
 		<menu class="text-surface-800-100 z-3 flex min-w-9 flex-col items-center justify-between p-1">
-			<button
-				class=" hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded {widgetCollapsed
-					? 'bg-secondary-500 text-secondary-50-950 dark:bg-secondary-200'
-					: ''}"
-				onclick={() => (widgetCollapsed = !widgetCollapsed)}
-			>
-				<XIcon
-					class="size-4 transition-transform duration-300 {widgetCollapsed ? 'rotate-135' : ''}"
-				/>
-			</button>
 			{#if !widgetCollapsed}
 				<a
 					class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded"
@@ -43,15 +37,26 @@
 					<CircleQuestionMarkIcon class="size-4" />
 				</a>
 			{:else}
-				<MusicIcon class="mt-3 mb-1 aspect-square size-4 w-full" />
+				<MusicIcon class="mt-1 mb-3 aspect-square size-4 w-full" />
 			{/if}
+			<button
+				class=" hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded {widgetCollapsed
+					? 'bg-secondary-500 text-secondary-50-950 dark:bg-secondary-200'
+					: ''}"
+				onclick={() => (widgetCollapsed = !widgetCollapsed)}
+			>
+				<XIcon
+					class="size-4 transition-transform duration-300 {widgetCollapsed ? 'rotate-135' : ''}"
+				/>
+			</button>
 		</menu>
+
 		{#if !widgetCollapsed}
 			<summary class="z-2 inline-flex h-25 grow rounded-xl">
 				<!-- Album cover -->
 				{#if scrobbleQuery.data?.images.large}
 					<img
-						class="h-25 w-25 min-w-25 shadow"
+						class="h-25 w-25 min-w-25 shadow-sm"
 						alt="Album Cover"
 						src={scrobbleQuery.data?.images.large}
 					/>

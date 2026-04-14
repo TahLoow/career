@@ -7,7 +7,6 @@
 		if (!container) {
 			return;
 		}
-
 		const rect = container.getBoundingClientRect();
 		mouseX = e.clientX - rect.left;
 		mouseY = e.clientY - rect.top;
@@ -40,13 +39,13 @@
 		height: 100%;
 		/* Create the cross using two linear gradients */
 		background-image:
-			linear-gradient(to bottom, var(--color-surface-950-50) 1px, transparent 1px),
-			linear-gradient(to right, var(--color-surface-950-50) 1px, transparent 1px);
+			linear-gradient(to bottom, var(--color-surface-600-400) 1px, transparent 1px),
+			linear-gradient(to right, var(--color-surface-600-400) 1px, transparent 1px);
 		background-size: 60px 40px; /* Spacing between crosses */
 		background-position: center;
 
 		/* Base opacity for the crosses */
-		opacity: 0.15;
+		opacity: 0.5;
 
 		/* The glow logic */
 		mask-image: radial-gradient(

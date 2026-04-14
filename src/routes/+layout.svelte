@@ -48,7 +48,9 @@
 
 		<Footer></Footer>
 
-		<div class="sticky bottom-0 h-25 lg:bottom-12 lg:ml-8 lg:w-120">
+		<div
+			class="sticky bottom-0 mx-4 flex h-25 flex-col justify-end lg:bottom-12 lg:ml-8 lg:w-100 xl:w-120"
+		>
 			<ScrobbleWidget />
 		</div>
 	</div>
