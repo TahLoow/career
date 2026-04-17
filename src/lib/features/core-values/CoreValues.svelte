@@ -31,7 +31,7 @@
 
 <ul
 	id="container-core-values"
-	class="flex flex-col justify-center gap-20 rounded py-4 md:h-2/5 md:flex-row md:px-12"
+	class="flex flex-col justify-center gap-20 rounded py-4 lg:h-2/5 lg:flex-row lg:px-12"
 >
 	{#if showCoreValues}
 		<CoreValueCard

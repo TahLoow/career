@@ -17,7 +17,7 @@
 </script>
 
 <li
-	class="h-80 w-72 grow transition-all md:basis-0"
+	class="h-80 w-72 grow transition-all lg:basis-0"
 	in:fly={{
 		y: -60,
 		easing: expoIn,
@@ -34,6 +34,8 @@
 		onmouseenter={() => (hovered = true)}
 		onmouseleave={() => (hovered = false)}
 		ontouchstart={() => (hovered = !hovered)}
+		onfocus={() => (hovered = true)}
+		onblur={() => (hovered = false)}
 	>
 		<div class="grow overflow-auto font-extrabold select-none">
 			<div class="flex flex-col items-center gap-3 text-center text-2xl" class:hidden={hovered}>

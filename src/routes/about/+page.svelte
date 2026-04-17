@@ -9,8 +9,10 @@
 	<meta name="About" content="About Paul" />
 </svelte:head>
 
-<div class="flex justify-center">
-	<div class="card bg-surface-100-900 mt-8 mb-4 flex-col px-3 py-6 sm:w-2/3 sm:px-8">
+<div class="flex grow flex-col items-center justify-center">
+	<div
+		class="border-surface-100-900 dark:bg-surface-900 bg-surface-50/50 mt-8 w-full grow flex-col rounded-2xl border px-3 pt-12 pb-16 shadow-lg sm:w-2/3 sm:px-8"
+	>
 		<h1 class="font-accent pb-4 text-3xl font-bold italic sm:text-5xl">About</h1>
 
 		<div class="items-center gap-6 lg:flex">
