@@ -12,15 +12,17 @@
 </script>
 
 {#if scrobbleQuery.isSuccess}
-	<dialog
-		class="bg-surface-100-900 inline-flex rounded shadow-xl outline transition-all duration-300 {widgetCollapsed
-			? ' outline-surface-300-700 max-h-25  w-9 '
+	<div
+		class="bg-surface-100-900 inline-flex max-w-none overflow-clip rounded shadow-xl outline transition-all duration-300 {widgetCollapsed
+			? ' outline-surface-300-700 max-h-25 w-9 '
 			: 'w-full outline-transparent'}"
 		in:fly={{
 			x: '-20'
 		}}
 	>
-		<menu class="text-surface-800-100 z-3 flex min-w-9 flex-col items-center justify-between p-1">
+		<menu
+			class="text-surface-800-100 z-3 flex min-w-9 flex-col items-center items-stretch justify-between p-1"
+		>
 			{#if !widgetCollapsed}
 				<a
 					class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded"
@@ -77,8 +79,9 @@
 						</p>
 					</div>
 
+					<!-- Streaming service + recency indicator -->
 					<div
-						class="text-surface-700-300 relative flex w-10 shrink-0 flex-col justify-between py-1.5"
+						class="text-surface-700-300 relative flex w-10 shrink-0 flex-col items-center justify-between py-1.5"
 					>
 						{#if scrobbleQuery.data?.currentlyPlaying}
 							<div class="flex items-center justify-center gap-1">
@@ -104,6 +107,7 @@
 						<TidalLogo class="shrink-0" />
 					</div>
 
+					<!-- Blurry animated bars -->
 					<span class="absolute top-0 left-0 z-1 flex h-full w-full items-center px-5 blur-sm">
 						<div class="inline-flex h-8/10 w-full items-center justify-between">
 							{#each { length: 8 } as _, i}
@@ -114,6 +118,7 @@
 				</div>
 			</summary>
 
+			<!-- Ambient animated glow -->
 			<span
 				class="absolute top-0 left-0 z-1 inline-flex h-full w-full items-center justify-between blur-2xl"
 			>
@@ -122,7 +127,7 @@
 				{/each}
 			</span>
 		{/if}
-	</dialog>
+	</div>
 {/if}
 
 <style>

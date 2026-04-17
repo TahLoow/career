@@ -35,7 +35,7 @@
 
 <QueryClientProvider client={queryClient}>
 	<div class="relative flex flex-col">
-		<Header></Header>
+		<Header />
 		<div
 			class="mt-[calc(var(--header-height))] flex w-full flex-1 grow grid-cols-12 grid-rows-1 lg:px-16"
 		>
@@ -46,13 +46,14 @@
 			</main>
 		</div>
 
-		<Footer></Footer>
+		<Footer />
 
-		<div
-			class="sticky bottom-0 mx-4 flex h-25 flex-col justify-end lg:bottom-12 lg:ml-8 lg:w-100 xl:w-120"
+		<dialog
+			open={true}
+			class="sticky bottom-4 flex h-25 w-full flex-col justify-end bg-transparent not-lg:px-8 lg:fixed lg:bottom-12 lg:ml-8 lg:w-100 xl:w-120"
 		>
 			<ScrobbleWidget />
-		</div>
+		</dialog>
 	</div>
 </QueryClientProvider>
 
