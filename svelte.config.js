@@ -16,12 +16,9 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true,
-      		relative: false
+			base: '/',
+			relative: true
 		}),
-		paths: {
-			base: "/",
-			relative: false
-		}
 	},
 
   extensions: ['.svelte'],
