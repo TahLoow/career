@@ -15,7 +15,8 @@ const config = {
 			assets: 'build',
 			fallback: '404.html',
 			precompress: false,
-			strict: true
+			strict: true,
+      		relative: false // Setting this to false forces absolute paths (/_app/...)
 		})
 	},
 
