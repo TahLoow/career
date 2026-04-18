@@ -13,10 +13,14 @@ const config = {
 			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
-			fallback: undefined,
+			fallback: '404.html',
 			precompress: false,
-			strict: true
-		})
+			strict: true,
+		}),
+		paths: {
+			relative: false,
+			base: '',
+		}
 	},
 
   extensions: ['.svelte'],
