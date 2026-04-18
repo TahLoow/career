@@ -16,8 +16,6 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true,
-			base: '/',
-			relative: false
 		}),
 		paths: {
 			relative: false,
