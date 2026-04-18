@@ -17,7 +17,7 @@ const config = {
 			precompress: false,
 			strict: true,
 			base: '/',
-			relative: true
+			relative: false
 		}),
 	},
 
