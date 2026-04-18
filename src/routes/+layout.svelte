@@ -50,7 +50,7 @@
 
 		<dialog
 			open={true}
-			class="sticky bottom-4 flex h-25 w-full flex-col justify-end bg-transparent not-lg:px-8 lg:fixed lg:bottom-12 lg:ml-8 lg:w-100 xl:w-120"
+			class="sticky bottom-4 flex h-25 w-full flex-col justify-end bg-transparent px-2 sm:px-8 lg:fixed lg:bottom-12 lg:ml-8 lg:w-100 lg:px-0 xl:w-120"
 		>
 			<ScrobbleWidget />
 		</dialog>

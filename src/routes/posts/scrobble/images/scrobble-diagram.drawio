@@ -1,0 +1,68 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:149.0) Gecko/20100101 Firefox/149.0" version="29.6.3">
+  <diagram name="Page-1" id="58cvCxEstLDRHOt0ls68">
+    <mxGraphModel dx="2038" dy="628" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NuhozdxpulZXXtJ136BA-7" edge="1" parent="1" source="NuhozdxpulZXXtJ136BA-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="NuhozdxpulZXXtJ136BA-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-8" connectable="0" parent="NuhozdxpulZXXtJ136BA-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;Poll for&lt;/div&gt;&lt;div&gt;updates&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.025" y="-2" as="geometry">
+            <mxPoint y="18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;Frontend&lt;/div&gt;&lt;div&gt;(Scrobble widget)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-10" edge="1" parent="1" source="NuhozdxpulZXXtJ136BA-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="NuhozdxpulZXXtJ136BA-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-11" connectable="0" parent="NuhozdxpulZXXtJ136BA-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;Access&lt;/div&gt;&lt;div&gt;scrobbles&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0858" y="1" as="geometry">
+            <mxPoint y="21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CloudFlare Worker (Hono server)" vertex="1">
+          <mxGeometry height="60" width="120" x="200" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;Last.fm&lt;/div&gt;(Data source)" vertex="1">
+          <mxGeometry height="60" width="120" x="400" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-5" edge="1" parent="1" source="NuhozdxpulZXXtJ136BA-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="NuhozdxpulZXXtJ136BA-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-6" connectable="0" parent="NuhozdxpulZXXtJ136BA-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Scrobbles" vertex="1">
+          <mxGeometry relative="1" x="-0.0667" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Tidal" vertex="1">
+          <mxGeometry height="60" width="120" x="400" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-13" edge="1" parent="1" source="NuhozdxpulZXXtJ136BA-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="NuhozdxpulZXXtJ136BA-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-14" connectable="0" parent="NuhozdxpulZXXtJ136BA-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;Thinking I&lt;/div&gt;&lt;div&gt;have great&lt;/div&gt;&lt;div&gt;taste in music&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2045" y="2" as="geometry">
+            <mxPoint x="10" y="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-12" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="You" vertex="1">
+          <mxGeometry height="60" width="30" x="-130" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-16" edge="1" parent="1" source="NuhozdxpulZXXtJ136BA-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="NuhozdxpulZXXtJ136BA-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-17" connectable="0" parent="NuhozdxpulZXXtJ136BA-16" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;Listening&lt;/div&gt;&lt;div&gt;to music&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0444" y="-3" as="geometry">
+            <mxPoint y="17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NuhozdxpulZXXtJ136BA-15" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Me" vertex="1">
+          <mxGeometry height="60" width="30" x="270" y="320" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
