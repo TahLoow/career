@@ -34,7 +34,7 @@
 				</a>
 				<a
 					class="border-surface-50-950 hover:text-secondary-50-950 hover:bg-secondary-300 dark:hover:secondary-700 flex aspect-square w-full items-center justify-center rounded"
-					href={'/posts/tidal-link'}
+					href={'/posts/scrobble'}
 				>
 					<CircleQuestionMarkIcon class="size-4" />
 				</a>
