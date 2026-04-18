@@ -16,6 +16,7 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true,
+			base: "",
       		relative: false // Setting this to false forces absolute paths (/_app/...)
 		})
 	},
