@@ -19,6 +19,10 @@ const config = {
 			base: '/',
 			relative: false
 		}),
+		paths: {
+			relative: false,
+			base: '',
+		}
 	},
 
   extensions: ['.svelte'],
